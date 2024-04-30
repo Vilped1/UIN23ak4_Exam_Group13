@@ -35,6 +35,13 @@ export default function GenreSection({ content, setContent }) {
           const genreInfo = resources.find(
             (genreItem) => genreItem.name === genreName
           );
+          {
+            /*
+            Ræva løsning, rettes opp med Sanity.
+            Forsøker å mappe bilder til genrecards fra resources.js,
+            lettere løst med Sanity
+          */
+          }
           return (
             <article
               className="genreCard"
