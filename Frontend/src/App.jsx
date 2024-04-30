@@ -3,7 +3,6 @@ import "./App.css"
 
 export default function App() {
   const [content, setContent] = useState(null)
-  console.log("State", content)
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
   const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
@@ -16,6 +15,7 @@ export default function App() {
   }
 
   const getGenres = async () => {
+  const getGenres = async () => {
     try {
       const response = await fetch(url, options)
       const data = await response.json()
@@ -27,6 +27,7 @@ export default function App() {
   }
 
   useEffect(() => {
+    getGenres()
     getGenres()
   }, [])
 
