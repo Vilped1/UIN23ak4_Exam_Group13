@@ -3,11 +3,10 @@ import MovieCard from "./components/MovieCard";
 import "./App.css";
 
 export default function App() {
-  const [content, setContent] = useState([]);
+  const [content, setContent] = useState(null);
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  const url =
-    "https://moviesdatabase.p.rapidapi.com/titles/search/title/the%20shining?exact=false&titleType=movie";
+  const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/";
   const options = {
     method: "GET",
     headers: {
@@ -16,12 +15,12 @@ export default function App() {
     },
   };
 
-  const getMovie = async () => {
+  const getGenres = async () => {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
       setContent(data.results);
-      console.log(content);
+      console.log(data.results);
     } catch (error) {
       console.error(error);
     }
@@ -29,11 +28,18 @@ export default function App() {
 
   useEffect(() => {
     getMovie();
+    getGenres();
   }, []);
 
   return (
-    <>
+    <div>
+      {content &&
+        content.map((genre, index) => (
+          <div key={index}>
+            <h2>{genre}</h2>
+          </div>
+        ))}
       <MovieCard content={content} setContent={setContent} />
-    </>
+    </div>
   );
 }
