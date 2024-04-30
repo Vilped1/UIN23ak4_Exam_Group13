@@ -14,20 +14,19 @@ export default function App() {
     },
   }
 
-  const getMovie = async () => {
+  const getGenres = async () => {
     try {
       const response = await fetch(url, options)
       const result = await response.json()
       console.log(result)
       setContent(result.results)
-      return result
     } catch (error) {
       console.error(error)
     }
   }
 
   useEffect(() => {
-    getMovie()
+    getGenres()
   }, [])
 
   return (
