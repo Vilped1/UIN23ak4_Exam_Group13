@@ -21,7 +21,6 @@ export default function App() {
       const data = await response.json()
       setContent(data.results)
       console.log(data.results)
-      return data
     } catch (error) {
       console.error(error)
     }
