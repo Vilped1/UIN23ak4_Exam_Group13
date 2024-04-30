@@ -14,6 +14,10 @@ export default function Nav() {
         </span>
 
         <input className="searchBar" placeholder="Search for a film"></input>
+
+        <span>
+          <p>User 1</p>
+        </span>
       </nav>
     </>
   );
