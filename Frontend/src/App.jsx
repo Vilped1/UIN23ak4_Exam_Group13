@@ -2,11 +2,11 @@ import { useState, useEffect } from "react"
 import "./App.css"
 
 export default function App() {
-  const [content, setContent] = useState("")
+  const [content, setContent] = useState(null)
+  console.log("State", content)
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  const url =
-    "https://moviesdatabase.p.rapidapi.com/titles/search/title/the%20shining?exact=false&titleType=movie"
+  const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
   const options = {
     method: "GET",
     headers: {
@@ -19,7 +19,9 @@ export default function App() {
     try {
       const response = await fetch(url, options)
       const result = await response.json()
-      console.log(result)
+      console.log(result.results)
+      setContent(result.results)
+      return result
     } catch (error) {
       console.error(error)
     }
@@ -29,5 +31,14 @@ export default function App() {
     getMovie()
   }, [])
 
-  return <></>
+  return (
+    <div>
+      {content &&
+        content.map((genre, index) => (
+          <div key={index}>
+            <h2>{genre}</h2>
+          </div>
+        ))}
+    </div>
+  )
 }
