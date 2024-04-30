@@ -15,7 +15,6 @@ export default function App() {
   }
 
   const getGenres = async () => {
-  const getGenres = async () => {
     try {
       const response = await fetch(url, options)
       const data = await response.json()
@@ -27,7 +26,6 @@ export default function App() {
   }
 
   useEffect(() => {
-    getGenres()
     getGenres()
   }, [])
 
