@@ -1,45 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-//API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
+import { useState, useEffect } from "react"
+import "./App.css"
 
-function App() {
+export default function App() {
+  const [content, setContent] = useState(null)
+  // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  const [query, setQuery] = useState("")
-
-  /*const url = 'https://moviesdatabase.p.rapidapi.com/titles/{tt0086250}';
+  const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'X-RapidAPI-Key': '9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14',
-      'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
-    }
-  };*/
+      "X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
+      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+    },
+  }
 
-  const getData = async () => {
+  const getGenres = async () => {
     try {
-      const response = await fetch(`https://moviesdatabase.p.rapidapi.com/titles/{tt0086250}`);
-      const result = await response.text();
-      console.log("it worked", result)
+      const response = await fetch(url, options)
+      const result = await response.json()
+      console.log(result)
+      setContent(result.results)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
-  /*
-    const getData = async() => {
-      try {
-        const response = await fetch(`https://rapidapi.com/SAdrian/api/moviesdatabase/`)
-        const data = await response.json()
-        setBooks(data.docs)
-      } catch {
-        console.error("Errorrr")
-      }
-    }*/
+
+  useEffect(() => {
+    getGenres()
+  }, [])
 
   return (
-    <p></p>
+    <div>
+      {content &&
+        content.map((genre, index) => (
+          <div key={index}>
+            <h2>{genre}</h2>
+          </div>
+        ))}
+    </div>
   )
 }
-
-export default App
