@@ -1,4 +1,5 @@
 import { BiCameraMovie } from "react-icons/bi";
+import { FaUserCircle } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 
 export default function Nav() {
@@ -11,12 +12,13 @@ export default function Nav() {
             <BiCameraMovie />
           </IconContext.Provider>
           <h1>MovieTube</h1>
+          <input className="searchBar" placeholder="Search for a film" />
         </span>
 
-        <input className="searchBar" placeholder="Search for a film"></input>
-
         <span>
-          <p>User 1</p>
+          <IconContext.Provider value={{ size: "1.6rem" }}>
+            <FaUserCircle />
+          </IconContext.Provider>
         </span>
       </nav>
     </>

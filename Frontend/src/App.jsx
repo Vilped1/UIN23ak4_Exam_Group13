@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MovieCard from "./components/MovieCard";
 import Nav from "./components/Nav";
 import "./App.css";
+import GenreSection from "./components/GenreSection";
 
 export default function App() {
   const [content, setContent] = useState([]);
@@ -37,6 +38,7 @@ export default function App() {
   return (
     <>
       <Nav />
+      <GenreSection content={content} setContent={setContent} />
       <MovieCard content={content} setContent={setContent} />
     </>
   );
