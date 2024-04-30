@@ -15,20 +15,20 @@ export default function App() {
     },
   }
 
-  const getMovie = async () => {
+  const getGenres = async () => {
     try {
       const response = await fetch(url, options)
-      const result = await response.json()
-      console.log(result.results)
-      setContent(result.results)
-      return result
+      const data = await response.json()
+      setContent(data.results)
+      console.log(data.results)
+      return data
     } catch (error) {
       console.error(error)
     }
   }
 
   useEffect(() => {
-    getMovie()
+    getGenres()
   }, [])
 
   return (
