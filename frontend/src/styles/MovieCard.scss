@@ -1,0 +1,13 @@
+.cardSection{
+  display: flex;
+  flex-wrap: 3;
+}
+
+.movieCard{
+  width: 500px;
+  background-color: grey;
+
+  img{
+    width: 150px;
+  }
+}

@@ -1,10 +1,10 @@
 export default function MovieCard({ content }) {
   return (
     <>
-      <section>
+      <section className="cardSection">
         {Array.isArray(content) &&
           content.map((item) => (
-            <article key={item.id}>
+            <article key={item.id} className="movieCard">
               {item.primaryImage && (
                 <img
                   src={item.primaryImage.url}

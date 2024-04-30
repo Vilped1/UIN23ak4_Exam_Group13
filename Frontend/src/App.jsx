@@ -4,7 +4,7 @@ import "./App.css";
 
 export default function App() {
   const [content, setContent] = useState([]);
-  const [query, setQuery] = useState("Avengers");
+  const [query, setQuery] = useState("The shining");
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
   const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${query}?exact=false&titleType=movie`;
