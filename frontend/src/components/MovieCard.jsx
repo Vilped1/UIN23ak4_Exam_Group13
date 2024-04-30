@@ -4,8 +4,8 @@ function MovieCard() {
   const [content, setContent] = useState("");
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  const url =
-    "https://moviesdatabase.p.rapidapi.com/titles/search/title/the%20shining?exact=false&titleType=movie";
+  const url ="https://moviesdatabase.p.rapidapi.com/titles/utils/genres/";
+  
   const options = {
     method: "GET",
     headers: {
@@ -28,7 +28,9 @@ function MovieCard() {
     getMovie();
   }, []);
 
-  return <></>;
+  return <>
+     
+  </>;
 }
 
 export default MovieCard;
