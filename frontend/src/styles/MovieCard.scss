@@ -1,13 +1,26 @@
 .cardSection{
   display: flex;
-  flex-wrap: 3;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .movieCard{
-  width: 500px;
-  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: #252525;
+  color: white;
+  align-items: center;
+  padding-top: 20px;
+
+
+  border-radius: 20px;
 
   img{
-    width: 150px;
+    width: 200px;
+    border-radius: 20px;
+  }
+
+  h3{
   }
 }
