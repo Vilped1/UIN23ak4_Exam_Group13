@@ -1,0 +1,19 @@
+nav{
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid 2px white;
+  margin-bottom: 2rem;
+}
+
+.logoContainer{
+  display: inline-flex;
+
+  h1{
+    margin: 1.6rem 2rem 1rem 0;
+  }
+}
+
+.searchBar{
+  height: 50px;
+  width: 300px;
+}

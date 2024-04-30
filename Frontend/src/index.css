@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 body{
   background-color: #1E1E1E;
-  font-family: arial;
+  font-family: Inter, Arial;
+  color: white;
 }

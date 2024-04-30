@@ -5,13 +5,15 @@ export default function MovieCard({ content }) {
         {Array.isArray(content) &&
           content.map((item) => (
             <article key={item.id} className="movieCard">
-              {item.primaryImage && (
-                <img
-                  src={item.primaryImage.url}
-                  alt={item.originalTitleText.text}
-                />
-              )}
-              <span>
+              <span className="imgContainer">
+                {item.primaryImage && (
+                  <img
+                    src={item.primaryImage.url}
+                    alt={item.originalTitleText.text}
+                  />
+                )}
+              </span>
+              <span className="infoContainer">
                 <h3>{item.originalTitleText.text}</h3>
               </span>
             </article>
