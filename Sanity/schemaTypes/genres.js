@@ -3,6 +3,11 @@ export const genres = {
     name: "genres",
     type: "document",
     fields: [
+      {
+        title: "Sjangerbilde",
+        name: "genreimage",
+        type: "image",
+      },
         {
             title: "Sjanger",
             name: "genre",
