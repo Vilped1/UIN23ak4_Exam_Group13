@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react"
 
+<<<<<<< Updated upstream
 import "./App.css"
 // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
+=======
+export default function App() {
+  const [content, setContent] = useState([]);
+  /* const [query, setQuery] = useState(""); */
+  // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
+>>>>>>> Stashed changes
 
 const url =
   "https://moviesdatabase.p.rapidapi.com/titles/search/title/the%20shining?exact=false&titleType=movie"
@@ -57,8 +64,12 @@ function App() {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
+<<<<<<< Updated upstream
       setContent(data);
       console.log(content);
+=======
+      setContent(data.results);
+>>>>>>> Stashed changes
     } catch (error) {
       console.error(error);
     } */
