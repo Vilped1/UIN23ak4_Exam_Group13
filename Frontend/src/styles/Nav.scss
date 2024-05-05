@@ -1,0 +1,27 @@
+nav{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-bottom: solid 2px white;
+  margin-bottom: 2rem;
+  align-items: bottom;
+  justify-content: space-between;
+}
+
+.logoContainer{
+  display: inline-flex;
+
+  h1{
+    margin: 1.6rem 2rem 1rem 0;
+  }
+}
+
+.searchBar{
+  margin-top: auto;
+  margin-bottom: .5rem;
+
+  border-radius: 10px;
+  height: 30px;
+  width: 300px;
+
+}

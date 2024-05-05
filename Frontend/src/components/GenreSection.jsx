@@ -49,7 +49,6 @@ export default function GenreSection() {
           const genreInfo = resources.find(
             (genreItem) => genreItem.name === genreName
           );
-
           return (
             <article
               className="genreCard"
