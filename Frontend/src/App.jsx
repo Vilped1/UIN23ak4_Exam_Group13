@@ -34,13 +34,6 @@ export default function App() {
   }, [])
 
   return (
-    <div>
-      {content &&
-        content.map((genre, index) => (
-          <div key={index}>
-            <h2>{genre}</h2>
-          </div>
-        ))}
-    </div>
+   <></>
   )
 }
