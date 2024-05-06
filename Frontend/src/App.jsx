@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import "./App.css"
+import { fetchGenres } from "../sanity/services/genreServices"
 
 export default function App() {
   const [content, setContent] = useState(null)
@@ -27,6 +28,9 @@ export default function App() {
 
   useEffect(() => {
     getGenres()
+    fetchGenres().then((data) => {
+      console.log(data)
+    })
   }, [])
 
   return (
