@@ -63,8 +63,8 @@ export default function GenreSection() {
         })}
       </section>*/}
 
-      <section>
-        {genre?.map((genre, i) => {
+      <section className="genreSection">
+        {genre.map((genre, i) => {
           <article
             className="genreCard"
             key={i}
