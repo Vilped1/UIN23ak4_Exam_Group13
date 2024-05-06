@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
 import "./App.css"
 import { fetchGenres } from "../sanity/services/genreServices"
+import { Routes, Route } from "react-router-dom"
+import Genres from "./components/Genres"
+import Layout from "./components/Layout"
 
 export default function App() {
   const [content, setContent] = useState(null)
@@ -15,32 +18,13 @@ export default function App() {
     },
   }
 
-  const getGenres = async () => {
-    try {
-      const response = await fetch(url, options)
-      const data = await response.json()
-      setContent(data.results)
-      console.log(data.results)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  useEffect(() => {
-    getGenres()
-    fetchGenres().then((data) => {
-      console.log(data)
-    })
-  }, [])
-
   return (
-    <div>
-      {content &&
-        content.map((genre, index) => (
-          <div key={index}>
-            <h2>{genre}</h2>
-          </div>
-        ))}
-    </div>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Genres />} />
+        </Routes>
+      </Layout>
+    </>
   )
 }

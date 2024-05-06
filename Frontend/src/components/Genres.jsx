@@ -1,39 +1,32 @@
+import { useEffect, useState } from "react"
+import { fetchGenres } from "../../sanity/services/genreServices"
+import { Link } from "react-router-dom"
+
 export default function Genres() {
-  const [content, setContent] = useState(null)
+  const [content, setContent] = useState([])
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
-      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
-    },
-  }
-
-  const getGenres = async () => {
-    try {
-      const response = await fetch(url, options)
-      const result = await response.json()
-      console.log(result)
-      setContent(result.results)
-    } catch (error) {
-      console.error(error)
-    }
+  const fetchGenresData = async () => {
+    const data = await fetchGenres()
+    console.log(data)
+    data.sort()
+    setContent(data)
   }
 
   useEffect(() => {
-    getGenres()
+    fetchGenresData()
   }, [])
 
   return (
-    <div>
-      {content &&
-        content.map((genre, index) => (
-          <div key={index}>
-            <h2>{genre}</h2>
-          </div>
+    <>
+      <h1>Genres</h1>
+      <ul>
+        {content.map((genre) => (
+          <li key={genre._id}>
+            <Link to={`/genre/${genre.genreurl}`}>{genre.genre}</Link>
+          </li>
         ))}
-    </div>
+      </ul>
+    </>
   )
 }
