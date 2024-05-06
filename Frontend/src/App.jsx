@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import "./App.css"
 import { fetchGenres } from "../sanity/services/genreServices"
+import { FetchUser } from "../sanity/services/userServices"
 
 export default function App() {
   const [content, setContent] = useState(null)
@@ -32,6 +33,7 @@ export default function App() {
       console.log(data)
     })
   }, [])
+
 
   return (
    <></>
