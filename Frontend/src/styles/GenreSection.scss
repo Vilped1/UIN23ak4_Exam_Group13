@@ -33,4 +33,8 @@
     margin: 0;
     position: absolute;
   }
+
+  &:nth-child(1){
+    background-position: rect(20,20,200,100)
+  }
 }
