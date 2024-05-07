@@ -1,7 +1,12 @@
-.cardSection{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+@import '_variables.scss';
+
+body{
+    font-family: $font;
+    background-color: $darkGrey;  
+
+    main{
+       color: $white;
+    }
 }
 
 .movieCard{

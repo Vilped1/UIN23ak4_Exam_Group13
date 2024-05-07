@@ -32,7 +32,7 @@ export default function Genres({content, setContent}) {
   }, [active])
 
   return (
-    <div>
+    <div id="genreSection">
       {content &&
         content.map((genre, index) => (
           <div key={index}>
