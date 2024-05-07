@@ -27,7 +27,7 @@ export default function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Home user={user} setUser={setUser} compareUser={compareUser} setCompareUser={setCompareUser} /> }/>
+        <Route path="/" element={<Home /> }/>
         <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare activeUser={activeUser} setActiveUser={setActiveUser} users={users} setUsers={setUsers} compareUser={compareUser} setCompareUser={setCompareUser} />} />
         <Route path="/Sjanger" element={<Genres content={content} setContent={setContent} />} />
         <Route path="/Sjanger/:slug" element={<OneGenre />} />
