@@ -1,3 +1,5 @@
+@import '_variables.scss';
+
 .genreSection{
     flex-direction: column;
     top: 50px;
@@ -11,7 +13,7 @@
   
     width: 200px;
     height: 100%;
-  }
+}
   
 .genreCard{
     display: flex;
@@ -24,7 +26,7 @@
     margin: 0 auto 1rem auto;
     border-radius: 10px;
     
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(#00000080, rgba(0, 0, 0, 0.5));
     background-size: cover;
     background-position: center;
     background-clip: content-box;
