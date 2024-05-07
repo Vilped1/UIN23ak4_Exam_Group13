@@ -9,6 +9,7 @@ import Home from "./components/Home"
 import Genres from "./components/Genres"
 import UserCompare from "./components/UserCompare"
 import OneGenre from "./components/OneGenre"
+import { FetchUser } from "../sanity/services/userServices"
 
 export default function App() {
   const [content, setContent] = useState(null)
