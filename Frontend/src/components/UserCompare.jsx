@@ -1,24 +1,32 @@
 export default function UserCompare({
-  user,
-  setUser,
+  users,
+  setUsers,
   compareUser,
   setCompareUser,
+  activeUser,
+  setActiveUser,
 }) {
   const handleClick = (e) => {
-    !user ? setUser(e.target.innerText) : setCompareUser(e.target.innerText)
+    !activeUser
+      ? setActiveUser(e.target.innerText)
+      : setCompareUser(e.target.innerText)
   }
-
-  console.log(user)
 
   return (
     <>
-    <h1>SAMMENLIGNER!!!</h1>
+      <h1>SAMMENLIGNER!!!</h1>
       <h2>{user}</h2>
       <h2>{compareUser}</h2>
       <section>
-        <button onClick={handleClick}>Tore Marius</button>
-        <button onClick={handleClick}>Ann-Charlott</button>
-        <button onClick={handleClick}>Daniela</button>
+        <h1>User: {activeUser}</h1>
+        <h2>Compare user: {compareUser} </h2>
+        <div className="user-buttons">
+          {users.map((user) => (
+            <button onClick={handleClick} key={user._id}>
+              {user.user}
+            </button>
+          ))}
+        </div>
       </section>
     </>
   )
