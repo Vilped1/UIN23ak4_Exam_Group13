@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAllGenres } from "../../sanity/services/genreServices";
 
-export default function GenreSection({ genreQuery, setGenreQuery }) {
+export default function GenreSection({ setGenreQuery }) {
   const [genre, setGenre] = useState([]);
   const [active, setActive] = useState();
 
@@ -17,7 +17,6 @@ export default function GenreSection({ genreQuery, setGenreQuery }) {
   function handleClick(imagetitle) {
     setGenreQuery(imagetitle);
     setActive(imagetitle);
-    document.preventDefault();
   }
 
   useEffect(() => {
