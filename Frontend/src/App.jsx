@@ -13,15 +13,16 @@ function App() {
   const [content, setContent] = useState(null)
 
   return (
-    // <Layout>
-    //   <Routes>
-    //     <Route path="/" element={<Home />}/>
-    //     <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
-    //     <Route path="/Sjanger/:slug" element={<Genres content={content} setContent={setContent} />} />
-    //   </Routes>
-    // </Layout>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
+        <Route path="/Sjanger" element={<Genres content={content} setContent={setContent} />} />
+        <Route path="/Sjanger/:slug" element={<MovieCard />} />
+      </Routes>
+    </Layout>
     
-    <Genres content={content} setContent={setContent} />
+    // <Genres content={content} setContent={setContent} />
   )
 }
 
