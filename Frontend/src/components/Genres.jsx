@@ -1,5 +1,6 @@
-export default function Genres() {
-  const [content, setContent] = useState(null)
+import { useEffect } from "react"
+
+export default function Genres({content, setContent}) {
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
   const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
