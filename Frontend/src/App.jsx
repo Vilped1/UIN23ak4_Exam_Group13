@@ -1,50 +1,30 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import { fetchGenres } from "../sanity/services/genreServices";
-import { FetchUser } from "../sanity/services/userServices";
+import { useState, useEffect } from "react"
+import React from "react"
+import MovieCard from "./components/MovieCard"
+import "./App.css"
+import User from "./components/UserCompare"
+import Layout from "./components/Layout"
+import { Route, Routes } from "react-router-dom"
+import Home from "./components/Home"
+import Genres from "./components/Genres"
+import UserCompare from "./components/UserCompare"
+import OneGenre from "./components/OneGenre"
 
-export default function App() {
-  const [content, setContent] = useState(null);
-  const [users, setUsers] = useState([]);
-
-  // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
-
-  const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/";
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key":
-        "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
-      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
-    },
-  };
-
-  const getGenres = async () => {
-    try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-      setContent(data.results);
-      console.log(data.results);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getGenres();
-    FetchUser().then((data) => {
-      setUsers(data); 
-    });
-  }, []);
+function App() {
+  const [content, setContent] = useState(null)
+  const [user, setUser] = useState(null)
+  const [compareUser, setCompareUser] = useState(null)
 
   return (
-    <div className="App">
-      <h1>Users</h1>
-      <div className="user-buttons">
-        {users.map((user) => (
-          <button key={user._id}>{user.user}</button> 
-        ))}
-      </div>
-    </div>
-  );
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home user={user} setUser={setUser} compareUser={compareUser} setCompareUser={setCompareUser} />}/>
+        <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare user={user} setUser={setUser} compareUser={compareUser} setCompareUser={setCompareUser}/>} />
+        <Route path="/Sjanger" element={<Genres content={content} setContent={setContent} />} />
+        <Route path="/Sjanger/:slug" element={<OneGenre />} />
+      </Routes>
+    </Layout>
+  )
 }
+
+export default App
