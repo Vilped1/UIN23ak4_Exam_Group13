@@ -16,6 +16,7 @@ export default function App() {
   const [users, setUsers] = useState([])
   const [compareUser, setCompareUser] = useState(null)
   const [activeUser, setActiveUser] = useState(null)
+  
 
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d1
 
@@ -26,6 +27,7 @@ export default function App() {
   }, [])
 
   return (
+    <>
     <Layout>
       <Routes>
         <Route path="/" element={<Home /> }/>
@@ -34,5 +36,15 @@ export default function App() {
         <Route path="/Sjanger/:slug" element={<OneGenre />} />
       </Routes>
     </Layout>
+
+    <h1>Brukere</h1>
+        {users.map((user) => (
+          <button key={user._id}>{user.user}</button> 
+        ))}
+
+ 
+      
+  
+</>
   )
 }

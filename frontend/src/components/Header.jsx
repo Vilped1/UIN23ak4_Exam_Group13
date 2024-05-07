@@ -3,9 +3,13 @@ import { Link } from "react-router-dom"
 import { BiMoviePlay } from "react-icons/bi"
 import { FaUserCircle } from "react-icons/fa"
 
+
 export default function Header() {
 
+    
+
     return (
+        <>
         <header>
             <Link to="/"><h2>What To See?</h2></Link>
             <section id="sideheader">
@@ -14,5 +18,12 @@ export default function Header() {
                 <h3><FaUserCircle /> Marius</h3>
             </section>
         </header>
+        
+        
+      
+
+  
+        
+        </>
     )
 }
