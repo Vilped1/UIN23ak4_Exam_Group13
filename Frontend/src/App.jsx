@@ -9,7 +9,6 @@ export default function App() {
   const [genreQuery, setGenreQuery] = useState("Action");
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  /*   const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${genreQuery}?exact=false&titleType=movie`; */
   const url = `https://moviesdatabase.p.rapidapi.com/titles?limit=20&startYear=2015&endYear=2023&genre=${genreQuery}`;
   const options = {
     method: "GET",
@@ -34,6 +33,11 @@ export default function App() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    fetchData();
+    console.log(genreQuery);
+  }, [genreQuery]);
+
   return (
     <>
       <Nav />
@@ -43,6 +47,7 @@ export default function App() {
         genreQuery={genreQuery}
         setGenreQuery={setGenreQuery}
       />
+      <h2>{genreQuery}</h2>
       <MovieCard content={content} setContent={setContent} />
     </>
   );

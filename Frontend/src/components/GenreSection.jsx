@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { fetchAllGenres } from "../../sanity/services/genreServices";
 
-export default function GenreSection() {
+export default function GenreSection({ genreQuery, setGenreQuery }) {
   const [genre, setGenre] = useState([]);
+  const [active, setActive] = useState();
 
   const getGenres = async () => {
     try {
@@ -13,9 +14,14 @@ export default function GenreSection() {
     }
   };
 
+  function handleClick(imagetitle) {
+    setGenreQuery(imagetitle);
+    setActive(imagetitle);
+    document.preventDefault();
+  }
+
   useEffect(() => {
     getGenres();
-    console.log(genre);
   }, []);
 
   return (
@@ -27,11 +33,14 @@ export default function GenreSection() {
       <section className="genreSection">
         {genre.map((genre, index) => (
           <article
-            className="genreCard"
+            className={`genreCard ${
+              active === genre.imagetitle ? "active" : ""
+            }`}
             key={index}
             style={{
               backgroundImage: `url(${genre.image}?h=300)`,
             }}
+            onClick={() => handleClick(genre.imagetitle)}
           >
             <h3>{genre.imagetitle}</h3>
           </article>

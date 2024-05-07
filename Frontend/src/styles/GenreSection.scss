@@ -1,18 +1,26 @@
 .genreSection{
   flex-direction: column;
-  top: 50px;
+  position: sticky;
+  top: 70px;
   gap: 2rem;
   float: left;
   border-right: solid 2px white;
-  margin-right: 2rem;
+  margin: 1rem 2rem 0 0;
+  overflow: scroll;
 
   align-items: center;
   justify-content: center;
 
   width: 200px;
-  height: 100%;
-}
+  height: 100vh;
 
+}
+.active{
+  scale: 1.1;
+  box-sizing: border-box;
+  border: 2px solid white;
+  transition: ease .3s;
+}
 .genreCard{
   display: flex;
   justify-content: center;
@@ -24,15 +32,13 @@
   margin: 0 auto 1rem auto;
   border-radius: 10px;
   
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   background-size: cover;
-  background-position: center;
   background-clip: content-box;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.5); 
+
   h3{
     margin: 0;
-    position: absolute;
   }
 
   &:nth-child(1){
@@ -115,5 +121,34 @@
   }
   &:nth-child(27){
     background-position: 0px -95px;
+  }
+}
+
+@media (max-width: 800px) {
+  .genreSection{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    overflow: scroll;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%; 
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .genreCard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 10rem;
+    height: 75px;
+    left: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    border-radius: 10px;
+
   }
 }

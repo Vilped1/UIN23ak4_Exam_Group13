@@ -1,6 +1,7 @@
 .cardSection{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -12,7 +13,6 @@
   color: white;
   align-items: center;
   cursor: pointer;
-
 
   border-radius: 20px;
 
