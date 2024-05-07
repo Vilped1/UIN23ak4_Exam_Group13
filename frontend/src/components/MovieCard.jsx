@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function MovieCard() {
+export default function MovieCard() {
   const [content, setContent] = useState("");
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
@@ -28,9 +28,7 @@ function MovieCard() {
     getMovie();
   }, []);
 
-  return <>
-     
-  </>;
+  return (
+    <h1>FILM!</h1>
+  )
 }
-
-export default MovieCard;

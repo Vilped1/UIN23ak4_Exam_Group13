@@ -3,6 +3,7 @@ import "./App.css"
 import { fetchGenres } from "../sanity/services/genreServices"
 import { FetchUser } from "../sanity/services/userServices"
 import UserCompare from "./components/UserCompare"
+import OneGenre from "./components/OneGenre"
 
 export default function App() {
   const [content, setContent] = useState(null)
@@ -19,23 +20,38 @@ export default function App() {
   }, [])
 
   return (
-    // <Layout>
-    //   <Routes>
-    //     <Route path="/" element={<Home />}/>
-    //     <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
-    //     <Route path="/Sjanger/:slug" element={<Genres content={content} setContent={setContent} />} />
-    //   </Routes>
-    // </Layout>
-    <>
-      {/* <Genres content={content} setContent={setContent} /> */}
-      <UserCompare
-        activeUser={activeUser}
-        setActiveUser={setActiveUser}
-        users={users}
-        setUsers={setUsers}
-        compareUser={compareUser}
-        setCompareUser={setCompareUser}
-      />
-    </>
+    <Layout>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              user={user}
+              setUser={setUser}
+              compareUser={compareUser}
+              setCompareUser={setCompareUser}
+            />
+          }
+        />
+        <Route
+          path="/Bruker-sammenlignet-med/:slug"
+          element={
+            <UserCompare
+              activeUser={activeUser}
+              setActiveUser={setActiveUser}
+              users={users}
+              setUsers={setUsers}
+              compareUser={compareUser}
+              setCompareUser={setCompareUser}
+            />
+          }
+        />
+        <Route
+          path="/Sjanger"
+          element={<Genres content={content} setContent={setContent} />}
+        />
+        <Route path="/Sjanger/:slug" element={<OneGenre />} />
+      </Routes>
+    </Layout>
   )
 }
