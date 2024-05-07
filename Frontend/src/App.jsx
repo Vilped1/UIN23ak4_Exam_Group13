@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import React from "react"
 import MovieCard from "./components/MovieCard"
-import "./App.css"
+// import "./App.css"
 import User from "./components/UserCompare"
 import Layout from "./components/Layout"
 import { Route, Routes } from "react-router-dom"
