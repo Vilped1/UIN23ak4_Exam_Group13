@@ -1,5 +1,5 @@
 export const images = {
-  title: "Asset",
+  title: "Genres",
   name: "asset",
   type: "document",
   fields: [

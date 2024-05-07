@@ -28,6 +28,7 @@
   background-size: cover;
   background-position: center;
   background-clip: content-box;
+  background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.5); 
   h3{
     margin: 0;
@@ -35,6 +36,84 @@
   }
 
   &:nth-child(1){
-    background-position: rect(20,20,200,100)
+    background-position: 0px -25px;
+  }
+  &:nth-child(2){
+    background-position: 0px -80px;
+  }
+  &:nth-child(3){
+    background-position: 0px -50px;
+  }
+  &:nth-child(4){
+    background-position: 0px -85px;
+  }
+  &:nth-child(5){
+    background-position: 0px -35px;
+  }
+  &:nth-child(6){
+    background-position: 0px -35px;
+  }
+  &:nth-child(7){
+    background-position: 0px -65px;
+  }
+  &:nth-child(8){
+    background-position: 0px -145px;
+  }
+  &:nth-child(9){
+    background-position: 0px -85px;
+  }
+  &:nth-child(10){
+    background-position: 0px -50px;
+  }
+  &:nth-child(11){
+    background-position: 0px -12px;
+  }
+  &:nth-child(12){
+    background-position: 0px -15px;
+  }
+  &:nth-child(13){
+    background-position: 0px -70px;
+  }
+  &:nth-child(14){
+    background-position: 0px -35px;
+  }
+  &:nth-child(15){
+    background-position: 0px -30px;
+  }
+  &:nth-child(16){
+    background-position: 0px -70px;
+  }
+  &:nth-child(17){
+    background-position: 0px -110px;
+  }
+  &:nth-child(18){
+    background-position: 0px -90px;
+  }
+  &:nth-child(19){
+    background-position: 0px -45px;
+  }
+  &:nth-child(20){
+    background-position: 0px -25px;
+  }
+  &:nth-child(21){
+    background-position: 0px -35px;
+  }
+  &:nth-child(22){
+    background-position: 0px -35px;
+  }
+  &:nth-child(23){
+    background-position: 0px -50px;
+  }
+  &:nth-child(24){
+    background-position: 0px -60px;
+  }
+  &:nth-child(25){
+    background-position: 0px -15px;
+  }
+  &:nth-child(26){
+    background-position: 0px -110px;
+  }
+  &:nth-child(27){
+    background-position: 0px -95px;
   }
 }
