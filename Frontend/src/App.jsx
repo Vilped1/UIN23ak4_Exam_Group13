@@ -6,12 +6,11 @@ import GenreSection from "./components/GenreSection";
 
 export default function App() {
   const [content, setContent] = useState([]);
-  const [query, setQuery] = useState("The shining");
+  const [genreQuery, setGenreQuery] = useState("Action");
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  /*   const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${query}?exact=false&titleType=movie`; */
-  const url =
-    "https://moviesdatabase.p.rapidapi.com/titles?limit=20&startYear=2015&endYear=2023&genre=Action";
+  /*   const url = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${genreQuery}?exact=false&titleType=movie`; */
+  const url = `https://moviesdatabase.p.rapidapi.com/titles?limit=20&startYear=2015&endYear=2023&genre=${genreQuery}`;
   const options = {
     method: "GET",
     headers: {
@@ -38,7 +37,12 @@ export default function App() {
   return (
     <>
       <Nav />
-      <GenreSection content={content} setContent={setContent} />
+      <GenreSection
+        content={content}
+        setContent={setContent}
+        genreQuery={genreQuery}
+        setGenreQuery={setGenreQuery}
+      />
       <MovieCard content={content} setContent={setContent} />
     </>
   );
