@@ -1,0 +1,43 @@
+.genreSection{
+    flex-direction: column;
+    top: 50px;
+    gap: 2rem;
+    float: left;
+    border-right: solid 2px white;
+    margin-right: 2rem;
+  
+    align-items: center;
+    justify-content: center;
+  
+    width: 200px;
+    height: 100%;
+  }
+  
+  .genreCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  
+    width: 10rem;
+    height: 75px;
+    margin: 0 auto 1rem auto;
+    border-radius: 10px;
+    
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-size: cover;
+    background-position: center;
+    background-clip: content-box;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5); 
+    h3{
+      margin: 0;
+      position: absolute;
+    }
+  
+    .cardSection{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+}
