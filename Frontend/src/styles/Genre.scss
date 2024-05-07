@@ -13,7 +13,7 @@
     height: 100%;
   }
   
-  .genreCard{
+.genreCard{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,14 +30,9 @@
     background-clip: content-box;
     background-repeat: no-repeat;
     background-color: rgba(0, 0, 0, 0.5); 
+    
     h3{
       margin: 0;
       position: absolute;
-    }
-  
-    .cardSection{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
     }
 }
