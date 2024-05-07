@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from "react"
-
-export default function UserCompare({ name }) {
-
-    return (
-      <div>
-        <h2>Bruker</h2>
-        <button>
-           <p>Ole</p>
-        </button>
-      </div>
-    )
+export default function UserCompare({
+  user,
+  setUser,
+  compareUser,
+  setCompareUser,
+}) {
+  const handleClick = (e) => {
+    !user ? setUser(e.target.innerText) : setCompareUser(e.target.innerText)
   }
+
+  console.log(user)
+
+  return (
+    <>
+      <h2>{user}</h2>
+      <h2>{compareUser}</h2>
+      <section>
+        <button onClick={handleClick}>Tore Marius</button>
+        <button onClick={handleClick}>Ann-Charlott</button>
+        <button onClick={handleClick}>Daniela</button>
+      </section>
+    </>
+  )
+}
