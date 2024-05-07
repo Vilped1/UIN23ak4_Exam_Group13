@@ -47,7 +47,7 @@ export default function App() {
         genreQuery={genreQuery}
         setGenreQuery={setGenreQuery}
       />
-      <h2>{genreQuery}</h2>
+      <h2 className="selectedGenre">{genreQuery}</h2>
       <MovieCard content={content} setContent={setContent} />
     </>
   );

@@ -1,19 +1,24 @@
 .genreSection{
   flex-direction: column;
-  position: sticky;
   top: 70px;
   gap: 2rem;
   float: left;
-  border-right: solid 2px white;
-  margin: 1rem 2rem 0 0;
+  
+  position: sticky;
   overflow: scroll;
-
+  
   align-items: center;
   justify-content: center;
-
+  
   width: 200px;
   height: 100vh;
+  border-right: solid 2px white;
+  margin: 1rem 2rem 0 0;
+  padding-top: 1rem;
 
+}
+.selectedGenre{
+  margin-left: 2rem;
 }
 .active{
   scale: 1.1;
@@ -132,6 +137,7 @@
     overflow: scroll;
     align-items: center;
     justify-content: flex-start;
+    position: static;
     width: 100%; 
     height: auto;
     margin-bottom: 1rem;
