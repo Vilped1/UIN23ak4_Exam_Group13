@@ -10,6 +10,7 @@ import Genres from "./components/Genres"
 import UserCompare from "./components/UserCompare"
 import OneGenre from "./components/OneGenre"
 
+
 function App() {
   const [content, setContent] = useState(null)
   const [user, setUser] = useState(null)
