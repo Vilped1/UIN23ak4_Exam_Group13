@@ -12,6 +12,7 @@ export default function UserCompare({
 
   return (
     <>
+    <h1>SAMMENLIGNER!!!</h1>
       <h2>{user}</h2>
       <h2>{compareUser}</h2>
       <section>

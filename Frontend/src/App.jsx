@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom"
 import Home from "./components/Home"
 import Genres from "./components/Genres"
 import UserCompare from "./components/UserCompare"
+import OneGenre from "./components/OneGenre"
 
 function App() {
   const [content, setContent] = useState(null)
@@ -17,13 +18,10 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare user={user}
-        setUser={setUser}
-        compareUser={compareUser}
-        setCompareUser={setCompareUser}/>} />
+        <Route path="/" element={<Home user={user} setUser={setUser} compareUser={compareUser} setCompareUser={setCompareUser} />}/>
+        <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare user={user} setUser={setUser} compareUser={compareUser} setCompareUser={setCompareUser}/>} />
         <Route path="/Sjanger" element={<Genres content={content} setContent={setContent} />} />
-        <Route path="/Sjanger/:slug" element={<MovieCard />} />
+        <Route path="/Sjanger/:slug" element={<OneGenre />} />
       </Routes>
     </Layout>
   )
