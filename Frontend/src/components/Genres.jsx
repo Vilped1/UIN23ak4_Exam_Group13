@@ -35,11 +35,9 @@ export default function Genres({content, setContent}) {
     <div id="genreSection">
       {content &&
         content.map((genre, index) => (
-          <div key={index}>
             <li>
             <Link to={"/Sjanger/" + genre.toLowerCase()}><h2>{genre.replaceAll("-", " ")}</h2></Link>
             </li>
-          </div>
         ))}
     </div>
   )

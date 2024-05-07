@@ -1,18 +1,19 @@
 @import '_variables.scss';
 
-.genreSection{
-    flex-direction: column;
-    top: 50px;
-    gap: 2rem;
-    float: left;
+#genreSection{
     border-right: solid 2px white;
-    margin-right: 2rem;
-  
-    align-items: center;
-    justify-content: center;
-  
     width: 200px;
-    height: 100%;
+    padding-left: 1rem;
+
+    li{
+        list-style: none;
+
+        a{
+            color: $white;
+            text-decoration: none;
+            
+        }
+    }
 }
   
 .genreCard{
