@@ -1,3 +1,8 @@
+import { IconContext } from "react-icons";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import heartIcon from "../assets/heartIcon.svg";
+
 export default function MovieCard({ content, searchQuery }) {
   return (
     <>
@@ -9,6 +14,11 @@ export default function MovieCard({ content, searchQuery }) {
           content.map((item) => (
             <article key={item.id} className="movieCard">
               <section className="imgContainer">
+                <img
+                  src={heartIcon}
+                  className="favIcon"
+                  alt="Fav Movie Button"
+                />
                 {item.primaryImage && (
                   <img
                     src={item.primaryImage.url}
@@ -17,7 +27,16 @@ export default function MovieCard({ content, searchQuery }) {
                 )}
               </section>
               <section className="infoContainer">
-                <h3>{item.originalTitleText.text}</h3>
+                <h3>
+                  {item.originalTitleText.text}
+                  {/*<p>{`(${item.releaseYear.year})`}</p> */}
+                </h3>
+                <a
+                  href={`https://www.imdb.com/title/${item.id}/?ref_=sr_t_1`}
+                  target="_blank"
+                >
+                  <button className="imdbButton">IMDb</button>
+                </a>
               </section>
             </article>
           ))

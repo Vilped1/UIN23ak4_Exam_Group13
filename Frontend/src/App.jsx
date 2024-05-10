@@ -12,7 +12,7 @@ export default function App() {
 
   const genreUrl = `https://moviesdatabase.p.rapidapi.com/titles?limit=20&startYear=2015&endYear=2023&genre=${genreQuery}`;
 
-  const searchUrl = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${searchQuery}?exact=false&titleType=movie&limit=10`;
+  const searchUrl = `https://moviesdatabase.p.rapidapi.com/titles/search/title/${searchQuery}?exact=false&titleType=movie&limit=20`;
 
   const options = {
     method: "GET",
