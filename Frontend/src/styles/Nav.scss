@@ -23,9 +23,14 @@ nav{
   margin-top: auto;
   margin-bottom: .5rem;
 
+  border: none;
   border-radius: 10px;
   height: 30px;
-  width: 500px;
+  width: 20rem;
+
+  &:focus{
+    border: none;
+  }
 }
 .searchButton{
   padding: .5rem 1rem;

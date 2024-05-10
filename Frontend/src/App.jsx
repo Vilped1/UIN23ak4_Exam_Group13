@@ -68,7 +68,7 @@ export default function App() {
       <h2 className="selectedGenre">
         {genreQuery
           ? genreQuery
-          : `Showing ${content?.length} results for: ${searchQuery}`}
+          : `Showing ${content?.length} results for: "${searchQuery}"`}
       </h2>
       <MovieCard
         content={content}

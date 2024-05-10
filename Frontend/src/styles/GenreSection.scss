@@ -6,6 +6,7 @@
   
   position: sticky;
   overflow: scroll;
+  scrollbar-width: none;
   
   align-items: center;
   justify-content: center;
@@ -15,6 +16,7 @@
   border-right: solid 2px white;
   margin: 1rem 2rem 0 0;
   padding-top: 1rem;
+  padding-bottom: 3rem;
 
 }
 .selectedGenre{
@@ -135,6 +137,7 @@
     flex-direction: row;
     gap: 2rem;
     overflow: scroll;
+    scrollbar-width: auto;
     align-items: center;
     justify-content: flex-start;
     position: static;

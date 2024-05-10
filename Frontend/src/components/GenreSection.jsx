@@ -37,7 +37,7 @@ export default function GenreSection({ setGenreQuery }) {
             }`}
             key={index}
             style={{
-              backgroundImage: `url(${genre.image}?h=300)`,
+              backgroundImage: `url(${genre.image})`,
             }}
             onClick={() => handleClick(genre.imagetitle)}
           >
