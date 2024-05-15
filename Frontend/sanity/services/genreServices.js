@@ -1,4 +1,4 @@
-import { client } from "../client";
+import { client, writeClient } from "../client";
 
 /* https://www.sanity.io/docs/how-queries-work#dd66cae5ed8f */
 export async function fetchAllGenres() {
@@ -8,4 +8,21 @@ export async function fetchAllGenres() {
     imagetitle,
     }`)
   return genreData;
+}
+
+export async function fetchUserID() {
+  const userData = await client.fetch(`*[_type == "User"]{
+    _id
+    }`)
+  return userData;
+}
+
+export async function updateFavGenre(id, fg){
+  const result = await writeClient.patch(id)
+  .setIfMissing({favGenre: []})
+  .append("favGenre", [{genreName: fg}])
+  .commit({autoGenerateArrayKeys: true})
+  .then(() => {return "Added successfully" + t})
+  .catch((err) => {return "Failed" + err.message})
+  return result
 }
