@@ -2,8 +2,16 @@ import { IconContext } from "react-icons";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import heartIcon from "../assets/heartIcon.svg";
+import { useState } from "react";
 
 export default function MovieCard({ content, searchQuery }) {
+  const [favMovie, setFavMovie] = useState([]);
+
+  const addFavMovie = (e) => {
+    e.preventDefault();
+    setFavMovie();
+  };
+
   return (
     <>
       <section className="cardSection">
@@ -29,6 +37,8 @@ export default function MovieCard({ content, searchQuery }) {
               <section className="infoContainer">
                 <h3>
                   {item.originalTitleText.text}
+                  {/*API skriver ut begrenset antall filmer, alle sortert endYear->starYear.
+                     Så alle filmer vil ha endYear verdi som ikke er veldig nyttig*/}
                   {/*<p>{`(${item.releaseYear.year})`}</p> */}
                 </h3>
                 <a
