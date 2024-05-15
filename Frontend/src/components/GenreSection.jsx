@@ -8,8 +8,8 @@ import {
 export default function GenreSection({ setGenreQuery }) {
   const [genre, setGenre] = useState([]);
   const [active, setActive] = useState();
-  const [favoriteGenre, setFavoriteGenre] = useState("");
-  const [userID, setUserID] = useState([]);
+  const [userID, setUserID] = useState();
+  const [selectedGenre, setSelectedGenre] = useState();
 
   const getGenres = async () => {
     try {
@@ -23,7 +23,7 @@ export default function GenreSection({ setGenreQuery }) {
   const fetchUserData = async () => {
     try {
       const userResponse = await fetchUserID();
-      setUserID(userResponse._id);
+      setUserID(userResponse[0]._id);
       console.log(userID);
     } catch (error) {
       console.error("Error fetching user ID", error);
@@ -33,8 +33,8 @@ export default function GenreSection({ setGenreQuery }) {
   const handleClick = (genre) => {
     setGenreQuery(genre.imagetitle);
     setActive(genre.imagetitle);
-    setFavoriteGenre(genre);
-    console.log(genre);
+    setSelectedGenre(genre);
+    console.log("Genre selected: ", genre);
   };
 
   useEffect(() => {
@@ -47,8 +47,14 @@ export default function GenreSection({ setGenreQuery }) {
    */
   const handleAddFav = async (e) => {
     e.preventDefault();
-    const result = await updateFavGenre(userID, favoriteGenre);
-    console.log(result);
+    if (selectedGenre) {
+      const transformedGenre = {
+        genreName: selectedGenre.imagetitle,
+        genreImage: selectedGenre.image,
+      };
+      const result = await updateFavGenre(userID, transformedGenre);
+      console.log("Selected genre", selectedGenre);
+    }
   };
 
   return (

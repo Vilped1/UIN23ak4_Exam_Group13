@@ -17,12 +17,16 @@ export async function fetchUserID() {
   return userData;
 }
 
-export async function updateFavGenre(id, fg){
+export async function updateFavGenre(id, genre){
+  const transformedGenre = {
+    genreName: genre.imagetitle,
+    genreImage: genre.image
+  };
   const result = await writeClient.patch(id)
   .setIfMissing({favGenre: []})
-  .append("favGenre", [{genreName: fg}])
+  .append("GenreSection", [transformedGenre])
   .commit({autoGenerateArrayKeys: true})
-  .then(() => {return "Added successfully" + t})
+  .then(() => {return "Added successfully" + id, genre})
   .catch((err) => {return "Failed" + err.message})
   return result
 }

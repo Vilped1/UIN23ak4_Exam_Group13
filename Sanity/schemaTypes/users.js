@@ -4,11 +4,6 @@ export const user = {
   type: "document",
   fields: [
     {
-      title: "userID",
-      name: "userID",
-      type: "string"
-    },
-    {
       title: "Username",
       name: "Username",
       type: "string"
@@ -19,8 +14,8 @@ export const user = {
       type: "image"
     },
     {
-      title: "favGenre",
-      name: "FavouriteGenre",
+      title: "GenreSection",
+      name: "GenreSection",
       type: "array",
       of: [{type: "favGenre"}]
     }
