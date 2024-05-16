@@ -9,6 +9,7 @@ export default function App() {
   const [genreQuery, setGenreQuery] = useState("Action");
   const [searchQuery, setSearchQuery] = useState("");
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
+  // git shortlog -sn --all --since=1.year
 
   const genreUrl = `https://moviesdatabase.p.rapidapi.com/titles?limit=20&startYear=2015&endYear=2023&genre=${genreQuery}`;
 
