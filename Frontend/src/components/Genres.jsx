@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { FaRegStar } from "react-icons/fa";
 
 export default function Genres({content, setContent}) {
   const [active, setActive] = useState()
@@ -37,6 +38,9 @@ export default function Genres({content, setContent}) {
         content.map((genre, index) => (
             <li>
             <Link to={"/Sjanger/" + genre.toLowerCase()}><h2>{genre.replaceAll("-", " ")}</h2></Link>
+            <button className="star">
+               <FaRegStar />
+            </button>
             </li>
         ))}
     </div>

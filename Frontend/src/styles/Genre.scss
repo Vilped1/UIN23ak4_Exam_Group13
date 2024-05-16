@@ -2,16 +2,28 @@
 
 #genreSection{
     border-right: solid 2px white;
-    width: 200px;
+    width: 210px;
     padding-left: 1rem;
 
     li{
         list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: .5rem;
 
         a{
             color: $white;
             text-decoration: none;
-            
+        }
+
+        .star{
+            background-color: transparent;
+            border: none;
+            color: $white;
+            font-size: 1.25rem;
+            padding: 0;
+            cursor: pointer;
         }
     }
 }
