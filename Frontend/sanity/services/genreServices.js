@@ -17,10 +17,10 @@ export async function fetchUserID() {
   return userData;
 }
 
-export async function updateFavGenre(id, genre){
+export async function updateFavGenre(id, transformedGenre){
   const result = await writeClient.patch(id)
-  .setIfMissing({GenreSection: []})
-  .append("GenreSection", [genre])
+  .setIfMissing({favGenre: []})
+  .append("GenreSection", [transformedGenre])
   .commit({autoGenerateArrayKeys: true})
   .then(() => {return "Added successfully" + id, genre})
   .catch((err) => {return "Failed" + err.message})

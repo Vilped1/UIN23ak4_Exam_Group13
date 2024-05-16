@@ -49,12 +49,8 @@ export default function GenreSection({ setGenreQuery }) {
   const handleAddFav = async (e) => {
     e.preventDefault();
     if (selectedGenre) {
-      const transformedGenre = {
-        genreName: selectedGenre.imagetitle,
-        genreImage: selectedGenre.image,
-      };
-      const result = await updateFavGenre(userID, transformedGenre);
-      console.log("Selected genre", transformedGenre);
+      const result = await updateFavGenre(userID, selectedGenre);
+      console.log("Selected genre", selectedGenre);
     }
   };
 
