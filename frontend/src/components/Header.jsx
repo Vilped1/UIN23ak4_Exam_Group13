@@ -6,8 +6,6 @@ import { FaUserCircle } from "react-icons/fa"
 
 export default function Header() {
 
-    
-
     return (
         <>
         <header>
@@ -17,13 +15,7 @@ export default function Header() {
                 <Link to="/Sjanger"><h3>Bla gjennom sjangere</h3></Link>
                 <h3><FaUserCircle /> Marius</h3>
             </section>
-        </header>
-        
-        
-      
-
-  
-        
+        </header>        
         </>
     )
 }
