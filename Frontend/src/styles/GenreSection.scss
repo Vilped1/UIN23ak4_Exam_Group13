@@ -47,7 +47,9 @@
   h3{
     margin: 0;
   }
-
+  
+// Individuell formatering for hvert sjangerkort, 
+// pga varierende størrelser på poster bilder
   &:nth-child(1){
     background-position: 0px -25px;
   }

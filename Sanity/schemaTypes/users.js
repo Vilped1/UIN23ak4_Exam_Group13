@@ -33,9 +33,9 @@ export const favGenre = {
       type: "string"
     },
     {
-      title: "Genre preview image",
+      title: "Genre preview image (URL)",
       name: "genreImage",
-      type: "image"
+      type: "url"
     }
   ]
 }

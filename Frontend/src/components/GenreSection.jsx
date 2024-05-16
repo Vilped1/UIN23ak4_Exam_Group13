@@ -4,6 +4,7 @@ import {
   fetchUserID,
   updateFavGenre,
 } from "../../sanity/services/genreServices";
+import { user } from "../../../Sanity/schemaTypes/users";
 
 export default function GenreSection({ setGenreQuery }) {
   const [genre, setGenre] = useState([]);
@@ -20,11 +21,12 @@ export default function GenreSection({ setGenreQuery }) {
     }
   };
 
+  //deprekrert. Brukes bare til testing av brukerdata
   const fetchUserData = async () => {
     try {
       const userResponse = await fetchUserID();
-      setUserID(userResponse[0]._id);
-      console.log(userID);
+      setUserID(userResponse);
+      console.log("USER RESPONSE", userResponse);
     } catch (error) {
       console.error("Error fetching user ID", error);
     }
@@ -34,6 +36,7 @@ export default function GenreSection({ setGenreQuery }) {
     setGenreQuery(genre.imagetitle.replace(/\s+/g, ""));
     setActive(genre.imagetitle);
     setSelectedGenre(genre);
+
     console.log("Genre selected: ", genre.imagetitle);
   };
 
@@ -49,8 +52,20 @@ export default function GenreSection({ setGenreQuery }) {
   const handleAddFav = async (e) => {
     e.preventDefault();
     if (selectedGenre) {
-      const result = await updateFavGenre(userID, selectedGenre);
-      console.log("Selected genre", selectedGenre);
+      try {
+        //Fetcher ID til bruker for patching av favorittsjanger
+        const userResponse = await fetchUserID();
+        const userID = userResponse[0]._id;
+        await updateFavGenre(
+          //sender userID sammen med valgt sjanger til updateFavGenre (sanity\services\genreServices.js)
+          userID,
+          selectedGenre.imagetitle,
+          selectedGenre.image
+        );
+        console.log("Update selected genre", selectedGenre);
+      } catch (error) {
+        console.error("Error adding favourite genre", error);
+      }
     }
   };
 
@@ -60,6 +75,16 @@ export default function GenreSection({ setGenreQuery }) {
       https://www.sanity.io/docs/image-urls
       https://www.sanity.io/docs/presenting-images
       https://www.sanity.io/docs/how-queries-work#dd66cae5ed8f */}
+
+      {/*
+        TODO-----------------------------------------------------------------------------------
+            Adde trykkbart element som oppdaterer favorittsjanger
+            og har visuell indikasjon på om sjanger er favorisert eller ikke.
+
+        TODO-----------------------------------------------------------------------------------
+            Funksjonalitet for å legge favorittfilmer til profil,
+            kategorisert etter sjanger
+      */}
       <section className="genreSection">
         {genre.map((genre, index) => (
           <article
