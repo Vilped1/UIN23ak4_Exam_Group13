@@ -31,10 +31,10 @@ export default function GenreSection({ setGenreQuery }) {
   };
 
   const handleClick = (genre) => {
-    setGenreQuery(genre.imagetitle);
+    setGenreQuery(genre.imagetitle.replace(/\s+/g, ""));
     setActive(genre.imagetitle);
     setSelectedGenre(genre);
-    console.log("Genre selected: ", genre);
+    console.log("Genre selected: ", genre.imagetitle);
   };
 
   useEffect(() => {
@@ -44,6 +44,7 @@ export default function GenreSection({ setGenreQuery }) {
 
   /* 
   https://webtricks.blog/oppdatere-et-array-felt-i-en-innholdstype-i-sanity-fra-et-react-grensesnitt/
+  https://www.sanity.io/docs/js-client#fetch-multiple-documents-in-one-go
    */
   const handleAddFav = async (e) => {
     e.preventDefault();
@@ -53,7 +54,7 @@ export default function GenreSection({ setGenreQuery }) {
         genreImage: selectedGenre.image,
       };
       const result = await updateFavGenre(userID, transformedGenre);
-      console.log("Selected genre", selectedGenre);
+      console.log("Selected genre", transformedGenre);
     }
   };
 

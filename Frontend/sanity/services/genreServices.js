@@ -18,13 +18,9 @@ export async function fetchUserID() {
 }
 
 export async function updateFavGenre(id, genre){
-  const transformedGenre = {
-    genreName: genre.imagetitle,
-    genreImage: genre.image
-  };
   const result = await writeClient.patch(id)
-  .setIfMissing({favGenre: []})
-  .append("GenreSection", [transformedGenre])
+  .setIfMissing({GenreSection: []})
+  .append("GenreSection", [genre])
   .commit({autoGenerateArrayKeys: true})
   .then(() => {return "Added successfully" + id, genre})
   .catch((err) => {return "Failed" + err.message})
