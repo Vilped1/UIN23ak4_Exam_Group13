@@ -11,12 +11,10 @@ export default function UserCompare({ commonFavorites, allUsers, compareUser, se
       <section>
         <h1>User: {activeUser}</h1>
         <h2>Compare user: {compareUser} </h2>
-        <p>
-          Common favorites:
-          {commonFavorites.map((movie, index) => (
-            <h3>{movie}</h3>
-          ))}
-        </p>
+        Common favorites:
+        {commonFavorites.map((movie, index) => (
+          <h3 key={index}>{movie}</h3>
+        ))}
       </section>
     </>
   )
