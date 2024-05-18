@@ -5,19 +5,7 @@ export default function UserCompare({ commonFavorites, allUsers, compareUser, se
 
   return (
     <>
-      <h1>SAMMENLIGNER!!!</h1>
-      <h2>{activeUser}</h2>
-      <h2>{compareUser}</h2>
-      <section>
-        <h1>User: {activeUser}</h1>
-        <h2>Compare user: {compareUser} </h2>
-        <p>
-          Common favorites:
-          {commonFavorites.map((movie, index) => (
-            <h3>{movie}</h3>
-          ))}
-        </p>
-      </section>
+   
     </>
   )
 }
