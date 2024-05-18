@@ -30,6 +30,5 @@ export const users = {
                 }
             ]
         }
-        
     ] 
 }
