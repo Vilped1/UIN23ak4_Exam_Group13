@@ -5,10 +5,9 @@ import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Genres from "./components/Genres";
 import UserCompare from "./components/UserCompare";
-import OneGenre from "./components/OneGenre";
-import MovieCard from "./components/MovieCard"; 
-import { FetchUser, FetchUserFavorites } from "../sanity/services/userServices";
-import { fetchGenres } from "../sanity/services/genreServices"; 
+import MovieCard from "./components/MovieCard";
+import { FetchUser } from "../sanity/services/userServices"; 
+import { fetchGenres } from "../sanity/services/genreServices";
 
 export default function App() {
   const [content, setContent] = useState(null); // innhold
@@ -28,10 +27,9 @@ export default function App() {
 
   const handleUserClick = async (user) => {
     setActiveUser(user.user); // Velg bruker
-    const userFavorites = await FetchUserFavorites(user.user); // Henter brukerens favorittfilmer
+    const userFavorites = await FetchUserFavorites(user.user); // Henter brukerens favorittfilmer og sjangere
     setFavoriteMovies(userFavorites[0].favoriteMovies); // Oppdater favorittfilmer
-    const userGenres = await fetchGenres(); // Henter brukerens favorittsjangere
-    setFavoriteGenres(userGenres); // Oppdater favorittsjangere
+    setFavoriteGenres(userFavorites[0].favoriteGenre); // Oppdater favorittsjangere
     navigate(`/movicard/${user.user}`); // Naviger til MovieCard
   };
 
