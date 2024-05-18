@@ -62,7 +62,7 @@ export default function App({ movieCard, setMovieCard }) {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MovieCard movieCard={movieCard} setMovieCard={setMovieCard} />} />
+        <Route path="/" element={<MovieCard movieCard={movieCard} setMovieCard={setMovieCard} options={options} />} />
       </Routes>
       {/* <main>
         <h2>Tittel: {movie[0]?.movietitle}</h2>
