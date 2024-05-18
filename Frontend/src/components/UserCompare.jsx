@@ -1,4 +1,4 @@
-export default function UserCompare({ allUsers, compareUser, setCompareUser, activeUser, setActiveUser }) {
+export default function UserCompare({ commonFavorites, allUsers, compareUser, setCompareUser, activeUser, setActiveUser }) {
   const handleClick = (e) => {
     !activeUser ? setActiveUser(e.target.innerText) : setCompareUser(e.target.innerText) && console.log(e.target.innerText)
   }
@@ -11,13 +11,12 @@ export default function UserCompare({ allUsers, compareUser, setCompareUser, act
       <section>
         <h1>User: {activeUser}</h1>
         <h2>Compare user: {compareUser} </h2>
-        <div className="user-buttons">
-          {allUsers.map((user) => (
-            <button onClick={handleClick} key={user._id}>
-              {user.user}
-            </button>
+        <p>
+          Common favorites:{" "}
+          {commonFavorites.map((movie, index) => (
+            <h3>{movie}</h3>
           ))}
-        </div>
+        </p>
       </section>
     </>
   )
