@@ -6,9 +6,9 @@ import Home from "./components/Home";
 import Genres from "./components/Genres";
 import UserCompare from "./components/UserCompare";
 import OneGenre from "./components/OneGenre";
-import MovieCard from "./components/MovieCard"; 
-import { FetchUser, FetchUserFavorites } from "../sanity/services/userServices";
-import { fetchGenres } from "../sanity/services/genreServices"; 
+import MovieCard from "./components/MovieCard"; // Importer den kombinerte MovieCard-komponenten
+import { FetchUser } from "../sanity/services/userServices";
+import { fetchUserFavoritesAndGenres } from "../sanity/services/genreServices"; // Importer fetchUserFavoritesAndGenres
 
 export default function App() {
   const [content, setContent] = useState(null); // innhold
@@ -26,43 +26,22 @@ export default function App() {
     });
   }, []);
 
+  // Håndterer klikk på brukerknapper
   const handleUserClick = async (user) => {
     setActiveUser(user.user); // Velg bruker
-    const userFavorites = await FetchUserFavorites(user.user); // Henter brukerens favorittfilmer
-    setFavoriteMovies(userFavorites[0].favoriteMovies); // Oppdater favorittfilmer
-    const userGenres = await fetchGenres(); // Henter brukerens favorittsjangere
-    setFavoriteGenres(userGenres); // Oppdater favorittsjangere
-    navigate(`/movicard/${user.user}`); // Naviger til MovieCard
+    const userData = await fetchUserFavoritesAndGenres(user.user); // Henter brukerens favorittfilmer og sjangere
+    setFavoriteMovies(userData.favoriteMovies); // Oppdater favorittfilmer
+    setFavoriteGenres(userData.favoriteGenres); // Oppdater favorittsjangere
+    navigate(`/movicard/${user.user}`); // Naviger til MovieCard for den valgte brukeren
   };
-
-  useEffect(() => {
-    filterSingleUser(activeUser).then((data) => setUserFavorites(data.favoriteMovies))
-    filterSingleUser(compareUser).then((data) => setCompareUserFavorites(data.favoriteMovies))
-    compareUsers()
-  }, [activeUser, compareUser])
-
-  //Filterer ut en enkelt bruker
-  const filterSingleUser = async (user) => {
-    const userObject = allUsers.find((u) => (u.user = user))
-    console.log(user, userObject.favoriteMovies)
-    return userObject
-  }
-
-  //Sammenligner to brukeres favorittfilmer og logger ut de som er like
-  const compareUsers = async () => {
-    const commonFavorites = await userFavorites.filter((movie) => compareUserFavorites.includes(movie))
-    console.log("Common", commonFavorites)
-    setCommonFavorites(commonFavorites)
-  }
 
   return (
     <>
       <Layout activeUser={activeUser}>
         <Routes>
-          <Route path="/Sjanger" element={<Genres content={content} setContent={setContent} />} />
           <Route
             path="/movicard/:user"
-            element={<MovieCard activeUser={activeUser} favoriteMovies={favoriteMovies} favoriteGenres={favoriteGenres} />} 
+            element={<MovieCard activeUser={activeUser} favoriteMovies={favoriteMovies} favoriteGenres={favoriteGenres} />} // Sender data som props
           />
         </Routes>
       </Layout>

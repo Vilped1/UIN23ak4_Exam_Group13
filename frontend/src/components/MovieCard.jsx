@@ -20,7 +20,7 @@ const MovieCard = ({ activeUser, favoriteMovies, favoriteGenres }) => {
               <h4>Favorittsjangere:</h4>  {/* Viser overskrift for sjangere */}
               <ul>
                 {favoriteGenres.map((genre) => ( 
-                  <li key={genre._id}>{genre.genre}</li>
+                  <li key={genre._id}>{genre.genre}</li>  //Lister opp sjangere
                 ))}
               </ul>
             </div>
