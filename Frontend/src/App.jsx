@@ -7,12 +7,12 @@ import Genres from "./components/Genres"
 import UserCompare from "./components/UserCompare"
 import OneGenre from "./components/OneGenre"
 import { FetchAllUsers } from "../sanity/services/userServices"
+import { MovieCard } from "./components/MovieCard"
 
 export default function App() {
-  const [content, setContent] = useState([])
   const [allUsers, setAllUsers] = useState([])
-  const [compareUser, setCompareUser] = useState("Vilde")
   const [activeUser, setActiveUser] = useState("Thor")
+  const [compareUser, setCompareUser] = useState("Vilde")
   const [userFavorites, setUserFavorites] = useState([])
   const [compareUserFavorites, setCompareUserFavorites] = useState([])
   const [commonFavorites, setCommonFavorites] = useState([])
@@ -55,7 +55,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare activeUser={activeUser} setActiveUser={setActiveUser} allUsers={allUsers} setAllUsers={setAllUsers} compareUser={compareUser} setCompareUser={setCompareUser} commonFavorites={commonFavorites} />} />
-          <Route path="/Sjanger" element={<Genres content={content} setContent={setContent} />} />
+          <Route path="/Sjanger" element={<Genres />} />
           <Route path="/Sjanger/:slug" element={<OneGenre />} />
         </Routes>
       </Layout>
