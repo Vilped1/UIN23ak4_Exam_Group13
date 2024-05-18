@@ -7,7 +7,7 @@ export default function Header({ activeUser, setActiveUser }) {
 
   return (
     <header>
-      <Link to="/"><h2>What To See?</h2></Link> {/* Link til hovedsiden */}
+      <a href="/"><h2>What To See?</h2></a> {/* Link til hovedsiden */}
       <section id="sideheader">
         <Link to="/"><h3><BiMoviePlay /> Hva skal jeg se?</h3></Link> {/* Link til hovedsiden*/}
         <Link to="/Sjanger"><h3>Bla gjennom sjangere</h3></Link> {/* Link til sjangersiden */}
