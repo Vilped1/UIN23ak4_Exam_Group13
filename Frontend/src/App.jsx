@@ -5,7 +5,7 @@ import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Genres from "./components/Genres";
 import UserCompare from "./components/UserCompare";
-import OneGenre from "./components/OneGenre";
+import OneGenre from "./components/GenreCompare";
 import MovieCard from "./components/MovieCard";
 import { FetchUser } from "../sanity/services/userServices"; 
 import { fetchGenres, FetchUserFavorites } from "../sanity/services/genreServices";
