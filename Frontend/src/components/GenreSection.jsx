@@ -85,6 +85,9 @@ export default function GenreSection({ setGenreQuery }) {
             Funksjonalitet for å legge favorittfilmer til profil,
             kategorisert etter sjanger
       */}
+      <button className="favButton" onClick={handleAddFav}>
+        Add {selectedGenre?.imagetitle} to favorites
+      </button>
       <section className="genreSection">
         {genre.map((genre, index) => (
           <article
@@ -101,7 +104,6 @@ export default function GenreSection({ setGenreQuery }) {
           </article>
         ))}
       </section>
-      <button onClick={handleAddFav}>Add Favourite Genre</button>
     </>
   );
 }
