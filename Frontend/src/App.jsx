@@ -28,9 +28,10 @@ export default function App() {
 
   const handleUserClick = async (user) => {
     setActiveUser(user.user); // Velg bruker
-    const userFavorites = await FetchUserFavorites(user.user); // Henter brukerens favorittfilmer og sjangere
+    const userFavorites = await FetchUserFavorites(user.user); // Henter brukerens favorittfilmer
     setFavoriteMovies(userFavorites[0].favoriteMovies); // Oppdater favorittfilmer
-    setFavoriteGenres(userFavorites[0].favoriteGenre); // Oppdater favorittsjangere
+    const userGenres = await fetchGenres(); // Henter brukerens favorittsjangere
+    setFavoriteGenres(userGenres); // Oppdater favorittsjangere
     navigate(`/movicard/${user.user}`); // Naviger til MovieCard
   };
 
