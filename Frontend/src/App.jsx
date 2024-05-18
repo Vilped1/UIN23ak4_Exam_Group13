@@ -28,6 +28,19 @@ export default function App() {
   }
 
   useEffect(() => {
+    FetchUser().then((data) => {
+      setUsers(data); // Setter brukerliste
+    });
+  }, []);
+
+  // Håndterer klikk på brukerknapper
+  const handleUserClick = async (user) => {
+    setActiveUser(user.user); // Velg bruker
+    const userData = await fetchUserFavoritesAndGenres(user.user); // Henter brukerens favorittfilmer og sjangere
+    setFavoriteMovies(userData.favoriteMovies); // Oppdater favorittfilmer
+    setFavoriteGenres(userData.favoriteGenres); // Oppdater favorittsjangere
+    navigate(`/movicard/${user.user}`); // Naviger til MovieCard for den valgte brukeren
+  };
     getAllUsers()
   }, [])
 
@@ -50,14 +63,25 @@ export default function App() {
 
   return (
     <>
-      <Layout>
+      <Layout activeUser={activeUser}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare user1={user1} setUser1={setUser1} user2={user2} setUser2={setUser2} commonFavorites={commonFavorites} />} />
-          <Route path="/Sjanger" element={<Genres />} />
-          <Route path="/Sjanger/:slug" element={<OneGenre />} />
+          <Route path="/" element={<MovieCard />} />
+          <Route
+            path="/:user" element={<Users activeUser={activeUser} favoriteMovies={favoriteMovies} favoriteGenres={favoriteGenres} />} // Sender data som props
+          />
         </Routes>
       </Layout>
+
+      {!activeUser && ( // Viser brukerliste kun hvis ingen bruker er aktiv
+        <div>
+          <h1>Brukere</h1>
+          {users.map((user) => (
+            <button key={user._id} onClick={() => handleUserClick(user)}>
+              {user.user}
+            </button>
+          ))}
+        </div>
+      )}
     </>
-  )
+  );
 }

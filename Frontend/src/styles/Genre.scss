@@ -1,19 +1,22 @@
-.genreSection{
-    flex-direction: column;
-    top: 50px;
-    gap: 2rem;
-    float: left;
+@import '_variables.scss';
+
+#genreSection{
     border-right: solid 2px white;
-    margin-right: 2rem;
-  
-    align-items: center;
-    justify-content: center;
-  
     width: 200px;
-    height: 100%;
-  }
+    padding-left: 1rem;
+
+    li{
+        list-style: none;
+
+        a{
+            color: $white;
+            text-decoration: none;
+            
+        }
+    }
+}
   
-  .genreCard{
+.genreCard{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,20 +27,15 @@
     margin: 0 auto 1rem auto;
     border-radius: 10px;
     
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(#00000080, rgba(0, 0, 0, 0.5));
     background-size: cover;
     background-position: center;
     background-clip: content-box;
     background-repeat: no-repeat;
     background-color: rgba(0, 0, 0, 0.5); 
+    
     h3{
       margin: 0;
       position: absolute;
-    }
-  
-    .cardSection{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
     }
 }

@@ -1,7 +1,15 @@
-import { useState, useEffect } from "react"
-import { IoMdStarOutline, IoMdStar } from "react-icons/io"
+import { useState, useEffect } from "react";
+import { IoMdStarOutline, IoMdStar } from 'react-icons/io';
 
-export default function MovieCard({ options }) {
+export default function MovieCard() {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
+      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+    },
+  }
+
   const [movieCard, setMovieCard] = useState([])
   const [query, setQuery] = useState("interstellar")
   const [urlQuery, setUrlQuery] = useState("?exact=false&titleType=movie&limit=50")
@@ -9,6 +17,7 @@ export default function MovieCard({ options }) {
   const favoriteToggle = () => {
     setFavorite(!favorite)
   }
+
 
   const getMovieCard = async () => {
     try {
@@ -28,21 +37,19 @@ export default function MovieCard({ options }) {
 
   return (
     <>
-      {movieCard?.map((item) => (
+      {movieCard?.map(item =>
         <article key={item.id}>
           <h1>Tittle: {item.titleText.text}</h1>
           <ul>
             {item.releaseYear && <li>{item.releaseYear.year}</li>}
-            <li onClick={favoriteToggle}>{favorite ? <IoMdStar style={{ fontSize: "35px", color: "rgb(12, 87, 119)" }} /> : <IoMdStarOutline style={{ fontSize: "35px", color: "rgb(12, 87, 119)" }} />}</li>
+            <li onClick={favoriteToggle}>
+              {favorite ? <IoMdStar style={{ fontSize: '35px', color: 'rgb(12, 87, 119)' }} /> : <IoMdStarOutline style={{ fontSize: '35px', color: 'rgb(12, 87, 119)' }} />}
+            </li>
           </ul>
-          {item.primaryImage && <img style={{ width: "100px" }} id="image" src={item.primaryImage.url} alt={item.titleText.text} />}
-          <button>
-            <a href={`https://www.imdb.com/title/${item.id}`} target="_blank">
-              Check out movie
-            </a>
-          </button>
+          {item.primaryImage && <img style={{ width: '100px' }} id="image" src={item.primaryImage.url} alt={item.titleText.text} />}
+          <button><a href={`https://www.imdb.com/title/${item.id}`} target="_blank">Check out movie</a></button>
         </article>
-      ))}
+      )}
     </>
   )
 }

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 
 export default function Home({user, setUser, compareUser, setCompareUser}) {
 
-    const handleClick = (e) => {
-        !user ? setUser(e.target.innerText) : setCompareUser(e.target.innerText)
-    }
+    // const handleClick = (e) => {
+    //     !user ? setUser(e.target.innerText) : setCompareUser(e.target.innerText)
+    // }
 
     return (
         <>
