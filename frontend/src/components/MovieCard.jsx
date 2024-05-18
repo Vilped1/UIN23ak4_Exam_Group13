@@ -1,34 +1,55 @@
-import React from 'react';
+import { useState, useEffect } from "react";
+import { IoMdStarOutline, IoMdStar } from 'react-icons/io';
 
-// MovieCard-komponenten som viser brukerens favorittfilmer og sjangere
-const MovieCard = ({ activeUser, favoriteMovies, favoriteGenres }) => {
+export default function MovieCard() {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
+      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+    },
+  }
+
+  const [movieCard, setMovieCard] = useState([])
+  const [query, setQuery] = useState("interstellar")
+  const [urlQuery, setUrlQuery] = useState("?exact=false&titleType=movie&limit=50")
+  const [favorite, setFavorite] = useState(false)
+  const favoriteToggle = () => {
+    setFavorite(!favorite)
+  }
+
+
+  const getMovieCard = async () => {
+    try {
+      const response = await fetch(`https://moviesdatabase.p.rapidapi.com/titles/search/title/${query}${urlQuery}`, options)
+      const data = await response.json()
+      setMovieCard(data.results)
+      console.log("movie card fetch: ", data.results[0])
+    } catch {
+      console.error("error on fetch movie card")
+    }
+  }
+  console.log(movieCard)
+
+  useEffect(() => {
+    getMovieCard()
+  }, [query])
+
   return (
-    <div>
-      {activeUser && (
-        <>
-          <h2>{activeUser}'s favorittfilmer</h2> {/* Viser overskrift med brukerens navn */}
-          <div className="movie-list">
-            {favoriteMovies.map((movie, index) => (
-              <div key={index} className="movie-card">
-                <h3>{movie.movietitle}</h3>  {/* Viser filmens tittel */}
-                <a href={`/movie/${movie.movieurl}`}>Se film</a>
-              </div>
-            ))}
-          </div>
-          {favoriteGenres && ( // Sjekker om favorittsjangere finnes
-            <div>
-              <h4>Favorittsjangere:</h4>  {/* Viser overskrift for sjangere */}
-              <ul>
-                {favoriteGenres.map((genre) => ( 
-                  <li key={genre._id}>{genre.genre}</li>  //Lister opp sjangere
-                ))}
-              </ul>
-            </div>
-          )}
-        </>
+    <>
+      {movieCard?.map(item =>
+        <article key={item.id}>
+          <h1>Tittle: {item.titleText.text}</h1>
+          <ul>
+            {item.releaseYear && <li>{item.releaseYear.year}</li>}
+            <li onClick={favoriteToggle}>
+              {favorite ? <IoMdStar style={{ fontSize: '35px', color: 'rgb(12, 87, 119)' }} /> : <IoMdStarOutline style={{ fontSize: '35px', color: 'rgb(12, 87, 119)' }} />}
+            </li>
+          </ul>
+          {item.primaryImage && <img style={{ width: '100px' }} id="image" src={item.primaryImage.url} alt={item.titleText.text} />}
+          <button><a href={`https://www.imdb.com/title/${item.id}`} target="_blank">Check out movie</a></button>
+        </article>
       )}
-    </div>
-  );
-};
-
-export default MovieCard;
+    </>
+  )
+}

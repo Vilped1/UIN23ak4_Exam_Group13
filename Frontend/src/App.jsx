@@ -9,6 +9,7 @@ import OneGenre from "./components/OneGenre";
 import MovieCard from "./components/MovieCard"; // Importer den kombinerte MovieCard-komponenten
 import { FetchUser } from "../sanity/services/userServices";
 import { fetchUserFavoritesAndGenres } from "../sanity/services/genreServices"; // Importer fetchUserFavoritesAndGenres
+import Users from "./components/Users";
 
 export default function App() {
   const [content, setContent] = useState(null); // innhold
@@ -39,9 +40,9 @@ export default function App() {
     <>
       <Layout activeUser={activeUser}>
         <Routes>
+          <Route path="/" element={<MovieCard />} />
           <Route
-            path="/movicard/:user"
-            element={<MovieCard activeUser={activeUser} favoriteMovies={favoriteMovies} favoriteGenres={favoriteGenres} />} // Sender data som props
+            path="/:user" element={<Users activeUser={activeUser} favoriteMovies={favoriteMovies} favoriteGenres={favoriteGenres} />} // Sender data som props
           />
         </Routes>
       </Layout>
