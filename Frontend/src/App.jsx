@@ -1,33 +1,33 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom"; // La til useNavigate for navigasjon
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Genres from "./components/Genres";
 import UserCompare from "./components/UserCompare";
 import OneGenre from "./components/OneGenre";
-import FrontPage from "./components/FrontPage";
+import FrontPage from "./components/FrontPage"; // La til FrontPage-komponenten
 import { FetchUser, FetchUserFavorites } from "../sanity/services/userServices";
 
 export default function App() {
   const [content, setContent] = useState(null);
   const [users, setUsers] = useState([]);
   const [compareUser, setCompareUser] = useState(null);
-  const [activeUser, setActiveUser] = useState(null);
-  const [favoriteMovies, setFavoriteMovies] = useState([]);
-  const navigate = useNavigate();
+  const [activeUser, setActiveUser] = useState(null); // Endret til null for å indikere at ingen bruker er valgt først
+  const [favoriteMovies, setFavoriteMovies] = useState([]); // favorittfilmer
+  const navigate = useNavigate(); // Opprettet navigasjonsfunksjon
 
   useEffect(() => {
     FetchUser().then((data) => {
-      setUsers(data);
+      setUsers(data); // Henter brukerliste ved oppstart
     });
   }, []);
 
   const handleUserClick = async (user) => {
-    setActiveUser(user.user);
-    const userFavorites = await FetchUserFavorites(user.user);
-    setFavoriteMovies(userFavorites[0].favoriteMovies);
-    navigate(`/frontpage/${user.user}`);
+    setActiveUser(user.user); // Velg bruker 
+    const userFavorites = await FetchUserFavorites(user.user); // Henter brukerens favorittfilmer
+    setFavoriteMovies(userFavorites[0].favoriteMovies); //  favorittfilmer
+    navigate(`/frontpage/${user.user}`); // Navigerer til FrontPage for den valgte brukeren
   };
 
   return (
@@ -52,12 +52,12 @@ export default function App() {
           <Route path="/Sjanger/:slug" element={<OneGenre />} />
           <Route
             path="/frontpage/:user"
-            element={<FrontPage activeUser={activeUser} favoriteMovies={favoriteMovies} />}
+            element={<FrontPage activeUser={activeUser} favoriteMovies={favoriteMovies} />} // La til ruten for FrontPage
           />
         </Routes>
       </Layout>
 
-      {!activeUser && (
+      {!activeUser && ( // Viser brukerliste kun hvis ingen bruker er aktiv, ish 
         <div>
           <h1>Brukere</h1>
           {users.map((user) => (
