@@ -1,53 +1,91 @@
 @import '_variables.scss';
 
 #genreSection{
-    border-right: solid 2px white;
-    width: 210px;
-    padding-left: 1rem;
-
-    li{
-        list-style: none;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-right: .5rem;
+        flex-wrap: wrap;
+        font-size: .75rem;
+
+        li {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin-right: 0.5rem;
+            border-right: 2px solid;
+            gap: 5px;
+            height: 30px;
+            margin-bottom: 10px;
+
+            .star {
+                background-color: transparent;
+                border: none;
+                color: #ffffff;
+                font-size: 1.25rem;
+                padding: 0;
+                cursor: pointer;
+                margin-right: 0.5rem;
+            }
 
         a{
             color: $white;
             text-decoration: none;
         }
 
-        .star{
-            background-color: transparent;
-            border: none;
-            color: $white;
-            font-size: 1.25rem;
-            padding: 0;
-            cursor: pointer;
+        .active{
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+@media only screen and (min-width: 800px){
+    #genreSection{
+        display: block;
+        border-right: solid 2px white;
+        width: 210px;
+        padding-left: 1rem;
+        font-size: 1rem;
+
+        li{
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: .5rem;
+            border-right: none;
+            height: 50px;
+
+            .star{
+                background-color: transparent;
+                border: none;
+                color: $white;
+                font-size: 1.25rem;
+                padding: 0;
+                cursor: pointer;
+                margin-right: 0;
+            }
         }
     }
 }
   
-.genreCard{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+// .genreCard{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     cursor: pointer;
   
-    width: 10rem;
-    height: 75px;
-    margin: 0 auto 1rem auto;
-    border-radius: 10px;
+//     width: 10rem;
+//     height: 75px;
+//     margin: 0 auto 1rem auto;
+//     border-radius: 10px;
     
-    background: linear-gradient(#00000080, rgba(0, 0, 0, 0.5));
-    background-size: cover;
-    background-position: center;
-    background-clip: content-box;
-    background-repeat: no-repeat;
-    background-color: rgba(0, 0, 0, 0.5); 
+//     background: linear-gradient(#00000080, rgba(0, 0, 0, 0.5));
+//     background-size: cover;
+//     background-position: center;
+//     background-clip: content-box;
+//     background-repeat: no-repeat;
+//     background-color: rgba(0, 0, 0, 0.5); 
     
-    h3{
-      margin: 0;
-      position: absolute;
-    }
-}
+//     h3{
+//       margin: 0;
+//       position: absolute;
+//     }
+// }
