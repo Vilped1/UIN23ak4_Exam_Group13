@@ -12,7 +12,7 @@ const MovieCard = ({ activeUser, favoriteMovies, favoriteGenres }) => {
             {favoriteMovies.map((movie, index) => (
               <div key={index} className="movie-card">
                 <h3>{movie.movietitle}</h3>
-                <a href={`/movie/${movie.movieurl}`}>Se film</a>
+                <a href={`https://www.imdb.com/title/`}>Se film</a> 
               </div>
             ))}
           </div>
