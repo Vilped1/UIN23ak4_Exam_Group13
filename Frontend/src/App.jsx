@@ -53,7 +53,7 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare user1={user1} setUser1={setUser1} allUsers={allUsers} setAllUsers={setAllUsers} user2={user2} setUser2={setUser2} commonFavorites={commonFavorites} />} />
+          <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare user1={user1} setUser1={setUser1} user2={user2} setUser2={setUser2} commonFavorites={commonFavorites} />} />
           <Route path="/Sjanger" element={<Genres />} />
           <Route path="/Sjanger/:slug" element={<OneGenre />} />
         </Routes>
