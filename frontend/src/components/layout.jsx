@@ -1,10 +1,11 @@
-import Header from "./Header";
+import React from 'react';
+import Header from './Header';
 
-export default function Layout({ children }) {
-    return(
-        <main>
-            <Header />
-            {children}
-        </main>
-    )
+export default function Layout({ children, activeUser }) {
+  return (
+    <div>
+      <Header activeUser={activeUser} />
+      {children}
+    </div>
+  );
 }
