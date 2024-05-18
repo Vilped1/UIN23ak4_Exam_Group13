@@ -55,7 +55,7 @@ export default function GenreSection({ setGenreQuery }) {
       try {
         //Fetcher ID til bruker for patching av favorittsjanger
         const userResponse = await fetchUserID();
-        const userID = userResponse[0]._id;
+        const userID = userResponse[2]._id;
         await updateFavGenre(
           //sender userID sammen med valgt sjanger til updateFavGenre (sanity\services\genreServices.js)
           userID,

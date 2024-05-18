@@ -17,7 +17,7 @@ export const user = {
       title: "GenreSection",
       name: "GenreSection",
       type: "array",
-      of: [{type: "favGenre"}]
+      of: [{ type: "favGenre" }]
     }
   ]
 }

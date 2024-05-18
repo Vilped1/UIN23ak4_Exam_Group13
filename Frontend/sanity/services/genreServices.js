@@ -21,16 +21,16 @@ export async function fetchUserID() {
 //TODO-------------------------------------------------------------------------
 // Funksjonalitet for å fjerne en favorittsjanger fra brukerens profil
 export async function updateFavGenre(id, genreName, genreImage){
-/*   console.log("updateFavGenre ID:", id);
+  console.log("updateFavGenre ID:", id);
   console.log("updateFavGenre GENREIMAGE:", genreImage);
-  console.log("updateFavGenre GENRENAME:", genreName); */
+  console.log("updateFavGenre GENRENAME:", genreName);
 
   const genreFormated = {
     genreName: genreName,
     genreImage: genreImage
   }
 
-/*   console.log("genreFormated:", genreFormated); */
+  console.log("genreFormated:", genreFormated);
 
   try {
     const result = await writeClient.patch(id)
@@ -46,3 +46,5 @@ export async function updateFavGenre(id, genreName, genreImage){
     return "Failed " + err.message;
   }
 }
+
+
