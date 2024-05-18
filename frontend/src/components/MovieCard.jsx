@@ -1,5 +1,7 @@
 import React from 'react';
 
+// MovieCard-komponenten som viser brukerens favorittfilmer og sjangere
+
 const MovieCard = ({ activeUser, favoriteMovies, favoriteGenres }) => {
   return (
     <div>
