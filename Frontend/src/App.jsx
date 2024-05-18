@@ -20,13 +20,13 @@ export default function App() {
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
   //Henter alle brukere
-  const getUsers = async () => {
+  const getAllUsers = async () => {
     const data = await FetchAllUsers()
     setAllUsers(data)
   }
 
   useEffect(() => {
-    getUsers()
+    getAllUsers()
   }, [])
 
   useEffect(() => {
