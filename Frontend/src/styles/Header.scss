@@ -1,0 +1,77 @@
+header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-bottom: solid 2px white;
+    margin-bottom: 2rem;
+    align-items: bottom;
+    justify-content: space-between;
+  }
+  .genreSection{
+    flex-direction: column;
+    top: 50px;
+    gap: 2rem;
+    float: left;
+    border-right: solid 2px white;
+    margin-right: 2rem;
+  
+    align-items: center;
+    justify-content: center;
+  
+    width: 200px;
+    height: 100%;
+  }
+  
+  .genreCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  
+    width: 10rem;
+    height: 75px;
+    margin: 0 auto 1rem auto;
+    border-radius: 10px;
+    
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-size: cover;
+    background-position: center;
+    background-clip: content-box;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5); 
+    h3{
+      margin: 0;
+      position: absolute;
+    }
+  
+    .cardSection{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .movieCard{
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      background-color: #252525;
+      color: white;
+      align-items: center;
+      cursor: pointer;
+    
+    
+      border-radius: 20px;
+    
+      img{
+        width: 200px;
+        height: 300px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+    
+      .infoContainer{
+        flex: none;
+        font-size: 15px;
+        font-weight: 100;
+      }
+    }}

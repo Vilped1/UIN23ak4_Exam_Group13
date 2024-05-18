@@ -6,5 +6,6 @@ export async function fetchGenres() {
         genre,
         "genreurl": genreurl.current
     }`)
+    console.log(data)
     return data
 }

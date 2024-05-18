@@ -1,72 +1,64 @@
 import { useState, useEffect } from "react"
-import { Route, Routes, useParams } from "react-router-dom"
-import "./App.css"
-import { fetchGenres } from "../sanity/services/genreServices"
-import { FetchUser } from "../sanity/services/userServices"
-import { fetchMovies } from "../sanity/services/movieServices"
-import MovieCard from "./components/MovieCard"
+import React from "react"
+import Layout from "./components/Layout"
+import { Route, Routes } from "react-router-dom"
+import Home from "./components/Home"
+import Genres from "./components/Genres"
+import UserCompare from "./components/UserCompare"
+import OneGenre from "./components/OneGenre"
+import { FetchAllUsers } from "../sanity/services/userServices"
 
-export default function App({ movieCard, setMovieCard }) {
-  const [content, setContent] = useState(null)
+export default function App() {
+  const [content, setContent] = useState([])
+  const [allUsers, setAllUsers] = useState([])
+  const [compareUser, setCompareUser] = useState("Vilde")
+  const [activeUser, setActiveUser] = useState("Thor")
+  const [userFavorites, setUserFavorites] = useState([])
+  const [compareUserFavorites, setCompareUserFavorites] = useState([])
+  const [commonFavorites, setCommonFavorites] = useState([])
+
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
-      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
-    },
-  }
-
-  const getGenres = async () => {
-    try {
-      const response = await fetch(url, options)
-      const data = await response.json()
-      setContent(data.results)
-      console.log(data.results)
-    } catch (error) {
-      console.error(error)
-    }
+  //Henter alle brukere
+  const getAllUsers = async () => {
+    const data = await FetchAllUsers()
+    setAllUsers(data)
   }
 
   useEffect(() => {
-    getGenres()
-    fetchGenres().then((data) => {
-      console.log(data)
-    })
+    getAllUsers()
   }, [])
-
-  const [movie, setMovie] = useState([])
-  const { slug } = useParams()
-
-  const getMovies = async () => {
-    try {
-      const data = await fetchMovies()
-      setMovie(data)
-      // console.log("App movie fetch", data)
-    } catch {
-      console.error("getMovies fetch fungerte ikke")
-    }
-  }
 
   useEffect(() => {
-    getMovies()
-    fetchMovies().then((what) => {
-      // console.log("FETCHMOVIES", what)
-    })
-  }, [])
-  // console.log("useEffect:", movie)
+    filterSingleUser(activeUser).then((data) => setUserFavorites(data.favoriteMovies))
+    filterSingleUser(compareUser).then((data) => setCompareUserFavorites(data.favoriteMovies))
+    compareUsers()
+  }, [activeUser, compareUser])
 
+  //Filterer ut en enkelt bruker
+  const filterSingleUser = async (user) => {
+    const userObject = allUsers.find((u) => (u.user = user))
+    console.log(user, userObject.favoriteMovies)
+    return userObject
+  }
+
+  //Sammenligner to brukeres favorittfilmer og logger ut de som er like
+  const compareUsers = async () => {
+    const commonFavorites = await userFavorites.filter((movie) => compareUserFavorites.includes(movie))
+    console.log("Common", commonFavorites)
+    setCommonFavorites(commonFavorites)
+  }
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<MovieCard movieCard={movieCard} setMovieCard={setMovieCard} options={options} />} />
-      </Routes>
-      {/* <main>
-        <h2>Tittel: {movie[0]?.movietitle}</h2>
-      </main> */}
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare activeUser={activeUser} setActiveUser={setActiveUser} allUsers={allUsers} setAllUsers={setAllUsers} compareUser={compareUser} setCompareUser={setCompareUser} commonFavorites={commonFavorites} />} />
+          <Route path="/Sjanger" element={<Genres content={content} setContent={setContent} />} />
+          <Route path="/Sjanger/:slug" element={<OneGenre />} />
+        </Routes>
+      </Layout>
     </>
   )
 }
