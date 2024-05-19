@@ -40,6 +40,10 @@ export default function App() {
     getAllMovies()
   }, [])
 
+  useEffect(() => {
+    fetchApiMovie()
+  } , [movies] )  
+
   const getAllGenres = async () => {
     const data = await fetchAllGenres()
     setAllGenres(data)
@@ -50,22 +54,29 @@ export default function App() {
     setMovies(data)
   }
 
-  const url = 'https://moviesdatabase.p.rapidapi.com/titles/tt0086250';
+  const url = `https://moviesdatabase.p.rapidapi.com/titles/${movies[0].imdbid}`
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'f97dd82b1amshf8b2c4b90d6a205p1f04a7jsneefafbdfb4fa',
+		'X-RapidAPI-Key': '9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d1',
 		'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
 	}
 };
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
+const fetchApiMovie = async () => {
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result.results);
+  } catch (error) {
+    console.error(error);
+  }
+
+
+
+  
 }
+
 
   return (
     <>
