@@ -15,7 +15,7 @@ export default function MovieCard({ content, searchQuery }) {
   return (
     <>
       <section className="cardSection">
-        {content === null || content?.length === 0 ? (
+        {content?.length === 0 ? (
           <p>{`No results match your query: "${searchQuery}"`}</p>
         ) : (
           Array.isArray(content) &&

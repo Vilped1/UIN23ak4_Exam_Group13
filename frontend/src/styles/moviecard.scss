@@ -1,21 +1,20 @@
-.cardSection{
+.cardSection {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   height: 100%;
 }
 
-.movieCard{
+.movieCard {
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 200px;
   background-color: #252525;
   color: white;
-
   border-radius: 20px;
 
-
-  img{
+  img {
     width: 200px;
     height: 300px;
     border-top-left-radius: 20px;
@@ -26,68 +25,44 @@
     position: absolute;
     top: 10px;
     left: 10px;
-
     width: 1.5rem;
-
     cursor: pointer;
-
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  &:hover{
+
+  &:hover {
     .favIcon {
       opacity: 1;
     }
   }
 
-  .imgContainer{
+  .imgContainer {
     position: relative;
-
-    .favIcon {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      margin: 0;
-
-      color: red;
-  
-      width: 1.5rem;
-      height: 1.5rem;
-  
-      cursor: pointer;
-  
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    &:hover{
-      .favIcon {
-        opacity: 1;
-      }
-    }
   }
 
-  .infoContainer{
-    display: inline-flex;
+  .infoContainer {
+    display: flex;
     flex-direction: column;
-    float: left;
-
+    justify-content: space-between;
     font-size: 15px;
     font-weight: 100;
     margin: .2rem 0 .6rem .5rem;
+    height: 100%;
 
-
-    h3{
+    h3 {
       margin-top: 0;
     }
-    p{
+
+    p {
       font-size: .7rem;
       font-weight: 200;
       margin: .3rem 0 0 0;
     }
-    }
-  
+  }
 
-  .imdbButton{
+  .imdbButton {
+    align-self: flex-start;
     background-color: #f3ce13;
     color: black;
     padding: .3rem .5rem;
@@ -95,6 +70,5 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-
   }
 }

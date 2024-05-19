@@ -1,3 +1,19 @@
+.favButton{
+  position: sticky;
+  top: 40;
+  right: 20;
+  padding: 0.5rem;
+  border: none;
+  background-color: #f3ce13;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: ease .3s;
+  &:hover{
+    background-color: rgb(235, 200, 20);
+  }
+}
+
 .genreSection{
   flex-direction: column;
   top: 70px;
@@ -47,7 +63,9 @@
   h3{
     margin: 0;
   }
-
+  
+// Individuell formatering for hvert sjangerkort, 
+// pga varierende størrelser på poster bilder
   &:nth-child(1){
     background-position: 0px -25px;
   }
