@@ -4,7 +4,7 @@ import Nav from "./components/Nav"
 import "./App.css"
 import GenreSection from "./components/GenreSection"
 import FetchAllUsers from "../sanity/services/userService"
-import Login from "./components/Login"
+// import Login from "./components/Login"
 
 export default function App() {
   const [allUsers, setAllUsers] = useState([])
@@ -20,11 +20,20 @@ export default function App() {
   useEffect(() => {
     getAllUsers()
   }, [])
-  //
+
+  const handleClick = (e) => {
+    setMainUser(e)
+  }
 
   return (
     <>
-      <Login allUsers={allUsers} setMainUser={setMainUser} />
+      <h1>Hvem skal se i dag?</h1>
+      <p>Velg bruker</p>
+      {allUsers?.map((user) => (
+        <button key={user._id} onClick={() => handleClick(user)}>
+          {user.user}
+        </button>
+      ))}
     </>
   )
 }
