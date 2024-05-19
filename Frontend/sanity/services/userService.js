@@ -8,8 +8,8 @@ export default async function FetchAllUsers() {
       "favoriteMovies": favoriteMovies[]->movietitle,
       "favoriteGenres": favoriteGenres[]->genre
     }`);
-        return data; // Returnerer objekter med brukere og deres favorittfilmer og sjangere
+        return data
     } catch (error) {
-        return null;
+        return null
     }
 }

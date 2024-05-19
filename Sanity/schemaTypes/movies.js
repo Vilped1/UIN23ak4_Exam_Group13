@@ -24,6 +24,11 @@ export const movies = {
             name: "genre",
             type: "reference",
             to: [{type: "genres"}]
+        },
+        {
+            title: "IMDB ID",
+            name: "imdbid",
+            type: "string"
         }
     ]
 }
