@@ -53,7 +53,8 @@ export default function App() {
     const data = await fetchMovies()
     setMovies(data)
   }
-
+  
+  const fetchApiMovie = async () => {
   const url = `https://moviesdatabase.p.rapidapi.com/titles/${movies[0].imdbid}`
 const options = {
 	method: 'GET',
@@ -63,7 +64,6 @@ const options = {
 	}
 };
 
-const fetchApiMovie = async () => {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
