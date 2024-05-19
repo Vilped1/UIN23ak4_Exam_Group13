@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MovieCard from "./components/MovieCard";
 import Nav from "./components/Nav";
 import "./App.css";
@@ -6,23 +7,22 @@ import GenreSection from "./components/GenreSection";
 import FetchAllUsers from "../sanity/services/userService";
 import UserCompare from "./components/UserCompare";
 import { fetchAllGenres } from "../sanity/services/genreServices";
-// import Login from "./components/Login"
 import fetchMovies from "../sanity/services/movieServices";
+import Login from "./components/Login";
+import Home from "./components/Home";  
 
 export default function App() {
   const [allGenres, setAllGenres] = useState([]);
   const [genre, setGenre] = useState([]);
   const [movies, setMovies] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
-
-  // USER 1
   const [mainUser, setMainUser] = useState({
+  //USER 1
     _id: "badbfdda-8fef-4646-bc8b-3989b8e9e5c9",
     user: "Erik",
     favoriteMovies: ["The Flash", "Scarlet Piss Princess"],
     favoriteGenres: null,
   });
-
   //USER 2
   const [compareUser, setCompareUser] = useState({
     _id: "f0fc50da-74b9-40a8-91bd-7fa8ed61383a",
@@ -77,13 +77,17 @@ export default function App() {
   };
 
   return (
-    <>
-      {movies?.map((movie, index) => (
+    /* {movies?.map((movie, index) => (
         <div key={index}>
           <h2>{movie.movietitle}</h2>
-          {/* <p>{movie.imdbid}</p> */}
-        </div>
-      ))}
-    </>
-  );
+           <p>{movie.imdbid}</p>
+           </div> */
+           
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login allUsers={allUsers} setMainUser={setMainUser} />} />   
+        <Route path="/home" element={<Home mainUser={mainUser} />} />{/* Route til valgt bruker*/} 
+      </Routes>
+    </Router>
+  )
 }

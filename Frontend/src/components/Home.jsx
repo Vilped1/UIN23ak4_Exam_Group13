@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Home(  {mainUser} ) {
     return (
         <>
         <main> {/* Flytte til Layout */}

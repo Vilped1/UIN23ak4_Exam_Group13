@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Login({ allUsers, setMainUser }) {
-  const handleClick = (e) => {
-    setMainUser(e)
-  }
+  const navigate = useNavigate()
+
+  const handleClick = (user) => {
+    setMainUser(user)
+    navigate("/home")
+  };
 
   return (
     <>
