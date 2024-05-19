@@ -29,6 +29,25 @@ export default function App() {
     favoriteGenres: null,
   })
 
+  const url = `https://moviesdatabase.p.rapidapi.com/titles/${movies[0]?.imdbid}`
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14',
+      'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+    }
+  };
+
+const fetchApiMovie = async () => {
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result.results);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
   const getAllUsers = async () => {
     const data = await FetchAllUsers()
     setAllUsers(data)
@@ -52,40 +71,17 @@ export default function App() {
   const getAllMovies = async () => {
     const data = await fetchMovies()
     setMovies(data)
+    // console.log(data)
   }
-  
-  const fetchApiMovie = async () => {
-  const url = `https://moviesdatabase.p.rapidapi.com/titles/${movies[0].imdbid}`
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d1',
-		'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
-	}
-};
-
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    console.log(result.results);
-  } catch (error) {
-    console.error(error);
-  }
-
-
-
-  
-}
-
 
   return (
     <>
-      <img src="" alt="" />
-      <h3></h3>
-      <p></p>
-      {/* <GenreList/> */}
-      {/* <Login allUsers={allUsers} setMainUser={setMainUser} /> */}
-      {/* <UserCompare/> */}
+    {movies?.map((movie, index) =>
+    <div key={index}>
+      <h2>{movie.movietitle}</h2>
+      {/* <p>{movie.imdbid}</p> */}
+    </div>
+    )}
     </>
   )
 }
