@@ -5,12 +5,12 @@ export default function Genres({content, setContent}) {
   const [active, setActive] = useState()
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
-  const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
+  const url = //"https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
-      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+      //"X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14", 
+      //"X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
     },
   }
 
