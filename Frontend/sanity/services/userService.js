@@ -6,7 +6,7 @@ export default async function FetchAllUsers() {
       _id,
       user,
       "favoriteMovies": favoriteMovies[]->movietitle,
-      "favoriteGenres": favoriteGenres[]->genres
+      "favoriteGenres": favoriteGenres[]->genre
     }`);
         return data; // Returnerer objekter med brukere og deres favorittfilmer og sjangere
     } catch (error) {

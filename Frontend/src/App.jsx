@@ -4,10 +4,16 @@ import Nav from "./components/Nav"
 import "./App.css"
 import GenreSection from "./components/GenreSection"
 import FetchAllUsers from "../sanity/services/userService"
+import Login from "./components/Login"
 
 export default function App() {
   const [allUsers, setAllUsers] = useState([])
-  const [mainUser, setMainUser] = useState("f0fc50da-74b9-40a8-91bd-7fa8ed61383a")
+  const [mainUser, setMainUser] = useState({
+    _id: "badbfdda-8fef-4646-bc8b-3989b8e9e5c9",
+    user: "Erik",
+    favoriteMovies: ["The Flash", "Scarlet Piss Princess"],
+    favoriteGenres: null,
+  })
   console.log(mainUser)
 
   const getAllUsers = async () => {
@@ -19,11 +25,9 @@ export default function App() {
     getAllUsers()
   }, [])
 
-
-
   return (
     <>
-     
+      <Login allUsers={allUsers} setMainUser={setMainUser} />
     </>
   )
 }
