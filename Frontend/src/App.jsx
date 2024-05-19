@@ -50,6 +50,23 @@ export default function App() {
     setMovies(data)
   }
 
+  const url = 'https://moviesdatabase.p.rapidapi.com/titles/tt0086250';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'f97dd82b1amshf8b2c4b90d6a205p1f04a7jsneefafbdfb4fa',
+		'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
+
   return (
     <>
       <img src="" alt="" />
