@@ -1,27 +1,27 @@
-import { useState, useEffect } from "react"
-import MovieCard from "./components/MovieCard"
-import Nav from "./components/Nav"
-import "./App.css"
-import GenreSection from "./components/GenreSection"
-import FetchAllUsers from "../sanity/services/userService"
+import { useState, useEffect } from "react";
+import MovieCard from "./components/MovieCard";
+import Nav from "./components/Nav";
+import "./App.css";
+import GenreSection from "./components/GenreSection";
+import FetchAllUsers from "../sanity/services/userService";
 
 export default function App() {
-  const [allUsers, setAllUsers] = useState([])
-  const [mainUser, setMainUser] = useState(null)
-  console.log(mainUser)
+  const [allUsers, setAllUsers] = useState([]);
+  const [mainUser, setMainUser] = useState(null);
+  console.log(mainUser);
 
   const getAllUsers = async () => {
-    const data = await FetchAllUsers()
-    setAllUsers(data)
-  }
+    const data = await FetchAllUsers();
+    setAllUsers(data);
+  };
 
   useEffect(() => {
-    getAllUsers()
-  }, [])
+    getAllUsers();
+  }, []);
 
   const handleClick = (e) => {
-    setMainUser(e)
-  }
+    setMainUser(e);
+  };
 
   return (
     <>
@@ -32,6 +32,7 @@ export default function App() {
           {user.user}
         </button>
       ))}
+      <p>heheiiheihe</p>
     </>
-  )
+  );
 }
