@@ -8,9 +8,10 @@ export default function Home({user, setUser, compareUser, setCompareUser}) {
 
     return (
         <>
-        <h1>HOME!!</h1>
-        <h2>Sammenling med</h2>
-            
+        <h1>Hei user...!</h1>
+        <h2>Filmer jeg skal se</h2>
+        <h3>Disse filmene ligger i ønskelisten min:</h3>
+        <h2>Jeg skal se sammen med...</h2>
         </>
     )
 }
