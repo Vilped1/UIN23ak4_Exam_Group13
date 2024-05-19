@@ -20,7 +20,6 @@ export default function App() {
   }, [])
 
   const handleClick = (e) => {
-    e.preventDefault()
     setMainUser(e)
   }
 
@@ -29,7 +28,7 @@ export default function App() {
       <h1>Hvem skal se i dag?</h1>
       <p>Velg bruker</p>
       {allUsers?.map((user) => (
-        <button key={user._id} onClick={handleClick(user._id)}>
+        <button key={user._id} onClick={() => handleClick(user._id)}>
           {user.user}
         </button>
       ))}
