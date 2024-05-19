@@ -6,7 +6,6 @@ import { FaStar } from "react-icons/fa";
 export default function Genres({content, setContent}) {
   const [active, setActive] = useState([])
   const [toggleStar, setToggleStar] = useState(false)
-  // const {slug} = useParams()
   // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
 
   const url = "https://moviesdatabase.p.rapidapi.com/titles/utils/genres/"
@@ -30,22 +29,6 @@ export default function Genres({content, setContent}) {
       console.error(error)
     }
   }
-
-  // const handleClick = (clickedStar) => {
-  //   // setToggleStar(clickedStar)
-  //   // setToggleStar(!toggleStar)
-  //   // const favorite += setActive(clickedStar)
-  //   setActive(clickedStar)
-  //   // favorite += {acti}
-  //   // const exist = active.find(item => item.genre === content.genre)
-  //   // setActive((prevActive) =>
-  //   //   exist ? prevActive.map(item => item.genre === content.genre ? { ...item} : item)
-  //   // :
-  //   // [...prevActive, { ...content}])
-  //   // console.log(exist, "finnes")
-  //   console.log(active)
-  //   console.log(toggleStar)
-  // }
 
   // Chat-GPT
   const handleClick = (clickedGenre) => {
