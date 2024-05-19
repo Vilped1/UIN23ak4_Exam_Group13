@@ -14,7 +14,7 @@ export default function Genres({content, setContent}) {
     },
   }
 
-  const getGenres = async () => {
+ // const getGenres = async () => {
     try {
       const response = await fetch(url, options)
       const result = await response.json()
@@ -26,10 +26,7 @@ export default function Genres({content, setContent}) {
       console.error(error)
     }
   }
-
-  useEffect(() => {
-    getGenres()
-  }, [active])
+  //useEffect(() => { getGenres()  }, [active])
 
   return (
     <div id="genreSection">
