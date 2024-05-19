@@ -1,7 +1,24 @@
 import { useState, useEffect } from "react";
 import { IoMdStarOutline, IoMdStar } from 'react-icons/io';
+import { FetchAllUsers } from "/sanity/services/userServices"
+
 
 export default function MovieCard() {
+  const [favoriteMovie, setFavoriteMovie] = useState([])
+
+  const getFavoriteMovie = async () => {
+    try {
+      const favMovie = await FetchAllUsers()
+      console.log("userFetch: ", favMovie)
+      setFavoriteMovie(favMovie)
+    } catch {
+      console.error("eeeee")
+    }
+  }
+  useEffect(() => {
+    getFavoriteMovie()
+  }, [])
+
   const options = {
     method: "GET",
     headers: {
@@ -11,7 +28,7 @@ export default function MovieCard() {
   }
 
   const [movieCard, setMovieCard] = useState([])
-  const [query, setQuery] = useState("interstellar")
+  const [query, setQuery] = useState("hanna montana")
   const [urlQuery, setUrlQuery] = useState("?exact=false&titleType=movie&limit=50")
   const [favorite, setFavorite] = useState(false)
   const favoriteToggle = () => {
@@ -34,10 +51,13 @@ export default function MovieCard() {
   useEffect(() => {
     getMovieCard()
   }, [query])
+  const favoriteTitle = favoriteMovie.map(item => item.movietitle)
+
+  const filterMovieCard = movieCard.filter(item => favoriteTitle.includes(item.titleText.text))
 
   return (
     <>
-      {movieCard?.map(item =>
+      {filterMovieCard?.map(item =>
         <article key={item.id}>
           <h1>Tittle: {item.titleText.text}</h1>
           <ul>

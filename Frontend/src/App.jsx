@@ -7,6 +7,7 @@ import Genres from "./components/Genres"
 import UserCompare from "./components/UserCompare"
 import OneGenre from "./components/OneGenre"
 import { FetchAllUsers } from "../sanity/services/userServices"
+import MovieCard from "./components/MovieCard"
 
 export default function App() {
   const [allUsers, setAllUsers] = useState([])
@@ -61,7 +62,7 @@ export default function App() {
     <>
       <Layout user1={user1}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
           {/* <Route
             path="/:user"
             element={<Users user1={user1} favoriteMovies={favoriteMovies} favoriteGenres={favoriteGenres} />} // Sender data som props
