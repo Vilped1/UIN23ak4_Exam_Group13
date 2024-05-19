@@ -5,9 +5,12 @@ import "./App.css";
 import GenreSection from "./components/GenreSection";
 import FetchAllUsers from "../sanity/services/userService";
 import UserCompare from "./components/UserCompare";
+import { fetchAllGenres } from "../sanity/services/genreServices";
 // import Login from "./components/Login"
 
 export default function App() {
+  const [allGenres, setAllGenres] = useState([])
+
   const [allUsers, setAllUsers] = useState([]);
   const [mainUser, setMainUser] = useState({
     _id: "badbfdda-8fef-4646-bc8b-3989b8e9e5c9",
@@ -29,13 +32,20 @@ export default function App() {
   };
 
   useEffect(() => {
-    getAllUsers();
+    getAllUsers()
+    getAllGenres()
   }, []);
+
+  const getAllGenres = async () => {
+    const data = await fetchAllGenres()
+    setAllGenres(data)
+  }
 
   return (
     <>
+      {/* <GenreList/> */}
       {/* <Login allUsers={allUsers} setMainUser={setMainUser} /> */}
       {/* <UserCompare/> */}
     </>
-  );
+  )
 }
