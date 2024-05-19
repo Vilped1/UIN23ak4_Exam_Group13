@@ -7,7 +7,7 @@ import FetchAllUsers from "../sanity/services/userService"
 
 export default function App() {
   const [allUsers, setAllUsers] = useState([])
-  const [mainUser, setMainUser] = useState(null)
+  const [mainUser, setMainUser] = useState("f0fc50da-74b9-40a8-91bd-7fa8ed61383a")
   console.log(mainUser)
 
   const getAllUsers = async () => {
@@ -28,7 +28,7 @@ export default function App() {
       <h1>Hvem skal se i dag?</h1>
       <p>Velg bruker</p>
       {allUsers?.map((user) => (
-        <button key={user._id} onClick={() => handleClick(user._id)}>
+        <button key={user._id} onClick={() => handleClick(user)}>
           {user.user}
         </button>
       ))}
