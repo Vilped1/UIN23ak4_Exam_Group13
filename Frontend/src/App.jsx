@@ -17,12 +17,11 @@ import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
   // LOGGED IN
-  const [logedIn, setLogedIn] = useState(() => {
-    const data = localStorage.getItem("logedIn")
-  })
+  const [logedIn, setLogedIn] = useState(sessionStorage.getItem("logedIn"))
 
   // GENRES
   const [allGenres, setAllGenres] = useState([])
+  console.log("Sjanger", allGenres)
   const [genre, setGenre] = useState([])
 
   // MOVIES
@@ -112,7 +111,7 @@ export default function App() {
           <Route path="/Sjanger/:slug" element={<Genre />} />
         </Routes>
       </Layout>
-      {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />}
+      {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   )
 }

@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+=======
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+>>>>>>> f816962214abf437d03dca2e7e15d162b0484e1d
 
 export default function Login({ allUsers, mainUser, setMainUser, setLogedIn }) {
   const navigate = useNavigate()
