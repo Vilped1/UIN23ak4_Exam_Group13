@@ -102,7 +102,7 @@ export default function App() {
 
   return ( 
     <>  
-    {apiMovies
+    {/* {apiMovies
       .filter((movie) => movie.imdbid === mainUser.favoriteMovies.imdbid)
       .map((movie) => (
         <div>
@@ -110,7 +110,7 @@ export default function App() {
           <h1>{movie.titleText.text}</h1>
         </div>
       ))
-    }  
+    }   */}
 
     <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
       <Routes>
