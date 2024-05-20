@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 // export const images = {
 //   title: "Genres",
 //   name: "asset",
@@ -16,46 +15,18 @@
 //   }
 //   ],
 // };
-=======
-export const images = {
-  title: "Genres",
-  name: "asset",
-  type: "document",
-  fields: [
-    {
-      title: "Image",
-      name: "image",
-      type: "image",
-    },
-    {
-      title: "Genre",
-      name: "genreTitle",
-      type: "string"
-  }
-  ],
-};
->>>>>>> Stashed changes
 
 export const genres = {
     title: "Sjangere",
     name: "genres",
     type: "document",
     fields: [
-<<<<<<< Updated upstream
       // {
       //   title: "Genre Image",
       //   name: "genreimage",
       //   type: "reference",
       //   to: [{ type: "asset"}],
       // },
-=======
-            {
-        title: "Genre Image",
-        name: "genreimage",
-        type: "reference",
-        to: [{ type: "asset"}],
-      },
->>>>>>> Stashed changes
         {
             title: "Sjangertittel",
             name: "genre",

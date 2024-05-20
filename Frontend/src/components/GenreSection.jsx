@@ -14,9 +14,9 @@ export default function GenreSection({ setGenreQuery }) {
     }
   };
 
-  function handleClick(genre) {
-    setGenreQuery(genre);
-    setActive(genre);
+  function handleClick(imagetitle) {
+    setGenreQuery(imagetitle);
+    setActive(imagetitle);
   }
 
   useEffect(() => {
@@ -32,14 +32,16 @@ export default function GenreSection({ setGenreQuery }) {
       <section className="genreSection">
         {genre.map((genre, index) => (
           <article
-            className={`genreCard ${active === genre.genre ? "active" : ""}`}
+            className={`genreCard ${
+              active === genre.imagetitle ? "active" : ""
+            }`}
             key={index}
             style={{
               backgroundImage: `url(${genre.image})`,
             }}
-            onClick={() => handleClick(genre.genre)}
+            onClick={() => handleClick(genre.imagetitle)}
           >
-            <h3>{genre.genre}</h3>
+            <h3>{genre.imagetitle}</h3>
           </article>
         ))}
       </section>
