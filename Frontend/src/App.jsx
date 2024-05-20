@@ -17,14 +17,13 @@ import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
   // LOGGED IN
-  const [logedIn, setLogedIn] = useState(() => {
-    const data = sessionStorage.getItem("logedIn")
-    const logedInData = JSON.parse(data)
-    return logedInData || ""
-  })
+  const [logedIn, setLogedIn] = useState(sessionStorage.getItem("logedIn")
+  
+  )
 
   // GENRES
   const [allGenres, setAllGenres] = useState([])
+  console.log("Sjanger", allGenres)
   const [genre, setGenre] = useState([])
 
   // MOVIES
@@ -35,7 +34,8 @@ export default function App() {
   const [allUsers, setAllUsers] = useState([])
   console.log("All users", allUsers)
   // USER 1
-  const [mainUser, setMainUser] = useState({})
+  const [mainUser, setMainUser] = useState(sessionStorage.getItem("user"))
+  console.log("Mainuser", mainUser)
 
   // USER 2
   const [compareUser, setCompareUser] = useState({
@@ -108,14 +108,14 @@ export default function App() {
 
       <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
         <Routes>
-          <Route path="/" element={<Home mainUser={mainUser} apiMovies={apiMovies} logedIn={logedIn} />} />
+          <Route path="/" element={<Home mainUser={mainUser} apiMovies={apiMovies} logedIn={logedIn} allUsers={allUsers} />} />
           <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
           <Route path="/Bruker-sammenligning" element={<UserCompare mainUser={mainUser} compareUser={compareUser} />} />
           <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
           <Route path="/Sjanger/:slug" element={<Genre />} />
         </Routes>
       </Layout>
-      {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />}
+      {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   )
 }
