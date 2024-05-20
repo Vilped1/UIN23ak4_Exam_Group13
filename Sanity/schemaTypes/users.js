@@ -12,12 +12,7 @@ export const users = {
             title: "Favorittsjangere",
             name: "favoriteGenre",
             type: "array",
-            of: [
-                {
-                    type: "reference",
-                    to: [{ type: "genres" }]
-                }
-            ]
+            of: [{ type: 'reference', to: { type: 'genres' } }],
         },
         {
             title: "Favorittfilmer",
