@@ -28,9 +28,10 @@ export default function App() {
   // MOVIES
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
+  console.log("API MOVIES", apiMovies)
   const [matchedMovies, setMatchedMovies] = useState([])
-  const [allUsers, setAllUsers] = useState([])
 
+  const [allUsers, setAllUsers] = useState([])
   // USER 1
   const [mainUser, setMainUser] = useState({
     _id: "badbfdda-8fef-4646-bc8b-3989b8e9e5c9",
@@ -46,11 +47,11 @@ export default function App() {
     favoriteMovies: [
       {
         movietitle: "The Flash",
-        imdbid: "tt3107288",
+        imdbid: "tt0439572",
       },
       {
         movietitle: "Abraham Lincoln Vampire Slayer",
-        imdbid: "tt1611224",
+        imdbid: "tt0457939",
       },
     ],
     favoriteGenres: null,
@@ -60,7 +61,7 @@ export default function App() {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
+      "X-RapidAPI-Key": "f97dd82b1amshf8b2c4b90d6a205p1f04a7jsneefafbdfb4fa",
       "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
     },
   }
@@ -69,8 +70,7 @@ export default function App() {
     try {
       const response = await fetch(url, options)
       const result = await response.json()
-      console.log("API Movies:", result.results)
-      setApiMovies(result.results)
+      return result.results
     } catch (error) {
       console.error("Error fetching movies:", error)
     }
@@ -89,7 +89,7 @@ export default function App() {
 
   useEffect(() => {
     if (compareUser.favoriteMovies.length > 0) {
-      fetchApiMovie()
+      fetchApiMovie().then((data) => setApiMovies(data))
     }
   }, [compareUser.favoriteMovies])
 
@@ -103,18 +103,17 @@ export default function App() {
     setMovies(data)
   }
 
-  return ( 
-    <>  
-    {/* {apiMovies
-      .filter((movie) => movie.imdbid === mainUser.favoriteMovies.imdbid)
-      .map((movie) => (
-        <div>
-          <img src={movie.primaryImage.url} alt={movie.title} />
-          <h1>{movie.titleText.text}</h1>
-        </div>
-      ))
-    }   */}
+  return (
+    <>
+      {apiMovies
+        .filter((movie) => movie?.id === compareUser?.favoriteMovies[0].imdbid)
+        .map((movie) => (
+          <div key={movie._id}>
+            <h1>{movie.titleText.text}</h1>
+          </div>
+        ))}
 
+      {/* <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
     <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
       <Routes>
         <Route path="/" element={<Home mainUser={mainUser} />} />

@@ -1,12 +1,10 @@
-import Header from "./Header";
+import Header from "./Header"
 
 export default function Layout({ children, logedIn, setLogedIn, mainUser }) {
-
-    return(
+  return (
     <>
         <div>
-            {
-                logedIn ?
+            {logedIn ?
                 <>
                     <Header mainUser={mainUser} logedIn={logedIn} setLogedIn={setLogedIn}/>
                 </>
@@ -14,10 +12,8 @@ export default function Layout({ children, logedIn, setLogedIn, mainUser }) {
                 null
             }
         </div>
-        <main>
-            {children}
-        </main>
+        <main>{children}</main>
         <footer>Copyright 2024 UIN</footer>
     </>
-    )
+  )
 }
