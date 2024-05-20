@@ -17,34 +17,30 @@ import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
   // LOGGED IN
-  const [logedIn, setLogedIn] = useState(() => {
-    const data = localStorage.getItem("logedIn")
-    const logedInData = JSON.parse(data)
-    return logedInData || ""
-})
+  const [logedIn, setLogedIn] = useState(false)
+  console.log("Logged in state", logedIn)
 
   // GENRES
   const [allGenres, setAllGenres] = useState([])
-  console.log("Sjanger", allGenres)
-  const [genre, setGenre] = useState([])
 
   // MOVIES
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
-  const [matchedMovies, setMatchedMovies] = useState([])
 
+  // USERS
   const [allUsers, setAllUsers] = useState([])
   console.log("All users", allUsers)
-  // USER 1
-  const [mainUser, setMainUser] = useState(localStorage.getItem("user"))
 
-  // USER 2
-  const [compareUser, setCompareUser] = useState({
-    _id: "627fd49e-e35d-4bab-a10f-455cd65bd45b",
-    user: "Thor",
+  // USER 1
+  const [mainUser, setMainUser] = useState({
+    _id: "392c4e95-b840-4007-b3cb-ba5a14299a77",
+    user: "Vilde",
     favoriteMovies: ["tt0439572", "tt1114677"],
     favoriteGenres: null,
   })
+
+  // USER 2
+  const [compareUser, setCompareUser] = useState({})
 
   const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${movies.map((movie) => movie.imdbid).join(",")}`
   const options = {
@@ -107,16 +103,20 @@ export default function App() {
 
       {/*Sammenligner filmer mellom brukere og skriver ut*/}
 
-      <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
-        <Routes>
-          <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} compareUser={compareUser} setCompareUser={setCompareUser} apiMovies={apiMovies} logedIn={logedIn} />} />
-          <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
-          <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
-          <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
-          <Route path="/Sjanger/:slug" element={<Genre />} />
-        </Routes>
-      </Layout>
-      {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />}
+      {logedIn ? (
+        <Layout setLogedIn={setLogedIn} logedIn={logedIn} setMainUser={setMainUser} setCompareUser={setCompareUser} mainUser={mainUser}>
+          {/* {logedIn ? <Navigate to="/" replace /> : <Navigate to="/Logg-inn" />} */}
+          <Routes>
+            <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} compareUser={compareUser} setCompareUser={setCompareUser} apiMovies={apiMovies} />} />
+            <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
+            <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
+            <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
+            <Route path="/Sjanger/:slug" element={<Genre />} />
+          </Routes>
+        </Layout>
+      ) : (
+        <Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />
+      )}
     </>
   )
 }

@@ -1,12 +1,12 @@
 import Header from "./Header"
 
-export default function Layout({ children, logedIn, setLogedIn, mainUser }) {
+export default function Layout({ children, mainUser, logedIn, setLogedIn, setMainUser, setCompareUser }) {
   return (
     <>
       <div>
         {logedIn ? (
           <>
-            <Header mainUser={mainUser} logedIn={logedIn} setLogedIn={setLogedIn} />
+            <Header mainUser={mainUser} setLogedIn={setLogedIn} setMainUser={setMainUser} setCompareUser={setCompareUser} />
           </>
         ) : null}
       </div>

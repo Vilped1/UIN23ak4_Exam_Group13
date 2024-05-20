@@ -11,7 +11,7 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
   return (
     <>
       {/* Henter brukernavnet*/}
-      <h1>Hei {localStorage.getItem("user")}!</h1>
+      <h1>Hei {mainUser ? mainUser.user : null}!</h1>
       <article>
         <section>
           <h2>Filmer jeg skal se</h2>
@@ -21,7 +21,9 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
             {apiMovies
               ?.filter((movie) => mainUser?.favoriteMovies.some((favMovie) => favMovie === movie?.id))
               .map((movie) => (
-                <MovieCard movie={movie} />
+                <article key={movie._id}>
+                  <MovieCard movie={movie} />
+                </article>
               ))}
           </ul>
         </section>
@@ -31,9 +33,9 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
             {allUsers
               ?.filter((users) => users._id !== mainUser._id)
               .map((remusers) => (
-                <button key={remusers._id} onClick={() => handleClick(remusers)}>
+                <Link to={`/Bruker-sammenligning`} key={remusers._id} onClick={() => handleClick(remusers)}>
                   {remusers.user}
-                </button>
+                </Link>
               ))}
           </ul>
           {/* .splice(ww._id === mainUser._id) */}

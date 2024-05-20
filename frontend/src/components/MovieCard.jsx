@@ -9,7 +9,7 @@ export default function MovieCard({ movie }) {
   return (
     <>
       <img src={movie.primaryImage.url} alt={movie.titleText.text} />
-      <a href={`https://www.imdb.com/title/tt1114677/${movie.id}`}>{movie.titleText.text}</a>
+      <a href={`https://www.imdb.com/title/${movie.id}/`}>{movie.titleText.text}</a>
       <p>{movie.releaseYear.year}</p>
     </>
   )
