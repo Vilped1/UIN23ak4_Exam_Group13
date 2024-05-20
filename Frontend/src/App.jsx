@@ -56,7 +56,7 @@ export default function App() {
     favoriteGenres: null,
   })
 
-  const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${compareUser.favoriteMovies.map((movie) => movie.imdbid).join(",")}`
+  const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${movies.map((movie) => movie.imdbid).join(",")}`
   const options = {
     method: "GET",
     headers: {
@@ -69,13 +69,8 @@ export default function App() {
     try {
       const response = await fetch(url, options)
       const result = await response.json()
-      setApiMovies(result.results)
       console.log("API Movies:", result.results)
-
-      //Hentet fra ChatGPT - Prompt: "Using destructuring to filter the matched movies from the API response."
-      const matched = result.results.filter(({ id }) => compareUser.favoriteMovies.some(({ imdbid }) => imdbid === id))
-      setMatchedMovies(matched)
-      console.log("Matched Movies:", matched)
+      setApiMovies(result.results)
     } catch (error) {
       console.error("Error fetching movies:", error)
     }
