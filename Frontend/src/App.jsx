@@ -113,17 +113,16 @@ export default function App() {
           </div>
         ))}
 
-      {/* <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
-    <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
-      <Routes>
-        <Route path="/" element={<Home mainUser={mainUser} />} />
-        <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
-        <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
-        <Route path="/Sjanger" element={<GenreList allGenres={allGenres}  />} />
-        <Route path="/Sjanger/:slug" element={<Genre />} />
-      </Routes>
-    </Layout>
-    {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
+      <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
+        <Routes>
+          <Route path="/" element={<Home mainUser={mainUser} />} />
+          <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
+          <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
+          <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
+          <Route path="/Sjanger/:slug" element={<Genre />} />
+        </Routes>
+      </Layout>
+      {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   )
 }
