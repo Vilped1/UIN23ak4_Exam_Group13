@@ -12,6 +12,7 @@ import Home from "./components/Home"
 import Layout from "./components/Layout"
 import GenreList from "./components/GenreList"
 import Genre from "./components/Genre"
+import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
   // LOGGED IN
@@ -104,9 +105,12 @@ export default function App() {
     <>
       {/* Skriver ut brukerens favoritter med info fra API */}
       {apiMovies
-        ?.filter((movie) => movie?.id === compareUser?.favoriteMovies.map((movie) => movie.imdbid))
+        ?.filter((movie) => movie?.id === compareUser?.favoriteMovies[0].imdbid)
         .map((movie) => (
-          <h1>{movie.titleText.text}</h1>
+          <div>
+            <h1>{movie.titleText.text}</h1>
+            <img src={movie.primaryImage.url} alt={movie.titleText.text} />
+          </div>
         ))}
 
       {/* <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
