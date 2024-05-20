@@ -32,7 +32,7 @@ export const users = {
         },
         {
             title: "Ønskeliste",
-            name: "wishList",
+            name: "wishlist",
             type: "array",
             of: [
                 {
