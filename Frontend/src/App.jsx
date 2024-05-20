@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
-import MovieCard from "./components/MovieCard"
 import "./App.css"
-import GenreSection from "./components/GenreSection"
 import FetchAllUsers from "../sanity/services/userService"
 import UserCompare from "./components/UserCompare"
 import { fetchAllGenres } from "../sanity/services/genreServices"
 import fetchMovies from "../sanity/services/movieServices"
 import Login from "./components/Login"
-
+import MovieCard from "./components/MovieCard"
 import Home from "./components/Home"
 import Layout from "./components/layout"
 import GenreList from "./components/GenreList"
@@ -70,10 +68,18 @@ export default function App() {
     setAllUsers(data)
   }
 
+  // const saveUser = () => {
+  //   {allUsers.find((save) => localStorage("userID") === save._id)
+  //     // localStorage.setItem("user", )
+  //   setMainUser(mainUser)
+  // }
+  // }
+
   useEffect(() => {
     getAllUsers()
     getAllGenres()
     getAllMovies()
+    // saveUser()
   }, [])
 
   useEffect(() => {

@@ -36,7 +36,6 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
                 </button>
               ))}
           </ul>
-          {/* .splice(ww._id === mainUser._id) */}
         </section>
       </article>
     </>

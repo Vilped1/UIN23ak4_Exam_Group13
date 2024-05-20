@@ -12,6 +12,7 @@ export default function Login({ allUsers, mainUser, setMainUser, setLogedIn }) {
       navigate("/")
       setLogedIn(true)
       localStorage.setItem("user", user.user)
+      localStorage.setItem("userID", user._id)
     }
     console.log("Funnet", found)
     console.log("MAINUSER", mainUser)
