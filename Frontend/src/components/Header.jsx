@@ -5,7 +5,7 @@ import { FaUserCircle } from "react-icons/fa"
 
 export default function Header({setLogedIn}) {
     const handleClick = () => {
-        localStorage.setItem("logedIn", false)
+        sessionStorage.setItem("logedIn", false)
         setLogedIn(false)
     }
 
@@ -17,7 +17,7 @@ export default function Header({setLogedIn}) {
                 <Link to="/"><h3><BiMoviePlay />  Hva skal jeg se?</h3></Link>
                 <Link to="/Sjanger"><h3>Bla gjennom sjangere</h3></Link>
                 <section id="user">
-                    <h3><FaUserCircle /> {localStorage.getItem("user")}</h3>
+                    <h3><FaUserCircle /> {sessionStorage.getItem("user")}</h3>
                     <button onClick={handleClick}>Logg ut</button>
                 </section>
             </section>

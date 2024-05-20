@@ -14,8 +14,8 @@ export default function Login({ allUsers, mainUser, setMainUser, setLogedIn }) {
         if (found) {
             navigate("/")
             setLogedIn(true)
-            localStorage.setItem("user", user.user)
-            localStorage.setItem("logedIn", true)
+            sessionStorage.setItem("user", user.user)
+            sessionStorage.setItem("logedIn", true)
         }
         console.log("Funnet", found)
         console.log("MAINUSER", mainUser)

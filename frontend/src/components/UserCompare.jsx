@@ -1,4 +1,4 @@
-export default function UserCompare() {
+export default function UserCompare({mainUser, compareUser}) {
   return (
     <>
       <main>

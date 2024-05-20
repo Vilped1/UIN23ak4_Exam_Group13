@@ -1,8 +1,11 @@
-export default function Home({ mainUser }) {
+import { Link } from "react-router-dom";
+import UserCompare from "./UserCompare";
+
+export default function Home({ mainUser, allUsers }) {
   return (
       <>
           {/* Henter brukernavnet*/}
-          <h1>Hei {localStorage.getItem("user")}!</h1>
+          <h1>Hei {sessionStorage.getItem("user")}!</h1>
           <article>
               <section>
                   <h2>Filmer jeg skal se</h2>
@@ -16,6 +19,12 @@ export default function Home({ mainUser }) {
               </section>
               <section>
                   <h2>Jeg skal se sammen med...</h2>
+                  <ul>
+                    {allUsers.map((ww, index) => (
+                        <li key={index}><Link to="/Bruker-sammenligning"><h3>{ww.user}</h3></Link></li>
+                    ))}
+                  </ul>
+                  {/* .splice(ww._id === mainUser._id) */}
               </section>
           </article>
       </>
