@@ -1,8 +1,8 @@
-export default function Home(  {mainUser} ) {
+export default function Home({ mainUser }) {
     return (
         <>
         <main> {/* Flytte til Layout */}
-          <h1>Hei {mainUser.user}!</h1>
+          <h1>Hei {localStorage.getItem("user")}!</h1>
           <section>
             <h2>Filmer jeg skal se</h2>
             <p>Disse filmene ligger i ønskelisten min:</p>

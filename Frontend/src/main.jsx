@@ -6,9 +6,10 @@ import "./styles/moviecard.scss";
 import "./styles/Nav.scss";
 import "./styles/GenreSection.scss";
 import "./styles/main.scss";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <Router>
     <App />
-  </React.StrictMode>
+  </Router>
 );

@@ -12,7 +12,7 @@ export default function Header() {
             <section id="sideheader">
                 <Link to="/"><h3><BiMoviePlay />  Hva skal jeg se?</h3></Link>
                 <Link to="/Sjanger"><h3>Bla gjennom sjangere</h3></Link>
-                <h3><FaUserCircle /> Marius</h3>
+                <h3><FaUserCircle /> {localStorage.getItem("user")}</h3>
             </section>
         </header>        
         </>
