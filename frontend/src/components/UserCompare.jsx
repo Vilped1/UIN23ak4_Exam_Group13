@@ -3,18 +3,16 @@ import { useEffect, useState } from "react"
 
 export default function UserCompare({ mainUser, compareUser, apiMovies }) {
   const [matchedMovies, setMatchedMovies] = useState([])
-  const [matchedWishFav, setMatchedWishFav] = useState([])
+  const [matchedWish, setMatchedWish] = useState([])
 
   const compareMovies = async () => {
-    const matched = await mainUser.favoriteMovies.filter((movie) => compareUser.favoriteMovies.includes(movie))
-    const wishfav = await mainUser.wishlist.filter((movie) => compareUser.favoriteMovies.includes(movie))
-    setMatchedWishFav(wishfav)
-    setMatchedMovies(matched)
+    const matchedFav = await mainUser?.favoriteMovies.filter((movie) => compareUser?.favoriteMovies.includes(movie))
+    setMatchedMovies(matchedFav)
   }
 
   useEffect(() => {
     compareMovies()
-  }, [mainUser, compareUser])
+  }, [])
 
   return (
     <>

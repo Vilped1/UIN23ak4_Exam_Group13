@@ -17,8 +17,10 @@ import { FaIgloo } from "react-icons/fa"
 export default function App() {
   // LOGGED IN
   const [logedIn, setLogedIn] = useState(false)
-  console.log("Logged in state", logedIn)
 
+  useEffect(() => {
+    console.log("Logged in state", logedIn)
+  }, [logedIn])
   // GENRES
   const [allGenres, setAllGenres] = useState([])
 
@@ -26,17 +28,16 @@ export default function App() {
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
 
+  //ØNSKELISTE
+  const [wishList, setWishList] = useState([])
+  console.log("wish movie list", wishList)
+
   // USERS
   const [allUsers, setAllUsers] = useState([])
   console.log("All users", allUsers)
 
   // USER 1
-  const [mainUser, setMainUser] = useState({
-    _id: "392c4e95-b840-4007-b3cb-ba5a14299a77",
-    user: "Vilde",
-    favoriteMovies: ["tt0439572", "tt1114677"],
-    favoriteGenres: null,
-  })
+  const [mainUser, setMainUser] = useState({})
 
   // USER 2
   const [compareUser, setCompareUser] = useState({})
@@ -63,7 +64,9 @@ export default function App() {
   const getAllUsers = async () => {
     const data = await FetchAllUsers()
     setAllUsers(data)
+    setWishList(data)
   }
+
 
   useEffect(() => {
     getAllUsers()
