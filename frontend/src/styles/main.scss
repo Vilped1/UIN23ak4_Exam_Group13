@@ -1,0 +1,60 @@
+@import 'footer.scss';
+@import 'genre.scss';
+@import 'header.scss';
+@import 'moviecard.scss';
+@import 'variables.scss';
+
+body {
+    font-family: $font;
+    background-color: $darkGrey;
+
+    img {
+        width: 200px;
+        height: 300px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow:  5px 8px rgba(0, 0, 0, 0.3);
+   
+    }
+    
+    h1 {
+      display: flex;
+      flex-direction: column;
+      
+    }
+    
+    a {
+      display: flex;
+      text-decoration: none;
+      color: white; 
+      margin-top: 15px; 
+  }
+  }
+  
+  
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  article section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
+}
+
+article section ul {
+    display: flex;
+    flex-direction: row; 
+    gap: 9px; 
+    padding: auto;
+   
+}
+
+
+
+@media only screen and (min-width: 800px) {
+   
+}

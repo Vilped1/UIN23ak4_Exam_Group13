@@ -1,0 +1,100 @@
+.cardSection{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 100%;
+}
+
+.movieCard{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: #252525;
+  color: white;
+
+  border-radius: 20px;
+
+
+  img{
+    width: 200px;
+    height: 300px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .favIcon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    width: 1.5rem;
+
+    cursor: pointer;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  &:hover{
+    .favIcon {
+      opacity: 1;
+    }
+  }
+
+  .imgContainer{
+    position: relative;
+
+    .favIcon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      margin: 0;
+
+      color: red;
+  
+      width: 1.5rem;
+      height: 1.5rem;
+  
+      cursor: pointer;
+  
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    &:hover{
+      .favIcon {
+        opacity: 1;
+      }
+    }
+  }
+
+  .infoContainer{
+    display: inline-flex;
+    flex-direction: column;
+    float: left;
+
+    font-size: 15px;
+    font-weight: 100;
+    margin: .2rem 0 .6rem .5rem;
+
+
+    h3{
+      margin-top: 0;
+    }
+    p{
+      font-size: .7rem;
+      font-weight: 200;
+      margin: .3rem 0 0 0;
+    }
+    }
+  
+
+  .imdbButton{
+    background-color: #f3ce13;
+    color: black;
+    padding: .3rem .5rem;
+    margin-bottom: .3rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+}

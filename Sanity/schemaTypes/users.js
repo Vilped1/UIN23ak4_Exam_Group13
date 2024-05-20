@@ -15,7 +15,7 @@ export const users = {
             of: [
                 {
                     type: "reference",
-                    to: [{type: "genres"}]
+                    to: [{ type: "genres" }]
                 }
             ]
         },
@@ -26,10 +26,9 @@ export const users = {
             of: [
                 {
                     type: "reference",
-                    to: [{type: "movies"}]
+                    to: [{ type: "movies" }]
                 }
             ]
         }
-        
-    ] 
+    ]
 }

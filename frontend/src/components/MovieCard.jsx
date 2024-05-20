@@ -1,34 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { IconContext } from "react-icons"
+import { FaRegHeart } from "react-icons/fa"
+import { FaHeart } from "react-icons/fa"
+import heartIcon from "../assets/heartIcon.svg"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 
-export default function MovieCard() {
-  const [content, setContent] = useState("");
-  // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
-
-  const url ="https://moviesdatabase.p.rapidapi.com/titles";
-  
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14",
-      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
-    },
-  };
-
-  const getMovie = async () => {
-    try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      console.log(result);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getMovie();
-  }, []);
-
+export default function MovieCard({ movie }) {
   return (
-    <h1>FILM!</h1>
+    <>
+      <img src={movie.primaryImage.url} alt={movie.titleText.text} />
+      {/* Åpne i en ny side */}
+      <a href={`https://www.imdb.com/title/${movie.id}`}>{movie.titleText.text}</a>
+      <p>{movie.releaseYear.year}</p>
+    </>
   )
 }

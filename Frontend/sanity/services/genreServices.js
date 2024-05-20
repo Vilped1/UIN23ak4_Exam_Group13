@@ -1,11 +1,11 @@
-import { client } from '../client'
+import { client } from "../client";
 
-export async function fetchGenres() {
-    const data = await client.fetch(`*[_type == "genres"]{
-        _id,
-        genre,
-        "genreurl": genreurl.current
+/* https://www.sanity.io/docs/how-queries-work#dd66cae5ed8f */
+export async function fetchAllGenres() {
+  const genreData = await client.fetch(`*[_type == "genres"] | order(imagetitle asc){
+    _id,
+    genre,
+    "genreurl": genreurl[]->current,
     }`)
-    console.log(data)
-    return data
+  return genreData;
 }

@@ -1,0 +1,40 @@
+nav{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-bottom: solid 2px white;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoContainer{
+  display: inline-flex;
+
+  h1{
+    margin: 1.8rem 2rem 1rem 0;
+  }
+}
+
+.searchContainer{
+  margin-top: auto;
+}
+.searchBar{
+  margin-top: auto;
+  margin-bottom: .5rem;
+
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 20rem;
+
+  &:focus{
+    border: none;
+  }
+}
+.searchButton{
+  padding: .5rem 1rem;
+  margin-left: .5rem;
+  border: none;
+  border-radius: 10px;
+}
