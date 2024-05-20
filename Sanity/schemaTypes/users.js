@@ -29,6 +29,17 @@ export const users = {
                     to: [{ type: "movies" }]
                 }
             ]
+        },
+        {
+            title: "Ønskeliste",
+            name: "wishList",
+            type: "array",
+            of: [
+                {
+                    type: "reference",
+                    to: [{ type: "movies" }]
+                }
+            ]
         }
     ]
 }

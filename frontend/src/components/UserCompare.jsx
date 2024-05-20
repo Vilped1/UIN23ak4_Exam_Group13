@@ -3,18 +3,18 @@ import { useEffect, useState } from "react"
 
 export default function UserCompare({ mainUser, compareUser, apiMovies }) {
   const [matchedMovies, setMatchedMovies] = useState([])
-  const [matchedWishFav, setMatchedWishFav] = useState([])
+  const [matchedWish, setMatchedWish] = useState([])
 
   const compareMovies = async () => {
-    const matched = await mainUser.favoriteMovies.filter((movie) => compareUser.favoriteMovies.includes(movie))
-    const wishfav = await mainUser.wishlist.filter((movie) => compareUser.favoriteMovies.includes(movie))
-    setMatchedWishFav(wishfav)
-    setMatchedMovies(matched)
+    const matchedFav = await mainUser?.favoriteMovies.filter((movie) => compareUser?.favoriteMovies.includes(movie))
+    const matchedWish = await mainUser?.wishlist.filter((movie) => compareUser?.wishlist.includes(movie))
+    setMatchedWish(matchedWish)
+    setMatchedMovies(matchedFav)
   }
 
   useEffect(() => {
     compareMovies()
-  }, [mainUser, compareUser])
+  }, [])
 
   return (
     <>
@@ -40,6 +40,11 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
         <section>
           <h3>Utforsk!</h3>
           {/* Skrive ut liste over favorittsjanger til begge brukere (SOM MATCHER BEGGE BRUKERE SOM BEGGE TO HAR OG LIKER) */}
+          {apiMovies
+            ?.filter((movie) => matchedWishFav?.some((favMovie) => favMovie === movie.id))
+            .map((movie) => (
+              <MovieCard movie={movie} />
+            ))}
         </section>
         <section>
           <h2>Ønskelister og favoritter</h2>
