@@ -1,12 +1,12 @@
-export default function GenreList() {
+export default function GenreList({allGenres}) {
     return (
         <>
             <h2>Sjangere</h2>
-            {allGenres?.map((genre) =>
-                <ul>
-                    <li>{genre.imagetitle}</li>
-                </ul>
-            )}
+            <ul>
+            {allGenres?.map((genre, index) =>
+                    <li key={index}>{genre.imagetitle}</li>
+                )}
+            </ul>
             {/* <Login allUsers={allUsers} setMainUser={setMainUser} /> */}
             {/* <UserCompare/> */}
         </>
