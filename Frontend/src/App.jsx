@@ -103,28 +103,28 @@ export default function App() {
     setMovies(data)
   }
 
-  return (
-    <>
-      {/* <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
-        <Routes>
-          <Route path="/" element={<Home mainUser={mainUser} />} />
-          <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
-          <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
-          <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
-          <Route path="/Sjanger/:slug" element={<Genre />} />
-        </Routes>
-      </Layout>
-      {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />}
-      <div>
-        <h2>Matched Movies</h2>
-        {matchedMovies.length > 0 ? (
-          matchedMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))
-        ) : (
-          <p>No matched movies found.</p>
-        )}
-      </div> */}
+  return ( 
+    <>  
+    {apiMovies
+      .filter((movie) => movie.imdbid === mainUser.favoriteMovies.imdbid)
+      .map((movie) => (
+        <div>
+          <img src={movie.primaryImage.url} alt={movie.title} />
+          <h1>{movie.titleText.text}</h1>
+        </div>
+      ))
+    }  
+
+    {/* <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
+      <Routes>
+        <Route path="/" element={<Home mainUser={mainUser} />} />
+        <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
+        <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
+        <Route path="/Sjanger" element={<GenreList allGenres={allGenres}  />} />
+        <Route path="/Sjanger/:slug" element={<Genre />} />
+      </Routes>
+    </Layout>
+    {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   )
 }
