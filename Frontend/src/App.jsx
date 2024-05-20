@@ -8,6 +8,7 @@ import UserCompare from "./components/UserCompare"
 import { fetchAllGenres } from "../sanity/services/genreServices"
 import fetchMovies from "../sanity/services/movieServices"
 import Login from "./components/Login"
+
 import Home from "./components/Home"
 import Layout from "./components/Layout"
 import GenreList from "./components/GenreList"
@@ -32,23 +33,15 @@ export default function App() {
   const [matchedMovies, setMatchedMovies] = useState([])
 
   const [allUsers, setAllUsers] = useState([])
+  console.log("All users", allUsers)
   // USER 1
   const [mainUser, setMainUser] = useState({})
 
   // USER 2
   const [compareUser, setCompareUser] = useState({
-    _id: "f0fc50da-74b9-40a8-91bd-7fa8ed61383a",
-    user: "Jesper",
-    favoriteMovies: [
-      {
-        movietitle: "The Flash",
-        imdbid: "tt0439572",
-      },
-      {
-        movietitle: "Hannah Montana: The Movie",
-        imdbid: "tt1114677",
-      },
-    ],
+    _id: "badbfdda-8fef-4646-bc8b-3989b8e9e5c9",
+    user: "Erik",
+    favoriteMovies: ["tt0439572", "tt3480822", "tt0831387", "tt5034838"],
     favoriteGenres: null,
   })
 
@@ -99,18 +92,23 @@ export default function App() {
   return (
     <>
       {/* Skriver ut brukerens favoritter med info fra API */}
-      {apiMovies
-        ?.filter((movie) => movie?.id === compareUser?.favoriteMovies[0].imdbid)
-        .map((movie) => (
-          <div>
-            <h1>{movie.titleText.text}</h1>
-            <img src={movie.primaryImage.url} alt={movie.titleText.text} />
-          </div>
-        ))}
+      {/* {logedIn
+        ? apiMovies
+            ?.filter((movie) => mainUser.favoriteMovies.some((favMovie) => favMovie === movie.id))
+            .map((movie) => (
+              <div key={movie.id}>
+                <h1>{`${movie.titleText.text} (${movie.releaseYear.year})`}</h1>
+                <img src={movie.primaryImage.url} alt={movie.titleText.text} />
+              </div>
+            ))
+        : null} */}
+      {/* {logedIn ? apiMovies?.filter((movie) => mainUser.favoriteMovies.some((favMovie) => favMovie === movie.id)).map((movie) => <MovieCard movie={movie} />) : null} */}
+
+      {/*Sammenligner filmer mellom brukere og skriver ut*/}
 
       <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
         <Routes>
-          <Route path="/" element={<Home mainUser={mainUser} allUsers={allUsers} />} />
+          <Route path="/" element={<Home mainUser={mainUser} apiMovies={apiMovies} logedIn={logedIn} />} />
           <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
           <Route path="/Bruker-sammenligning" element={<UserCompare mainUser={mainUser} compareUser={compareUser} />} />
           <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
