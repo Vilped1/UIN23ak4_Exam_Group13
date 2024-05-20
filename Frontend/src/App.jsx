@@ -105,15 +105,14 @@ export default function App() {
 
   return (
     <>
-      {apiMovies
+      {/* {apiMovies
         .filter((movie) => movie?.id === compareUser?.favoriteMovies[0].imdbid)
         .map((movie) => (
           <div key={movie._id}>
             <h1>{movie.titleText.text}</h1>
           </div>
-        ))}
+        ))} */}
 
-      {/* <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
     <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
       <Routes>
         <Route path="/" element={<Home mainUser={mainUser} />} />
