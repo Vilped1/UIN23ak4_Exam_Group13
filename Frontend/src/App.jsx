@@ -28,7 +28,6 @@ export default function App() {
   // MOVIES
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
-  console.log("API MOVIES", apiMovies)
   const [matchedMovies, setMatchedMovies] = useState([])
 
   const [allUsers, setAllUsers] = useState([])
@@ -50,8 +49,8 @@ export default function App() {
         imdbid: "tt0439572",
       },
       {
-        movietitle: "Abraham Lincoln Vampire Slayer",
-        imdbid: "tt0457939",
+        movietitle: "Hannah Montana: The Movie",
+        imdbid: "tt1114677",
       },
     ],
     favoriteGenres: null,
@@ -70,7 +69,7 @@ export default function App() {
     try {
       const response = await fetch(url, options)
       const result = await response.json()
-      return result.results
+      setApiMovies(result.results)
     } catch (error) {
       console.error("Error fetching movies:", error)
     }
@@ -88,10 +87,8 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    if (compareUser.favoriteMovies.length > 0) {
-      fetchApiMovie().then((data) => setApiMovies(data))
-    }
-  }, [compareUser.favoriteMovies])
+    fetchApiMovie()
+  }, [movies])
 
   const getAllGenres = async () => {
     const data = await fetchAllGenres()
@@ -105,12 +102,11 @@ export default function App() {
 
   return (
     <>
+      {/* Skriver ut brukerens favoritter med info fra API */}
       {apiMovies
-        .filter((movie) => movie?.id === compareUser?.favoriteMovies[0].imdbid)
+        ?.filter((movie) => movie?.id === compareUser?.favoriteMovies.map((movie) => movie.imdbid))
         .map((movie) => (
-          <div key={movie._id}>
-            <h1>{movie.titleText.text}</h1>
-          </div>
+          <h1>{movie.titleText.text}</h1>
         ))}
 
       {/* <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
