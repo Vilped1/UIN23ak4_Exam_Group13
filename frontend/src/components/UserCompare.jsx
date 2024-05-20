@@ -1,27 +1,19 @@
-export default function UserCompare({ mainUser, compareUser, apiMovies }) {
+export default function UserCompare({ commonFavorites, user2, setUser2, user1, setUser1 }) {
+  const handleClick = (e) => {
+    !activeUser ? setActiveUser(e.target.innerText) : setCompareUser(e.target.innerText) && console.log(e.target.innerText)
+  }
+
   return (
     <>
-      <main>
-        <h2>
-          Forslag for {mainUser.user} og {compareUser.user}
-        </h2>
-        <section>
-          <h3>Catch up!</h3>
-          <p>Oversikt over filmer, som begge brukere har på watchlist</p>
-        </section>
-        <section>
-          <h3>Go safe!</h3>
-          <p>Oversikt over felles favorittfilmer</p>
-        </section>
-        <section>
-          <h3>Utforsk!</h3>
-          {/* Skrive ut liste over favorittsjanger til begge brukere (SOM MATCHER BEGGE BRUKERE SOM BEGGE TO HAR OG LIKER) */}
-        </section>
-        <section>
-          <h2>Ønskelister og favoritter</h2>
-          <p>Dere har noen felles filminteresser!?</p>
-        </section>
-      </main>
+      <h1>SAMMENLIGNER!!!</h1>
+      <section>
+        <h1>User: {user1}</h1>
+        <h2>Compare user: {user2} </h2>
+        Common favorites:
+        {commonFavorites.map((movie, index) => (
+          <h3 key={index}>{movie}</h3>
+        ))}
+      </section>
     </>
   )
 }

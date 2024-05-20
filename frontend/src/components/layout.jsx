@@ -1,17 +1,13 @@
+import React from "react"
 import Header from "./Header"
+import MovieCard from "./MovieCard"
 
-export default function Layout({ children, logedIn, setLogedIn, mainUser }) {
+export default function Layout({ children, activeUser }) {
   return (
-    <>
-      <div>
-        {logedIn ? (
-          <>
-            <Header mainUser={mainUser} logedIn={logedIn} setLogedIn={setLogedIn} />
-          </>
-        ) : null}
-      </div>
-      <main>{children}</main>
-      <footer>Copyright 2024 UIN</footer>
-    </>
+    <div>
+      <Header activeUser={activeUser} />
+      <MovieCard />
+      {children}
+    </div>
   )
 }
