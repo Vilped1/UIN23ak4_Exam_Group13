@@ -7,8 +7,6 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
 
   const compareMovies = async () => {
     const matchedFav = await mainUser?.favoriteMovies.filter((movie) => compareUser?.favoriteMovies.includes(movie))
-    const matchedWish = await mainUser?.wishlist.filter((movie) => compareUser?.wishlist.includes(movie))
-    setMatchedWish(matchedWish)
     setMatchedMovies(matchedFav)
   }
 
@@ -40,11 +38,6 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
         <section>
           <h3>Utforsk!</h3>
           {/* Skrive ut liste over favorittsjanger til begge brukere (SOM MATCHER BEGGE BRUKERE SOM BEGGE TO HAR OG LIKER) */}
-          {apiMovies
-            ?.filter((movie) => matchedWishFav?.some((favMovie) => favMovie === movie.id))
-            .map((movie) => (
-              <MovieCard movie={movie} />
-            ))}
         </section>
         <section>
           <h2>Ønskelister og favoritter</h2>
