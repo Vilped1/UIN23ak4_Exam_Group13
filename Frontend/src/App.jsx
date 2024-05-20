@@ -9,29 +9,60 @@ import UserCompare from "./components/UserCompare";
 import { fetchAllGenres } from "../sanity/services/genreServices";
 import fetchMovies from "../sanity/services/movieServices";
 import Login from "./components/Login";
-import Home from "./components/Home";  
+import Home from "./components/Home";
 
 export default function App() {
   const [allGenres, setAllGenres] = useState([]);
   const [genre, setGenre] = useState([]);
   const [movies, setMovies] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [matchingMovies, setMatchingMovies] = useState([]);
   const [mainUser, setMainUser] = useState({
-  //USER 1
+    //USER 1
     _id: "badbfdda-8fef-4646-bc8b-3989b8e9e5c9",
     user: "Erik",
-    favoriteMovies: ["The Flash", "Scarlet Piss Princess"],
+    favoriteMovies: [
+      {
+        movietitle: "The Flash",
+        imdbid: "tt3107288",
+      },
+      {
+        movietitle: "Scarlett Piss Princess",
+        imdbid: "tt1611224",
+      },
+    ],
     favoriteGenres: null,
   });
   //USER 2
   const [compareUser, setCompareUser] = useState({
     _id: "f0fc50da-74b9-40a8-91bd-7fa8ed61383a",
     user: "Jesper",
-    favoriteMovies: ["The Flash", "Abraham Lincoln Vampire Slayer"],
+    favoriteMovies: [
+      {
+        movietitle: "The Flash",
+        imdbid: "tt3107288",
+      },
+      {
+        movietitle: "Abraham Lincoln Vampire Slayer",
+        imdbid: "tt1611224",
+      },
+    ],
     favoriteGenres: null,
   });
 
-  const url = `https://moviesdatabase.p.rapidapi.com/titles/${movies?.imdbid}`;
+  useEffect(() => {
+    const matchingMovies = mainUser.favoriteMovies.filter((mainUserMovies) =>
+      compareUser.favoriteMovies.some(
+        (compareUserMovies) =>
+          compareUserMovies.imdbid === mainUserMovies.imdbid
+      )
+    );
+    setMatchingMovies(matchingMovies);
+  }, []);
+
+  const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${matchingMovies
+    .map((movie) => movie.imdbid)
+    .join(",")}`;
   const options = {
     method: "GET",
     headers: {
@@ -73,7 +104,7 @@ export default function App() {
   const getAllMovies = async () => {
     const data = await fetchMovies();
     setMovies(data);
-    console.log("MOVIES DATA", data);
+    /* console.log("MOVIES DATA", data); */
   };
 
   return (
@@ -82,12 +113,16 @@ export default function App() {
           <h2>{movie.movietitle}</h2>
            <p>{movie.imdbid}</p>
            </div> */
-           
+
     <Router>
       <Routes>
-        <Route path="/" element={<Login allUsers={allUsers} setMainUser={setMainUser} />} />   
-        <Route path="/home" element={<Home mainUser={mainUser} />} />{/* Route til valgt bruker*/} 
+        <Route
+          path="/"
+          element={<Login allUsers={allUsers} setMainUser={setMainUser} />}
+        />
+        <Route path="/home" element={<Home mainUser={mainUser} />} />
+        {/* Route til valgt bruker*/}
       </Routes>
     </Router>
-  )
+  );
 }
