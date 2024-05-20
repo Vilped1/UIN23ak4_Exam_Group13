@@ -11,6 +11,7 @@ export default function Login({ allUsers, mainUser, setMainUser, setLogedIn }) {
 
   return (
     <>
+    <div id="logginn">
       <h1>Hvem skal se i dag?</h1>
       <p>Velg bruker</p>
       {allUsers?.map((user) => (
@@ -20,6 +21,7 @@ export default function Login({ allUsers, mainUser, setMainUser, setLogedIn }) {
           </Link>
         </button>
       ))}
+    </div>
     </>
   )
 }
