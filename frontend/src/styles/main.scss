@@ -4,44 +4,57 @@
 @import 'moviecard.scss';
 @import 'variables.scss';
 
-body{
+body {
     font-family: $font;
-    background-color: $darkGrey;  
+    background-color: $darkGrey;
 
-    img{
-      width: 200px;
-      height: 300px;
+    img {
+        width: 200px;
+        height: 300px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow:  5px 8px rgba(0, 0, 0, 0.3);
+   
     }
-
-    main{
-       color: $white;
+    
+    h1 {
+      display: flex;
+      flex-direction: column;
+      
     }
-}
-
-.movieCard{
+    
+    a {
+      display: flex;
+      text-decoration: none;
+      color: white; 
+      margin-top: 15px; 
+  }
+  }
+  
+  
+  article {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    background-color: #252525;
-    color: white;
+    gap: 20px;
+  }
+  
+  article section {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    cursor: pointer;
-    border-radius: 20px;
-
-    img{
-    width: 200px;
-    height: 300px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    }
-
-    .infoContainer{
-    flex: none;
-    font-size: 15px;
-    font-weight: 100;
-    }
+    gap: 15px; 
 }
 
-@media only screen and (min-width: 800px){
-    
+article section ul {
+    display: flex;
+    flex-direction: row; 
+    gap: 9px; 
+    padding: auto;
+   
+}
+
+
+
+@media only screen and (min-width: 800px) {
+   
 }
