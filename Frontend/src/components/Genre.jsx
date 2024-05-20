@@ -1,3 +1,7 @@
 export default function Genre({ genre }) {
-  return <></>
+  return (
+  <>
+  <h2>FILM</h2>
+  </>
+  )
 }
