@@ -30,8 +30,8 @@ export default function App() {
   const [apiMovies, setApiMovies] = useState([])
 
   //ØNSKELISTE
-  const [wishMovie, setWishMovie] = useState([])
-  console.log("wish movie list", wishMovie)
+  const [wishList, setWishList] = useState([])
+  console.log("wish movie list", wishList)
 
   // USERS
   const [allUsers, setAllUsers] = useState([])
@@ -65,7 +65,9 @@ export default function App() {
   const getAllUsers = async () => {
     const data = await FetchAllUsers()
     setAllUsers(data)
+    setWishList(data)
   }
+
 
   useEffect(() => {
     getAllUsers()
