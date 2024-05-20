@@ -17,7 +17,6 @@ export default function App() {
 
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
-  console.log("API MOVIES", apiMovies)
 
   const [allUsers, setAllUsers] = useState([])
   const [mainUser, setMainUser] = useState({
@@ -52,6 +51,11 @@ export default function App() {
     ],
     favoriteGenres: null,
   })
+
+  console.log(
+    "mathcing movies",
+    mainUser.favoriteMovies?.filter((movie) => apiMovies.find((m) => m?.imdbid === movie?.id))
+  )
 
   const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${movies.map((movie) => movie.imdbid).join(",")}`
   const options = {
@@ -99,16 +103,7 @@ export default function App() {
   }
 
   return (
-    <>
-      {apiMovies
-        .filter((movie) => movie.imdbid === mainUser.favoriteMovies.imdbid)
-        .map((movie) => (
-          <div>
-            <img src={movie.primaryImage.url} alt={movie.title} />
-            <h1>{movie.titleText.text}</h1>
-          </div>
-        ))}
-    </>
+    <></>
 
     // <Router>
     //   <Routes>
