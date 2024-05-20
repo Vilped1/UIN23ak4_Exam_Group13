@@ -39,12 +39,20 @@ export default function App() {
   const [compareUser, setCompareUser] = useState({
     _id: "f0fc50da-74b9-40a8-91bd-7fa8ed61383a",
     user: "Jesper",
-    favoriteMovies: ["The Flash", "Abraham Lincoln Vampire Slayer"],
+    favoriteMovies: [
+      {
+        movietitle: "The Flash",
+        imdbid: "tt3107288",
+      },
+      {
+        movietitle: "Abraham Lincoln Vampire Slayer",
+        imdbid: "tt1611224",
+      },
+    ],
     favoriteGenres: null,
   })
 
-  const fetchApiMovie = async (movieID) => {
-  const url = `https://moviesdatabase.p.rapidapi.com/titles/${movieID}`
+  const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${movies.map((movie) => movie.imdbid).join(",")}`
   const options = {
     method: "GET",
     headers: {
@@ -53,14 +61,15 @@ export default function App() {
     },
   }
 
-  try {
-    const response = await fetch(url, options)
-    const result = await response.json()
-    console.log("API fetch", result.results)
-  } catch (error) {
-    console.error(error)
+  const fetchApiMovie = async () => {
+    try {
+      const response = await fetch(url, options)
+      const result = await response.json()
+      setApiMovies(result.results)
+    } catch (error) {
+      console.error(error)
+    }
   }
-}
 
   const getAllUsers = async () => {
     const data = await FetchAllUsers()
@@ -74,8 +83,8 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    fetchApiMovie(movies[0]?.imdbid)
-  } , [movies] )  
+    fetchApiMovie()
+  }, [movies])
 
   const getAllGenres = async () => {
     const data = await fetchAllGenres()
@@ -88,7 +97,17 @@ export default function App() {
   }
 
   return ( 
-    <>          
+    <>  
+    {apiMovies
+      .filter((movie) => movie.imdbid === mainUser.favoriteMovies.imdbid)
+      .map((movie) => (
+        <div>
+          <img src={movie.primaryImage.url} alt={movie.title} />
+          <h1>{movie.titleText.text}</h1>
+        </div>
+      ))
+    }  
+
     <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
       <Routes>
         <Route path="/" element={<Home mainUser={mainUser} />} />
