@@ -12,6 +12,7 @@ import Home from "./components/Home"
 import Layout from "./components/layout"
 import GenreList from "./components/GenreList"
 import Genre from "./components/Genre"
+import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
   // LOGGED IN
@@ -102,24 +103,26 @@ export default function App() {
 
   return (
     <>
-      {/* {apiMovies
-        .filter((movie) => movie?.id === compareUser?.favoriteMovies[0].imdbid)
+      {/* Skriver ut brukerens favoritter med info fra API */}
+      {apiMovies
+        ?.filter((movie) => movie?.id === compareUser?.favoriteMovies[0].imdbid)
         .map((movie) => (
-          <div key={movie._id}>
+          <div>
             <h1>{movie.titleText.text}</h1>
+            <img src={movie.primaryImage.url} alt={movie.titleText.text} />
           </div>
-        ))} */}
+        ))}
 
-    <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
-      <Routes>
-        <Route path="/" element={<Home mainUser={mainUser} />} />
-        <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
-        <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
-        <Route path="/Sjanger" element={<GenreList allGenres={allGenres}  />} />
-        <Route path="/Sjanger/:slug" element={<Genre />} />
-      </Routes>
-    </Layout>
-    {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
+      <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
+        <Routes>
+          <Route path="/" element={<Home mainUser={mainUser} />} />
+          <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
+          <Route path="/Bruker-sammenlignet-med/:slug" element={<UserCompare />} />
+          <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
+          <Route path="/Sjanger/:slug" element={<Genre />} />
+        </Routes>
+      </Layout>
+      {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   )
 }
