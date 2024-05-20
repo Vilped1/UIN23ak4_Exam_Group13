@@ -2,20 +2,13 @@ import Header from "./Header";
 
 export default function Layout({ children, logedIn, setLogedIn, mainUser }) {
 
-    const handleClick = () => {
-        localStorage.setItem("logedIn", false)
-        setLogedIn(false)
-    }
-
     return(
     <>
         <div>
             {
                 logedIn ?
                 <>
-                    <Header mainUser={mainUser}/>
-                    <span>Brukernavn</span>
-                    <button onClick={handleClick}>Logg ut</button>
+                    <Header mainUser={mainUser} setLogedIn={setLogedIn}/>
                 </>
                 :
                 null

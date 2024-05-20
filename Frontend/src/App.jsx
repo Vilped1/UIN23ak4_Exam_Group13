@@ -97,7 +97,7 @@ export default function App() {
 
   return ( 
     <>  
-    {/* {apiMovies
+    {apiMovies
       .filter((movie) => movie.imdbid === mainUser.favoriteMovies.imdbid)
       .map((movie) => (
         <div>
@@ -105,9 +105,9 @@ export default function App() {
           <h1>{movie.titleText.text}</h1>
         </div>
       ))
-    }   */}
+    }  
 
-    <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
+    {/* <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser} >
       <Routes>
         <Route path="/" element={<Home mainUser={mainUser} />} />
         <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
@@ -116,7 +116,7 @@ export default function App() {
         <Route path="/Sjanger/:slug" element={<Genre />} />
       </Routes>
     </Layout>
-    {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />}
+    {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   )
 }
