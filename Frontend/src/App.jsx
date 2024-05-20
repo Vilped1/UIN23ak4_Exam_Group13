@@ -13,15 +13,13 @@ import Home from "./components/Home"
 import Layout from "./components/Layout"
 import GenreList from "./components/GenreList"
 import Genre from "./components/Genre"
-import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
   // LOGGED IN
-  const [logedIn, setLogedIn] = useState(sessionStorage.getItem("logedIn"))
+  const [logedIn, setLogedIn] = useState(localStorage.getItem("logedIn") === "true" ? true : false)
 
   // GENRES
   const [allGenres, setAllGenres] = useState([])
-  console.log("Sjanger", allGenres)
   const [genre, setGenre] = useState([])
 
   // MOVIES
@@ -30,16 +28,11 @@ export default function App() {
   const [matchedMovies, setMatchedMovies] = useState([])
 
   const [allUsers, setAllUsers] = useState([])
-  console.log("All users", allUsers)
+  console.log("ALLE BRUKERE", allUsers)
   // USER 1
   const [mainUser, setMainUser] = useState({})
   // USER 2
-  const [compareUser, setCompareUser] = useState({
-    _id: "627fd49e-e35d-4bab-a10f-455cd65bd45b",
-    user: "Thor",
-    favoriteMovies: ["tt0439572", "tt1114677"],
-    favoriteGenres: null,
-  })
+  const [compareUser, setCompareUser] = useState({})
 
   const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${movies.map((movie) => movie.imdbid).join(",")}`
   const options = {
@@ -111,7 +104,7 @@ export default function App() {
           <Route path="/Sjanger/:slug" element={<Genre />} />
         </Routes>
       </Layout>
-      {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
+      {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />}
     </>
   )
 }
