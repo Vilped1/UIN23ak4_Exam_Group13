@@ -27,6 +27,10 @@ export default function App() {
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
 
+  //ØNSKELISTE
+  const [wishMovie, setWishMovie] = useState([])
+  console.log("wish movie list", wishMovie)
+
   // USERS
   const [allUsers, setAllUsers] = useState([])
   console.log("All users", allUsers)
