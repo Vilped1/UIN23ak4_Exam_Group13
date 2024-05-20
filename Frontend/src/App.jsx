@@ -1,40 +1,45 @@
-import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import MovieCard from "./components/MovieCard";
-import "./App.css";
-import GenreSection from "./components/GenreSection";
-import FetchAllUsers from "../sanity/services/userService";
-import UserCompare from "./components/UserCompare";
-import { fetchAllGenres } from "../sanity/services/genreServices";
-import fetchMovies from "../sanity/services/movieServices";
-import Login from "./components/Login";
-import Home from "./components/Home";  
-import Layout from "./components/Layout";
-import GenreList from "./components/GenreList";
-import Genre from "./components/Genre";
+import { useState, useEffect } from "react"
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import MovieCard from "./components/MovieCard"
+import "./App.css"
+import GenreSection from "./components/GenreSection"
+import FetchAllUsers from "../sanity/services/userService"
+import UserCompare from "./components/UserCompare"
+import { fetchAllGenres } from "../sanity/services/genreServices"
+import fetchMovies from "../sanity/services/movieServices"
+import Login from "./components/Login"
+import Home from "./components/Home"
+import Layout from "./components/Layout"
+import GenreList from "./components/GenreList"
+import Genre from "./components/Genre"
 
 export default function App() {
+  // LOGGED IN
   const [logedIn, setLogedIn] = useState(() => {
     const data = localStorage.getItem("logedIn")
     const logedInData = JSON.parse(data)
     return logedInData || ""
   })
 
+  // GENRES
   const [allGenres, setAllGenres] = useState([])
   const [genre, setGenre] = useState([])
 
+  // MOVIES
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
-
+  const [matchedMovies, setMatchedMovies] = useState([])
   const [allUsers, setAllUsers] = useState([])
-  console.log("Alle brukere", allUsers)
-  const [mainUser, setMainUser] = useState({})
-  // () => {
-    // const data = localStorage.getItem("users")
-    // const userdata = JSON.parse(data)
-    // return userdata || ""
-  
-  //USER 2
+
+  // USER 1
+  const [mainUser, setMainUser] = useState({
+    _id: "badbfdda-8fef-4646-bc8b-3989b8e9e5c9",
+    user: "Erik",
+    favoriteMovies: ["The Flash", "Black Widow", "Godzilla", "Godzilla vs Kong"],
+    favoriteGenres: null,
+  })
+
+  // USER 2
   const [compareUser, setCompareUser] = useState({
     _id: "f0fc50da-74b9-40a8-91bd-7fa8ed61383a",
     user: "Jesper",
@@ -51,7 +56,7 @@ export default function App() {
     favoriteGenres: null,
   })
 
-  const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${movies.map((movie) => movie.imdbid).join(",")}`
+  const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${compareUser.favoriteMovies.map((movie) => movie.imdbid).join(",")}`
   const options = {
     method: "GET",
     headers: {
@@ -65,8 +70,14 @@ export default function App() {
       const response = await fetch(url, options)
       const result = await response.json()
       setApiMovies(result.results)
+      console.log("API Movies:", result.results)
+
+      //Hentet fra ChatGPT - Prompt: "Using destructuring to filter the matched movies from the API response."
+      const matched = result.results.filter(({ id }) => compareUser.favoriteMovies.some(({ imdbid }) => imdbid === id))
+      setMatchedMovies(matched)
+      console.log("Matched Movies:", matched)
     } catch (error) {
-      console.error(error)
+      console.error("Error fetching movies:", error)
     }
   }
 
@@ -82,8 +93,10 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    fetchApiMovie()
-  }, [movies])
+    if (compareUser.favoriteMovies.length > 0) {
+      fetchApiMovie()
+    }
+  }, [compareUser.favoriteMovies])
 
   const getAllGenres = async () => {
     const data = await fetchAllGenres()
