@@ -1,25 +1,21 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Login({ allUsers, mainUser, setMainUser, setLogedIn }) {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    const handleClick = (user) => {
-        
-        const found = allUsers.find(
-            element => element._id === mainUser._id
-        )
-        setMainUser(user)
+  const handleClick = (user) => {
+    const found = allUsers.find((element) => element._id === mainUser._id)
+    setMainUser(user)
 
-        if (found) {
-            navigate("/")
-            setLogedIn(true)
-            sessionStorage.setItem("user", user.user)
-            sessionStorage.setItem("logedIn", true)
-        }
-        console.log("Funnet", found)
-        console.log("MAINUSER", mainUser)
+    if (found) {
+      navigate("/")
+      setLogedIn(true)
+      localStorage.setItem("user", user.user)
     }
+    console.log("Funnet", found)
+    console.log("MAINUSER", mainUser)
+  }
 
   return (
     <>

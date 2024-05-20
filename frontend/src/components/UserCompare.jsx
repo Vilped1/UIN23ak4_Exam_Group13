@@ -1,4 +1,4 @@
-export default function UserCompare({mainUser, compareUser}) {
+export default function UserCompare({ mainUser, compareUser, apiMovies }) {
   return (
     <>
       <main>
@@ -23,5 +23,5 @@ export default function UserCompare({mainUser, compareUser}) {
         </section>
       </main>
     </>
-  );
+  )
 }

@@ -18,9 +18,7 @@ import { FaIgloo } from "react-icons/fa"
 export default function App() {
   // LOGGED IN
   const [logedIn, setLogedIn] = useState(() => {
-    const data = sessionStorage.getItem("logedIn")
-    const logedInData = JSON.parse(data)
-    return logedInData || ""
+    const data = localStorage.getItem("logedIn")
   })
 
   // GENRES
@@ -36,12 +34,11 @@ export default function App() {
   console.log("All users", allUsers)
   // USER 1
   const [mainUser, setMainUser] = useState({})
-
   // USER 2
   const [compareUser, setCompareUser] = useState({
-    _id: "badbfdda-8fef-4646-bc8b-3989b8e9e5c9",
-    user: "Erik",
-    favoriteMovies: ["tt0439572", "tt3480822", "tt0831387", "tt5034838"],
+    _id: "627fd49e-e35d-4bab-a10f-455cd65bd45b",
+    user: "Thor",
+    favoriteMovies: ["tt0439572", "tt1114677"],
     favoriteGenres: null,
   })
 
@@ -108,9 +105,9 @@ export default function App() {
 
       <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
         <Routes>
-          <Route path="/" element={<Home mainUser={mainUser} apiMovies={apiMovies} logedIn={logedIn} />} />
+          <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} compareUser={compareUser} setCompareUser={setCompareUser} apiMovies={apiMovies} logedIn={logedIn} />} />
           <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
-          <Route path="/Bruker-sammenligning" element={<UserCompare mainUser={mainUser} compareUser={compareUser} />} />
+          <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
           <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
           <Route path="/Sjanger/:slug" element={<Genre />} />
         </Routes>
