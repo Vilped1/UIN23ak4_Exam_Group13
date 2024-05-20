@@ -32,7 +32,7 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
               ?.filter((users) => users._id !== mainUser._id)
               .map((remusers) => (
                 <button key={remusers._id} onClick={() => handleClick(remusers)}>
-                  {remusers.user}
+                  <Link to="/Bruker-sammenligning">{remusers.user}</Link>
                 </button>
               ))}
           </ul>

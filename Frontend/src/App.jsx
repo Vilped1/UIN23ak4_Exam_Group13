@@ -116,7 +116,7 @@ export default function App() {
           <Route path="/Sjanger/:slug" element={<Genre />} />
         </Routes>
       </Layout>
-      {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />}
+      {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   )
 }
