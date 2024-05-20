@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import {
   fetchAllGenres,
-  fetchUserID,
+  fetchUsers,
   updateFavGenre,
-  removeAllFavGenres,
 } from "../../sanity/services/genreServices";
 
 export default function GenreList() {
@@ -25,7 +24,7 @@ export default function GenreList() {
   //deprekrert. Brukes bare til testing av brukerdata
   const fetchUserData = async () => {
     try {
-      const userResponse = await fetchUserID();
+      const userResponse = await fetchUsers();
       setUserID(userResponse);
       console.log("USER RESPONSE", userResponse);
     } catch (error) {
@@ -54,11 +53,12 @@ export default function GenreList() {
     if (selectedGenre) {
       try {
         //Fetcher ID til bruker for patching av favorittsjanger
-        const userResponse = await fetchUserID();
-        const userID = userResponse[5]._id;
-        await removeAllFavGenres(
+        const userResponse = await fetchUsers();
+        const userID = userResponse[4]._id;
+        await updateFavGenre(
           //sender userID sammen med valgt sjanger til updateFavGenre (sanity\services\genreServices.js)
-          userID
+          userID,
+          selectedGenre._id
         );
         console.log("Update selected genre", selectedGenre);
       } catch (error) {

@@ -11,7 +11,7 @@ export async function fetchAllGenres() {
   return genreData;
 }
 
-export async function fetchUserID() {
+export async function fetchUsers() {
   const userData = await client.fetch(`*[_type == "users"]{
     _id,
     user,
@@ -21,26 +21,26 @@ export async function fetchUserID() {
   return userData;
 }
 
-export async function updateFavGenre(id, genreimage, genre){
+export async function updateFavGenre(id, genreID){
   console.log("updateFavGenre ID:", id);
-  console.log("updateFavGenre GENRENAME:", genre);
+  console.log("updateFavGenre GENRENAME:", genreID);
 
- const genreFormated = {
-    genreimage: genreimage,
-    genre: genre,
+  const genreReference = {
+    _ref: genreID,
+    _type: 'genres',
   }
 
-  console.log("genreFormated:", genreFormated);
+  console.log("genreFormated:", genreReference);
 
   try {
     const result = await writeClient.patch(id)
     .setIfMissing({favoriteGenre: []})
-    .append("favoriteGenre", [genreFormated])
-    .commit({autoGenerateArrayKeys: true})
+    .append("favoriteGenre", [genreReference])
+    .commit()
 
     console.log("Patch successful! Result:", result);
 
-    return "Added successfully " + id + " " + genre;
+    return "Added successfully " + id;
   } catch (err) {
     console.error("Patch failed! Error:", err);
     return "Failed " + err.message;

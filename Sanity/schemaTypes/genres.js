@@ -1,32 +1,32 @@
-// export const images = {
-//   title: "Genres",
-//   name: "asset",
-//   type: "document",
-//   fields: [
-//     {
-//       title: "Image",
-//       name: "image",
-//       type: "image",
-//     },
-//     {
-//       title: "Image title",
-//       name: "imagetitle",
-//       type: "string"
-//   }
-//   ],
-// };
+/*  export const images = {
+   title: "Genres",
+   name: "posterImages",
+   type: "object",
+   fields: [
+     {
+      title: "Image",
+       name: "image",
+       type: "image",
+     },
+    {
+      title: "Image title",
+      name: "imagetitle",
+      type: "string"
+  }
+   ],
+ }; */
 
 export const genres = {
     title: "Sjangere",
     name: "genres",
     type: "document",
     fields: [
-      // {
-      //   title: "Genre Image",
-      //   name: "genreimage",
-      //   type: "reference",
-      //   to: [{ type: "asset"}],
-      // },
+/*        {
+         title: "Genre Image",
+         name: "genreimage",
+         type: "reference",
+         to: [{ type: "posterImages"}],
+       }, */
         {
             title: "Sjangertittel",
             name: "genre",

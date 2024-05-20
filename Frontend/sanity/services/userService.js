@@ -6,7 +6,7 @@ export default async function FetchAllUsers() {
       _id,
       user,
       "favoriteMovies": favoriteMovies[]->movietitle,
-      "favoriteGenres": favoriteGenre[]->genre
+      "favoriteGenre": favoriteGenre[]->genre
     }`);
         return data
     } catch (error) {

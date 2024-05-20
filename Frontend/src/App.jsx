@@ -14,7 +14,8 @@ import Login from "./components/Login";
 import MovieCard from "./components/MovieCard";
 import Home from "./components/Home";
 import Layout from "./components/layout";
-import GenreList from "./components/GenreList";
+/* import GenreList from "./components/GenreList"; */
+import GenreList from "./components/gl2";
 import Genre from "./components/Genre";
 import { FaIgloo } from "react-icons/fa";
 
@@ -28,7 +29,7 @@ export default function App() {
 
   // GENRES
   const [allGenres, setAllGenres] = useState([]);
-  console.log("Sjanger", allGenres);
+  /*   console.log("Sjanger", allGenres); */
   const [genre, setGenre] = useState([]);
 
   // MOVIES
@@ -37,7 +38,7 @@ export default function App() {
   const [matchedMovies, setMatchedMovies] = useState([]);
 
   const [allUsers, setAllUsers] = useState([]);
-  console.log("All users", allUsers);
+  /*   console.log("All users", allUsers); */
   // USER 1
   /* const [mainUser, setMainUser] = useState(localStorage.getItem("user")) */
   const [mainUser, setMainUser] = useState({
@@ -70,7 +71,7 @@ export default function App() {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      setApiMovies(result.results);
+      /* setApiMovies(result.results); */
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -111,6 +112,7 @@ export default function App() {
 
   return (
     <>
+      <GenreList />
       {/* Skriver ut brukerens favoritter med info fra API */}
       {/* {logedIn
         ? apiMovies
@@ -126,7 +128,7 @@ export default function App() {
 
       {/*Sammenligner filmer mellom brukere og skriver ut*/}
 
-      <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
+      {/*   <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
         <Routes>
           <Route
             path="/"
@@ -168,7 +170,7 @@ export default function App() {
           />
           <Route path="/Sjanger/:slug" element={<Genre />} />
         </Routes>
-      </Layout>
+      </Layout> */}
       {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   );
