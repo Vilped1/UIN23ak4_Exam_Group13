@@ -5,7 +5,7 @@ export default async function FetchAllUsers() {
         const data = await client.fetch(`*[_type == "users"] {
       _id,
       user,
-      "favoriteMovies": favoriteMovies[]->movietitle,
+      "favoriteMovies": favoriteMovies[]->imdbid,
       "favoriteGenres": favoriteGenres[]->genre
     }`);
         return data
