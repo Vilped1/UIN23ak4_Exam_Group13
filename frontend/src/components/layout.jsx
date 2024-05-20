@@ -8,7 +8,7 @@ export default function Layout({ children, logedIn, setLogedIn, mainUser }) {
             {
                 logedIn ?
                 <>
-                    <Header mainUser={mainUser} setLogedIn={setLogedIn}/>
+                    <Header mainUser={mainUser} logedIn={logedIn} setLogedIn={setLogedIn}/>
                 </>
                 :
                 null
