@@ -6,7 +6,7 @@ export default async function FetchAllUsers() {
       _id,
       user,
       "favoriteMovies": favoriteMovies[]->imdbid,
-      "favoriteGenres": favoriteGenres[]->genre,
+      "favoriteGenres": favoriteGenre[]->genre,
     }`);
         return data
     } catch (error) {
