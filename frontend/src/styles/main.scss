@@ -22,20 +22,25 @@ body {
       flex-direction: column;
       
     }
+
+    h2 {
+      
+    }
     
     a {
       display: flex;
       text-decoration: none;
-      color: white; 
-      margin-top: 15px; 
+    }
+ 
+
   }
-  }
+  
   
   
   article {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
   }
   
   article section {
@@ -50,6 +55,7 @@ article section ul {
     flex-direction: row; 
     gap: 9px; 
     padding: auto;
+    align-items: center;
    
 }
 
