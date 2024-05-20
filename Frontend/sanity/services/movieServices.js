@@ -1,11 +1,10 @@
-import { client } from '../client'
+import { client } from '../client';
 
-export async function fetchMovies() {
-    const data = await client.fetch(`*[_type == "movies"]{
-        _id,
+export default async function fetchMovies() {
+        const data = await client.fetch(`*[_type == "movies"]{
+        imdbid,
         movietitle,
-        "movieurl": movieurl.current,
+        "genre": genre->genre,
     }`)
-    // console.log("movie services", data)
     return data
 }

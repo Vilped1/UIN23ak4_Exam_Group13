@@ -1,18 +1,44 @@
 import { Link } from "react-router-dom"
+import UserCompare from "./UserCompare"
+import MovieCard from "./MovieCard"
 
-export default function Home({user, setUser, compareUser, setCompareUser}) {
+export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiMovies }) {
+  const handleClick = (user) => {
+    setCompareUser(user)
+    console.log("COMPAREUSER", user)
+  }
 
-    // const handleClick = (e) => {
-    //     !user ? setUser(e.target.innerText) : setCompareUser(e.target.innerText)
-    // }
-
-    return (
-        <>
-        <h1>HOME!!</h1>
-        <h2>Sammenling med</h2>
+  return (
+    <>
+      {/* Henter brukernavnet*/}
+      <h1>Hei {localStorage.getItem("user")}!</h1>
+      <article>
         <section>
-            <Link to={"/Bruker-sammenlignet-med/" + (" ", "-")}><h3>Tore Marius</h3></Link>
+          <h2>Filmer jeg skal se</h2>
+          <p>Disse filmene ligger i ønskelisten min:</p>
+          <ul>
+            {/* Lister opp favorittfilmene til mainUser */}
+            {apiMovies
+              ?.filter((movie) => mainUser?.favoriteMovies.some((favMovie) => favMovie === movie?.id))
+              .map((movie) => (
+                <MovieCard movie={movie} />
+              ))}
+          </ul>
         </section>
-        </>
-    )
+        <section>
+          <h2>Jeg skal se sammen med...</h2>
+          <ul>
+            {allUsers
+              ?.filter((users) => users._id !== mainUser._id)
+              .map((remusers) => (
+                <button key={remusers._id} onClick={() => handleClick(remusers)}>
+                  <Link to="/Bruker-sammenligning">{remusers.user}</Link>
+                </button>
+              ))}
+          </ul>
+          {/* .splice(ww._id === mainUser._id) */}
+        </section>
+      </article>
+    </>
+  )
 }

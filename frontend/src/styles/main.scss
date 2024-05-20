@@ -1,8 +1,17 @@
-@import '_variables.scss';
+@import 'footer.scss';
+@import 'genre.scss';
+@import 'header.scss';
+@import 'moviecard.scss';
+@import 'variables.scss';
 
 body{
     font-family: $font;
-    background-color: Grey;  
+    background-color: $darkGrey;  
+
+    img{
+      width: 200px;
+      height: 300px;
+    }
 
     main{
        color: $white;
@@ -17,8 +26,6 @@ body{
     color: white;
     align-items: center;
     cursor: pointer;
-
-
     border-radius: 20px;
 
     img{
@@ -33,4 +40,8 @@ body{
     font-size: 15px;
     font-weight: 100;
     }
+}
+
+@media only screen and (min-width: 800px){
+    
 }

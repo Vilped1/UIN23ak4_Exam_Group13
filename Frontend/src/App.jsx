@@ -1,85 +1,122 @@
 import { useState, useEffect } from "react"
-import React from "react"
-import Layout from "./components/Layout"
-import { Route, Routes } from "react-router-dom"
-import Home from "./components/Home"
-import Genres from "./components/Genres"
-import UserCompare from "./components/UserCompare"
-import OneGenre from "./components/OneGenre"
-import { FetchAllUsers } from "../sanity/services/userServices"
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
 import MovieCard from "./components/MovieCard"
+import "./App.css"
+import GenreSection from "./components/GenreSection"
+import FetchAllUsers from "../sanity/services/userService"
+import UserCompare from "./components/UserCompare"
+import { fetchAllGenres } from "../sanity/services/genreServices"
+import fetchMovies from "../sanity/services/movieServices"
+import Login from "./components/Login"
+
+import Home from "./components/Home"
+import Layout from "./components/Layout"
+import GenreList from "./components/GenreList"
+import Genre from "./components/Genre"
+import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
+  // LOGGED IN
+  const [logedIn, setLogedIn] = useState(() => {
+    const data = localStorage.getItem("logedIn")
+    const logedInData = JSON.parse(data)
+    return logedInData || ""
+})
+
+  // GENRES
+  const [allGenres, setAllGenres] = useState([])
+  console.log("Sjanger", allGenres)
+  const [genre, setGenre] = useState([])
+
+  // MOVIES
+  const [movies, setMovies] = useState([])
+  const [apiMovies, setApiMovies] = useState([])
+  const [matchedMovies, setMatchedMovies] = useState([])
+
   const [allUsers, setAllUsers] = useState([])
-  const [user1, setUser1] = useState("Thor")
-  const [user2, setUser2] = useState("Erik")
-  const [user1Favorites, setUser1Favorites] = useState([])
-  const [user2Favorites, setUser2Favorites] = useState([])
-  const [commonFavorites, setCommonFavorites] = useState([])
-  console.log("Common", commonFavorites)
+  console.log("All users", allUsers)
+  // USER 1
+  const [mainUser, setMainUser] = useState(localStorage.getItem("user"))
 
-  // API KEY: 9bc8085aa8msh993744cc96d23a2p16fabajsn08b818614d14
+  // USER 2
+  const [compareUser, setCompareUser] = useState({
+    _id: "627fd49e-e35d-4bab-a10f-455cd65bd45b",
+    user: "Thor",
+    favoriteMovies: ["tt0439572", "tt1114677"],
+    favoriteGenres: null,
+  })
 
-  //Henter alle brukere
+  const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${movies.map((movie) => movie.imdbid).join(",")}`
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "f97dd82b1amshf8b2c4b90d6a205p1f04a7jsneefafbdfb4fa",
+      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+    },
+  }
+
+  const fetchApiMovie = async () => {
+    try {
+      const response = await fetch(url, options)
+      const result = await response.json()
+      setApiMovies(result.results)
+    } catch (error) {
+      console.error("Error fetching movies:", error)
+    }
+  }
+
   const getAllUsers = async () => {
-    const users = await FetchAllUsers()
-    console.log(users)
-    setAllUsers(users)
+    const data = await FetchAllUsers()
+    setAllUsers(data)
   }
 
   useEffect(() => {
     getAllUsers()
+    getAllGenres()
+    getAllMovies()
   }, [])
 
-  //Filtrer ut enkelte brukeres favorittfilmer
-  const filterUserFavorites = (selectedUser) => {
-    const userData = allUsers.filter((user) => user.user === selectedUser)
-    console.log(selectedUser, userData)
-    return userData.map((user) => user.favoriteMovies).flat()
+  useEffect(() => {
+    fetchApiMovie()
+  }, [movies])
+
+  const getAllGenres = async () => {
+    const data = await fetchAllGenres()
+    setAllGenres(data)
   }
 
-  useEffect(() => {
-    setUser1Favorites(filterUserFavorites(user1))
-    setUser2Favorites(filterUserFavorites(user2))
-  }, [user1, user2])
-
-  //Finner felles favorittfilmer
-  useEffect(() => {
-    const common = user1Favorites.filter((movie) => user2Favorites.includes(movie))
-    setCommonFavorites(common)
-  }, [user1Favorites, user2Favorites])
-
-  // Håndterer klikk på brukerknapper
-  const handleUserClick = async (user) => {
-    setUser1(user.user) // Velg bruker
-    const userData = await fetchUserFavoritesAndGenres(user.user) // Henter brukerens favorittfilmer og sjangere
-    setFavoriteMovies(userData.favoriteMovies) // Oppdater favorittfilmer
-    setFavoriteGenres(userData.favoriteGenres) // Oppdater favorittsjangere
-    navigate(`/movicard/${user.user}`) // Naviger til MovieCard for den valgte brukeren
+  const getAllMovies = async () => {
+    const data = await fetchMovies()
+    setMovies(data)
   }
 
   return (
     <>
-      <Layout user1={user1}>
+      {/* Skriver ut brukerens favoritter med info fra API */}
+      {/* {logedIn
+        ? apiMovies
+            ?.filter((movie) => mainUser.favoriteMovies.some((favMovie) => favMovie === movie.id))
+            .map((movie) => (
+              <div key={movie.id}>
+                <h1>{`${movie.titleText.text} (${movie.releaseYear.year})`}</h1>
+                <img src={movie.primaryImage.url} alt={movie.titleText.text} />
+              </div>
+            ))
+        : null} */}
+      {/* {logedIn ? apiMovies?.filter((movie) => mainUser.favoriteMovies.some((favMovie) => favMovie === movie.id)).map((movie) => <MovieCard movie={movie} />) : null} */}
+
+      {/*Sammenligner filmer mellom brukere og skriver ut*/}
+
+      <Layout logedIn={logedIn} setLogedIn={setLogedIn} mainUser={mainUser}>
         <Routes>
-          <Route index element={<Home />} />
-          {/* <Route
-            path="/:user"
-            element={<Users user1={user1} favoriteMovies={favoriteMovies} favoriteGenres={favoriteGenres} />} // Sender data som props
-          /> */}
+          <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} compareUser={compareUser} setCompareUser={setCompareUser} apiMovies={apiMovies} logedIn={logedIn} />} />
+          <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
+          <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
+          <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
+          <Route path="/Sjanger/:slug" element={<Genre />} />
         </Routes>
       </Layout>
-
-      {!user1 && ( // Viser brukerliste kun hvis ingen bruker er aktiv
-        <div>
-          <h1>Brukere</h1>
-          {allUsers.map((user) => (
-            <button key={user._id} onClick={() => handleUserClick(user)}>
-              {user.user}
-            </button>
-          ))}
-        </div>
-      )}
+      {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
     </>
   )
 }
