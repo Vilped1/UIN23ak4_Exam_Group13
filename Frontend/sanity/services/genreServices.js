@@ -5,7 +5,6 @@ export async function fetchAllGenres() {
   const genreData = await client.fetch(`*[_type == "genres"] | order(imagetitle asc){
     _id,
     genre,
-    _type,
     "genreurl": genreurl[]->current,
     }`)
   return genreData;

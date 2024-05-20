@@ -17,7 +17,11 @@ import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
   // LOGGED IN
-  const [logedIn, setLogedIn] = useState(sessionStorage.getItem("logedIn"))
+  const [logedIn, setLogedIn] = useState(() => {
+    const data = localStorage.getItem("logedIn")
+    const logedInData = JSON.parse(data)
+    return logedInData || ""
+})
 
   // GENRES
   const [allGenres, setAllGenres] = useState([])
@@ -32,7 +36,8 @@ export default function App() {
   const [allUsers, setAllUsers] = useState([])
   console.log("All users", allUsers)
   // USER 1
-  const [mainUser, setMainUser] = useState({})
+  const [mainUser, setMainUser] = useState(localStorage.getItem("user"))
+
   // USER 2
   const [compareUser, setCompareUser] = useState({
     _id: "627fd49e-e35d-4bab-a10f-455cd65bd45b",
@@ -111,7 +116,7 @@ export default function App() {
           <Route path="/Sjanger/:slug" element={<Genre />} />
         </Routes>
       </Layout>
-      {/* {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />} */}
+      {!logedIn ? <Navigate to="Logg-inn" replace /> : <Navigate to="/" replace />}
     </>
   )
 }
