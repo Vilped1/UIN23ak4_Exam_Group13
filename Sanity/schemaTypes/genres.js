@@ -27,6 +27,17 @@ export const genres = {
       //   type: "reference",
       //   to: [{ type: "asset"}],
       // },
+      {
+        title: "key",
+        name: "_key",
+        type: "slug",
+        options: {
+          source: "_key",
+          slugify: input => input
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+        }
+      },
         {
             title: "Sjangertittel",
             name: "genre",
