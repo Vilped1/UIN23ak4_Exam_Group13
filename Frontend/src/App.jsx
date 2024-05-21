@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
 import MovieCard from "./components/MovieCard"
 import "./App.css"
-import GenreSection from "./components/GenreSection"
 import FetchAllUsers from "../sanity/services/userService"
 import UserCompare from "./components/UserCompare"
 import { fetchAllGenres } from "../sanity/services/genreServices"
@@ -30,8 +29,8 @@ export default function App() {
   const [apiMovies, setApiMovies] = useState([])
 
   //ØNSKELISTE
-  const [wishMovie, setWishMovie] = useState([])
-  console.log("wish movie list", wishMovie)
+  const [wishList, setWishList] = useState([])
+  console.log("wish movie list", wishList)
 
   // USERS
   const [allUsers, setAllUsers] = useState([])
@@ -65,7 +64,9 @@ export default function App() {
   const getAllUsers = async () => {
     const data = await FetchAllUsers()
     setAllUsers(data)
+    setWishList(data)
   }
+
 
   useEffect(() => {
     getAllUsers()
@@ -112,7 +113,7 @@ export default function App() {
             <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
             <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
             <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
-            <Route path="/Sjanger/:slug" element={<Genre />} />
+            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} mainUser={mainUser} allGenres={allGenres} movies={movies} setMovies={setMovies} />} />
           </Routes>
         </Layout>
       ) : (
