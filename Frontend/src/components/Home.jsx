@@ -21,7 +21,7 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
             {apiMovies
               ?.filter((movie) => mainUser?.favoriteMovies.some((favMovie) => favMovie === movie?.id))
               .map((movie) => (
-                <article key={movie._id}>
+                <article key={movie._id} id="movieCard">
                   <MovieCard movie={movie} />
                 </article>
               ))}

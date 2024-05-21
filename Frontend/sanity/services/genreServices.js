@@ -4,7 +4,6 @@ import { client, writeClient } from "../client";
 export async function fetchAllGenres() {
   const genreData = await client.fetch(`*[_type == "genres"] | order(genre asc){
     _id,
-    _key,
     genre,
     genreurl,
     }`)

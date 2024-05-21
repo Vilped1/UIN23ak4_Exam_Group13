@@ -14,6 +14,7 @@ body{
 
     // Home!!
     section{
+
       h2{
         margin-bottom: 0;
         text-wrap: nowrap;
@@ -75,12 +76,12 @@ body{
 
 @media only screen and (min-width: 500px){
   main{
-    color: $white;
 
     // Home!!
     #homePage{
      display: flex;
      justify-content: space-between;
+    //  flex-wrap: wrap;
      
      #homeMovie{
       display: flex;
