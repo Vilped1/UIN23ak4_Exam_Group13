@@ -12,8 +12,13 @@ body{
   main{
       color: $white;
 
+      li{
+        list-style: none;
+      }
+
     // Home!!
     section{
+
       h2{
         margin-bottom: 0;
         text-wrap: nowrap;
@@ -51,7 +56,6 @@ body{
 
         ul{
           padding-left: 1rem;
-          list-style: none;
         }
       }
     }
@@ -75,12 +79,12 @@ body{
 
 @media only screen and (min-width: 500px){
   main{
-    color: $white;
 
     // Home!!
     #homePage{
      display: flex;
      justify-content: space-between;
+    //  flex-wrap: wrap;
      
      #homeMovie{
       display: flex;

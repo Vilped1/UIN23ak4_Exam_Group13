@@ -34,7 +34,6 @@ header {
     header{
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: 2rem;
         justify-content: space-between;
         align-items: center;
 
@@ -53,13 +52,6 @@ header {
     
             #user{
                 margin-bottom: .25rem;
-
-                button{
-                    background: bottom;
-                    color: $white;
-                    border: hidden;
-                    text-align: end;
-                }
             }
         }
     }

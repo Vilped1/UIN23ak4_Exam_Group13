@@ -55,7 +55,7 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
               apiMovies
                 ?.filter((movie) => matchedWish?.some((wishMovie) => wishMovie === movie.id))
                 .map((movie) => (
-                  <article key={movie._id}>
+                  <article key={movie._id} id="movieCard">
                     <MovieCard movie={movie} />
                   </article>
                 ))
@@ -71,7 +71,7 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
               apiMovies
                 ?.filter((movie) => matchedMovies?.some((favMovie) => favMovie === movie.id))
                 .map((movie) => (
-                  <article key={movie._id}>
+                  <article key={movie._id} id="movieCard">
                     <MovieCard movie={movie} />
                   </article>
                 ))
@@ -105,7 +105,7 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
             apiMovies
               ?.filter((movie) => matchedWishFavorites?.some((favMovie) => favMovie === movie.id))
               .map((movie) => (
-                <article key={movie._id}>
+                <article key={movie._id} id="movieCard">
                   <MovieCard movie={movie} />
                 </article>
               ))

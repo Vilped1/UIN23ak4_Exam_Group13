@@ -1,13 +1,8 @@
 //Importerer react hooks, reactIcons
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 //Link som bruker i routing for navigasjon
 import { Link } from "react-router-dom";
-import {
-  fetchAllGenres,
-  updateFavGenre,
-} from "../../sanity/services/genreServices";
-import FetchAllUsers from "../../sanity/services/userService";
 
 //Tar imot props fra App.jsx
 export default function GenreList({ allGenres, setGenre }) {
@@ -34,18 +29,19 @@ export default function GenreList({ allGenres, setGenre }) {
       }
     })
   }
+  //
 
   //HTML-struktur med tagger, classer og id for scss
   return (
     <>
       <h2>Sjangere</h2>
-      <ul id="genreSection">
+      <ul id="genreList">
         {/* Maper allGenres array for å skrive ut alle sjangere fra genreServicec.js(sanity fetch)*/}
         {allGenres?.map((genre, index) => (
-          <li key={index} id={genre}>
+          <li key={index} id={genre.genre}>
             {/* Bruker Link navigere ved bruk av handleclick slik at man blir sendt videre til den sjanger man trykker. endrer URL og rendret side */}
             <Link onClick={() => handleGenre(genre)} to={"/Sjanger/" + genre.genreurl.current}>
-              <h2>{genre.genre.replace(("-"), (" "))}</h2>
+              {genre.genre.replace(("-"), (" "))}
             </Link>
             {/* Viser stjerneikonet på sjangerlista. den er for å sette favoritt */}
             <span className={`star ${active.includes(genre) ? "active" : ""}`} onClick={() => handleClick(genre)}>

@@ -22,7 +22,7 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
             {apiMovies
               ?.filter((movie) => mainUser?.favoriteMovies.some((favMovie) => favMovie === movie?.id))
               .map((movie) => (
-                <article key={movie._id}>
+                <article key={movie._id} id="movieCard">
                   <MovieCard movie={movie} />
                 </article>
               ))}
@@ -35,9 +35,11 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
             {allUsers
               ?.filter((users) => users._id !== mainUser._id)
               .map((remusers) => (
-                <Link to={`/Bruker-sammenligning`} key={remusers._id} onClick={() => handleClick(remusers)}>
-                  {remusers.user}
-                </Link>
+                <li key={remusers._id}>
+                  <Link to={`/Bruker-sammenligning`} onClick={() => handleClick(remusers)}>
+                    {remusers.user}
+                  </Link>
+                </li>
               ))}
           </ul>
           {/* Bruker link for å kunne sammenligne innlogget bruker med en annen */}

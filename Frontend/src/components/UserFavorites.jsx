@@ -7,7 +7,9 @@ export default function UserFavorites({ apiMovies, mainUser }) {
         {apiMovies
           ?.filter((movie) => mainUser.favoriteMovies.some((favMovie) => favMovie === movie.id))
           .map((movie) => (
-            <MovieCard movie={movie} />
+            <article key={movie._id} id="movieCard">
+              <MovieCard movie={movie} />
+            </article>
           ))}
       </section>
     </>
