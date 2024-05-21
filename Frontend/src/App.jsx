@@ -1,6 +1,4 @@
-//Importerer hooks
 import { useState, useEffect } from "react"
-//Importerer React Router for rammeverket av nettsiden og for å rendre flere komponenter på samme side
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
 //Importerer sanity servicec og componenter
 import FetchAllUsers from "../sanity/services/userService"
