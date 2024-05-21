@@ -21,7 +21,7 @@ export default function Genre({ apiMovies, mainUser, allGenres, movies, setMovie
   return (
     <>
       <section>
-        <h2>sjangeren</h2>
+        <h2>Sjangeren</h2>
       </section>
 
     </>

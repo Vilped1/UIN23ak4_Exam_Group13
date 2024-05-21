@@ -6,7 +6,8 @@
 
 body{
     font-family: $font;
-    background-color: $darkGrey;  
+    background-color: $darkGrey; 
+    padding: 0 .5rem; 
 
     img{
       width: 200px;
@@ -15,25 +16,41 @@ body{
 
     main{
        color: $white;
+      //  display: flex;
 
-       #homeMovie{
-         display: flex;
-         gap: 5rem;
+      // Home!!
+      section{
+        h2{
+          margin-bottom: 0;
+        }
+        
+        p{
+          margin-top: 0;
+        }
+      }
+
+      #compare {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1rem;
        }
 
-       #compare {
-         display: flex;
-         flex-direction: column;
-
-         a{
-          text-decoration: none;
-          color: $white;
-          margin: .25rem;
-         }
+       a{
+        text-decoration: none;
+        color: $white;
+        margin: .25rem;
        }
-       
+
+      // UserCompare!!
+       #comparePage{
+
+        #genreCompare{
+          width: 25%;
+        }
+       }
     }
 
+    // Login!!
     #logginn{
       text-align: center;
 
@@ -73,9 +90,30 @@ body{
   main{
     color: $white;
 
+    // Home!!
     #homePage{
      display: flex;
      justify-content: space-between;
+    //  margin: 1rem;
+     gap: 5rem;
+     
+     #homeMovie{
+      display: flex;
+      gap: 5rem;
+     }
     }
+
+    // UserCompare!!
+    #comparePage{
+      display: flex;
+      gap: 5rem;
+      justify-content: space-between;
+    }
+
+  }
+  
+  // Login!!
+  #logginn{
+    margin-top: 5rem;
   }
 }

@@ -43,55 +43,57 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
 
   return (
     <>
-      <main>
+      {/* <main> */}
         <h2>
           Forslag for {mainUser.user} og {compareUser.user}
         </h2>
-        <section>
-          <h3>Catch up!</h3>
-          <p>Oversikt over filmer, som begge brukere har på watchlist</p>
-          {matchedWish.length > 0 ? (
-            apiMovies
-              ?.filter((movie) => matchedWish?.some((wishMovie) => wishMovie === movie.id))
-              .map((movie) => (
-                <article key={movie._id}>
-                  <MovieCard movie={movie} />
-                </article>
-              ))
-          ) : (
-            <p>Dere har ingen felles filmer på ønskelisten</p>
-          )}
-        </section>
-        <section>
-          <h3>Go safe!</h3>
-          <p>Oversikt over felles favorittfilmer</p>
-          {matchedMovies.length > 0 ? (
-            apiMovies
-              ?.filter((movie) => matchedMovies?.some((favMovie) => favMovie === movie.id))
-              .map((movie) => (
-                <article key={movie._id}>
-                  <MovieCard movie={movie} />
-                </article>
-              ))
-          ) : (
-            <p>Dere har ingen felles favorittfilmer</p>
-          )}
-        </section>
-        <section>
-          <h3>Utforsk!</h3>
-          {/* Skrive ut liste over favorittsjanger til begge brukere (SOM MATCHER BEGGE BRUKERE SOM BEGGE TO HAR OG LIKER) */}
-          <ul>
-            {matchedGenres.length > 0 ? (
-              matchedGenres?.map((genre) => (
-                <li key={genre._id}>
-                  <Link to="/Sjanger/">{genre}</Link>
-                </li>
-              ))
+        <div id="comparePage">
+          <section>
+            <h3>Catch up!</h3>
+            <p>Oversikt over filmer, som begge brukere har på watchlist</p>
+            {matchedWish.length > 0 ? (
+              apiMovies
+                ?.filter((movie) => matchedWish?.some((wishMovie) => wishMovie === movie.id))
+                .map((movie) => (
+                  <article key={movie._id}>
+                    <MovieCard movie={movie} />
+                  </article>
+                ))
             ) : (
-              <p>Dere har ingen felles favorittsjangere</p>
+              <p>Dere har ingen felles filmer på ønskelisten</p>
             )}
-          </ul>
-        </section>
+          </section>
+          <section>
+            <h3>Go safe!</h3>
+            <p>Oversikt over felles favorittfilmer</p>
+            {matchedMovies.length > 0 ? (
+              apiMovies
+                ?.filter((movie) => matchedMovies?.some((favMovie) => favMovie === movie.id))
+                .map((movie) => (
+                  <article key={movie._id}>
+                    <MovieCard movie={movie} />
+                  </article>
+                ))
+            ) : (
+              <p>Dere har ingen felles favorittfilmer</p>
+            )}
+          </section>
+          <section id="genreCompare">
+            <h3>Utforsk!</h3>
+            {/* Skrive ut liste over favorittsjanger til begge brukere (SOM MATCHER BEGGE BRUKERE SOM BEGGE TO HAR OG LIKER) */}
+            <ul>
+              {matchedGenres.length > 0 ? (
+                matchedGenres?.map((genre) => (
+                  <li key={genre._id}>
+                    <Link to={"/Sjanger/"+ genre.toLowerCase()}>{genre.replaceAll("-", " ")}</Link>
+                  </li>
+                ))
+              ) : (
+                <p>Dere har ingen felles favorittsjangere</p>
+              )}
+            </ul>
+          </section>
+        </div>
         <section>
           <h2>Ønskelister og favoritter</h2>
 
@@ -109,7 +111,7 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
             <p>Her er det tomt!</p>
           )}
         </section>
-      </main>
+      {/* </main> */}
     </>
   )
 }
