@@ -11,7 +11,9 @@ export default function Header({ setMainUser, mainUser, setCompareUser, setLoged
 
   return (
     <>
+
       <header>
+        {/*Sender deg til startsiden*/}  
         <Link to="/">
           <h1>What To See?</h1>
         </Link>
@@ -21,13 +23,16 @@ export default function Header({ setMainUser, mainUser, setCompareUser, setLoged
               <BiMoviePlay /> Hva skal jeg se?
             </h3>
           </Link>
+          {/*Sender deg til sjangere*/} 
           <Link to="/Sjanger">
             <h3>Bla gjennom sjangere</h3>
           </Link>
           <section id="user">
             <h3>
+              {/*Henter navnet til inlogget bruker*/} 
               <FaUserCircle /> {mainUser.user}
             </h3>
+            {/*Logger ut brukeren*/} 
             <button onClick={handleClick}>Logg ut</button>
           </section>
         </section>

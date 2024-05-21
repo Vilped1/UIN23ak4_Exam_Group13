@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 export default function MovieCard({ movie }) {
   return (
     <>
+    {/*Henter bilde, title,release Year */} 
       <article id="movieCard">
       <a href={`https://www.imdb.com/title/${movie.id}/`}>
         <img src={movie.primaryImage.url} alt={movie.titleText.text} />
