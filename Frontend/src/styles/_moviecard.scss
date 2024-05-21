@@ -1,0 +1,21 @@
+@import '_variables.scss';
+
+#movieCard{
+  display: flex;
+  margin-right: 4rem;
+  max-width: 200px;
+
+  img{
+    width: 200px;
+    height: 300px;
+  }
+
+  h3, p{
+    margin: 0;
+    text-wrap: wrap;
+  }
+
+  p{
+    margin-bottom: 2rem;
+  }
+}

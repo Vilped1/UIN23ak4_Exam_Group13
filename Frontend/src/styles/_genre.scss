@@ -1,0 +1,215 @@
+@import '_variables.scss';
+
+#genreList{
+    display: block;
+    width: 200px;
+    padding-left: 1rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-right: solid 2px white;
+
+
+    li {
+        display: flex;
+        align-items: center;
+        margin-right: 0.5rem;
+        gap: 5px;
+        height: 40px;
+        margin-bottom: 10px;
+        justify-content: space-between;
+        border-right: none;
+
+        .star {
+            background-color: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.25rem;
+            padding: 0;
+            margin-right: 0;
+            cursor: pointer;
+
+        }
+
+        a{
+            color: $white;
+            text-decoration: none;
+        }
+
+        .active{
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+@media only screen and (min-width: 500px){
+    #genrePage{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+
+// JESPER!!
+// .genreSection{
+//   flex-direction: column;
+//   top: 70px;
+//   gap: 2rem;
+//   float: left;
+  
+//   position: sticky;
+//   overflow: scroll;
+//   scrollbar-width: none;
+  
+//   align-items: center;
+//   justify-content: center;
+  
+//   width: 200px;
+//   height: 100vh;
+//   border-right: solid 2px white;
+//   margin: 1rem 2rem 0 0;
+//   padding-top: 1rem;
+//   padding-bottom: 3rem;
+
+// }
+// .selectedGenre{
+//   margin-left: 2rem;
+// }
+// .active{
+//   scale: 1.1;
+//   box-sizing: border-box;
+//   border: 2px solid white;
+//   transition: ease .3s;
+// }
+// .genreCard{
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+
+//   width: 10rem;
+//   height: 75px;
+//   margin: 0 auto 1rem auto;
+//   border-radius: 10px;
+  
+//   background-size: cover;
+//   background-clip: content-box;
+//   background-repeat: no-repeat;
+//   background-color: rgba(0, 0, 0, 0.5); 
+
+//   h3{
+//     margin: 0;
+//   }
+
+//   &:nth-child(1){
+//     background-position: 0px -25px;
+//   }
+//   &:nth-child(2){
+//     background-position: 0px -80px;
+//   }
+//   &:nth-child(3){
+//     background-position: 0px -50px;
+//   }
+//   &:nth-child(4){
+//     background-position: 0px -85px;
+//   }
+//   &:nth-child(5){
+//     background-position: 0px -35px;
+//   }
+//   &:nth-child(6){
+//     background-position: 0px -35px;
+//   }
+//   &:nth-child(7){
+//     background-position: 0px -65px;
+//   }
+//   &:nth-child(8){
+//     background-position: 0px -145px;
+//   }
+//   &:nth-child(9){
+//     background-position: 0px -85px;
+//   }
+//   &:nth-child(10){
+//     background-position: 0px -50px;
+//   }
+//   &:nth-child(11){
+//     background-position: 0px -12px;
+//   }
+//   &:nth-child(12){
+//     background-position: 0px -15px;
+//   }
+//   &:nth-child(13){
+//     background-position: 0px -70px;
+//   }
+//   &:nth-child(14){
+//     background-position: 0px -35px;
+//   }
+//   &:nth-child(15){
+//     background-position: 0px -30px;
+//   }
+//   &:nth-child(16){
+//     background-position: 0px -70px;
+//   }
+//   &:nth-child(17){
+//     background-position: 0px -110px;
+//   }
+//   &:nth-child(18){
+//     background-position: 0px -90px;
+//   }
+//   &:nth-child(19){
+//     background-position: 0px -45px;
+//   }
+//   &:nth-child(20){
+//     background-position: 0px -25px;
+//   }
+//   &:nth-child(21){
+//     background-position: 0px -35px;
+//   }
+//   &:nth-child(22){
+//     background-position: 0px -35px;
+//   }
+//   &:nth-child(23){
+//     background-position: 0px -50px;
+//   }
+//   &:nth-child(24){
+//     background-position: 0px -60px;
+//   }
+//   &:nth-child(25){
+//     background-position: 0px -15px;
+//   }
+//   &:nth-child(26){
+//     background-position: 0px -110px;
+//   }
+//   &:nth-child(27){
+//     background-position: 0px -95px;
+//   }
+// }
+
+// @media (max-width: 800px) {
+//   .genreSection{
+//     display: flex;
+//     flex-direction: row;
+//     gap: 2rem;
+//     overflow: scroll;
+//     scrollbar-width: auto;
+//     align-items: center;
+//     justify-content: flex-start;
+//     position: static;
+//     width: 100%; 
+//     height: auto;
+//     margin-bottom: 1rem;
+//   }
+//   .genreCard{
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: center;
+
+//     min-width: 10rem;
+//     height: 75px;
+//     left: 20px;
+//     margin-top: 1rem;
+//     margin-bottom: 1rem;
+//     position: relative;
+//     border-radius: 10px;
+
+//   }
+// }

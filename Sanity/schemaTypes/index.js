@@ -1,7 +1,7 @@
 import { genres } from "./genres"
 import { movies } from "./movies"
-import { images } from "./genres"
-import { favGenre, user } from "./users"
+// import { images } from "./genres"
+import {users} from "./users"
 
 
-export const schemaTypes = [genres, movies, images, user, favGenre]
+export const schemaTypes = [genres, movies, users]
