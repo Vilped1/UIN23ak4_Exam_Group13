@@ -3,15 +3,9 @@ import { FaRegStar, FaStar } from "react-icons/fa"
 import { Link } from "react-router-dom"
 
 export default function GenreList({ allGenres, setGenre }) {
-export default function GenreList({ allGenres, setGenre }) {
   const [active, setActive] = useState([])
 
-  const handleGenre = (genre) => {
-    setGenre(genre)
-  }
-
   // Chat-GPT
-  const handleClick = (clickedGenre) => {
   const handleGenre = (genre) => {
     setGenre(genre)
   }
@@ -20,10 +14,11 @@ export default function GenreList({ allGenres, setGenre }) {
   const handleClick = (clickedGenre) => {
     setActive((prevActive) => {
       if (prevActive.includes(clickedGenre)) {
-      if (prevActive.includes(clickedGenre)) {
-        return prevActive.filter((genre) => genre !== clickedGenre)
-      } else {
-        return [...prevActive, clickedGenre]
+        if (prevActive.includes(clickedGenre)) {
+          return prevActive.filter((genre) => genre !== clickedGenre)
+        } else {
+          return [...prevActive, clickedGenre]
+        }
       }
     })
   }

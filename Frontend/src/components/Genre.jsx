@@ -22,7 +22,9 @@ export default function Genre({ apiMovies, mainUser, allGenres, movies, setMovie
         {apiMovies
           ?.filter((movie) => movieByGenre?.some((genreMovie) => genreMovie.imdbid === movie.id))
           .map((movie) => (
-            <MovieCard movie={movie} />
+            <article key={movie._id}>
+              <MovieCard movie={movie} />
+            </article>
           ))}
       </section>
     </>
