@@ -50,32 +50,22 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
         <section>
           <h3>Catch up!</h3>
           <p>Oversikt over filmer, som begge brukere har på watchlist</p>
-          {matchedWish.length > 0 ? (
-            apiMovies
-              ?.filter((movie) => matchedWish?.some((wishMovie) => wishMovie === movie.id))
-              .map((movie) => (
-                <article key={movie._id}>
-                  <MovieCard movie={movie} />
-                </article>
-              ))
-          ) : (
-            <p>Dere har ingen felles filmer på ønskelisten</p>
-          )}
+          {apiMovies
+            ?.filter((movie) => matchedWish?.some((wishMovie) => wishMovie === movie.id))
+            .map((movie) => (
+              <MovieCard movie={movie} />
+            ))}
         </section>
         <section>
           <h3>Go safe!</h3>
           <p>Oversikt over felles favorittfilmer</p>
-          {matchedMovies.length > 0 ? (
-            apiMovies
-              ?.filter((movie) => matchedMovies?.some((favMovie) => favMovie === movie.id))
-              .map((movie) => (
-                <article key={movie._id}>
-                  <MovieCard movie={movie} />
-                </article>
-              ))
-          ) : (
-            <p>Dere har ingen felles favorittfilmer</p>
-          )}
+          {apiMovies
+            ?.filter((movie) => matchedMovies?.some((favMovie) => favMovie === movie.id))
+            .map((movie) => (
+              <article key={movie._id}>
+                <MovieCard movie={movie} />
+              </article>
+            ))}
         </section>
         <section>
           <h3>Utforsk!</h3>
@@ -94,17 +84,15 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
         </section>
         <section>
           <h2>Ønskelister og favoritter</h2>
-
-          {matchedWishFavorites > 0 ? (
-            (<p>Dere har noen felles filminteresser!?</p>)(
-              apiMovies
-                ?.filter((movie) => matchedWishFavorites?.some((favMovie) => favMovie === movie.id))
-                .map((movie) => (
-                  <article key={movie._id}>
-                    <MovieCard movie={movie} />
-                  </article>
-                ))
-            )
+          <p>Dere har noen felles filminteresser!?</p>
+          {matchedWishFavorites ? (
+            apiMovies
+              ?.filter((movie) => matchedWishFavorites?.some((favMovie) => favMovie === movie.id))
+              .map((movie) => (
+                <article key={movie._id}>
+                  <MovieCard movie={movie} />
+                </article>
+              ))
           ) : (
             <p>Her er det tomt!</p>
           )}

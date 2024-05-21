@@ -12,7 +12,7 @@ export default function MovieCard({ movie }) {
         <img src={movie.primaryImage.url} alt={movie.titleText.text} />
       </a>
       <section id="movieInfo">
-        <h3>{movie.titleText.text}</h3>
+        <a href={`https://www.imdb.com/title/${movie.id}/`}>{movie.titleText.text}</a>
         <p>{movie.releaseYear.year}</p>
       </section>
     </>

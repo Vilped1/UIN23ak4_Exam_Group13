@@ -1,29 +1,30 @@
-import MovieCard from "./MovieCard";
+import MovieCard from "./MovieCard"
+import { useEffect, useState } from "react"
 
-export default function Genre({ apiMovies, mainUser, allGenres, movies, setMovies }) {
+export default function Genre({ apiMovies, mainUser, allGenres, movies, setMovies, genre }) {
+  const [movieByGenre, setMovieByGenre] = useState([])
+  const filterMoviesByGenre = async (genre) => {
+    const filterByGenre = await movies?.filter((movie) => movie?.genre === genre?.genre)
+    console.log("Movies", movies)
+    console.log("Genre", genre)
+    console.log("FilterByGenre", filterByGenre)
+    setMovieByGenre(filterByGenre)
+  }
 
-  console.log("api movies", apiMovies)
-  console.log("sjangere", allGenres)
-  console.log("brukers fav", mainUser)
-  console.log("filmer", movies)
-
-  const filGenres = apiMovies.filter((something) => {
-    mainUser?.favoriteMovies.some((fav) => fav.imdbid === movies.id)
-  })
-
-
-  movies.map((movie) => movie.genre)
-  const filteredGenres = allGenres?.filter((movie) => mainUser?.favoriteGenres.some((favMovie) => favMovie.genre === movies?.genre)).map((movie) => apiMovies)
-
-  // console.log("Filtered Movies:", filteredGenres);
-  console.log("Fil Movies:", filGenres);
+  useEffect(() => {
+    filterMoviesByGenre(genre)
+  }, [genre])
 
   return (
     <>
       <section>
         <h2>sjangeren</h2>
+        {apiMovies
+          ?.filter((movie) => movieByGenre?.some((genreMovie) => genreMovie.imdbid === movie.id))
+          .map((movie) => (
+            <MovieCard movie={movie} />
+          ))}
       </section>
-
     </>
   )
 }
