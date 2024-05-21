@@ -3,6 +3,7 @@ import UserCompare from "./UserCompare"
 import MovieCard from "./MovieCard"
 
 export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiMovies }) {
+  //Bruker handleClick for å kunne velge en ikke innlogget bruker å sammenligne 
   const handleClick = (user) => {
     setCompareUser(user)
     console.log("COMPAREUSER", user)
@@ -21,24 +22,27 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
             {apiMovies
               ?.filter((movie) => mainUser?.favoriteMovies.some((favMovie) => favMovie === movie?.id))
               .map((movie) => (
-                <article key={movie._id}>
+                <article key={movie._id} id="movieCard">
                   <MovieCard movie={movie} />
                 </article>
               ))}
           </section>
         </section>
         <section>
+          {/*Lister opp ikke innlogget bruker*/}
           <h2>Se sammen med...</h2>
           <ul id="compare">
             {allUsers
               ?.filter((users) => users._id !== mainUser._id)
               .map((remusers) => (
-                <Link to={`/Bruker-sammenligning`} key={remusers._id} onClick={() => handleClick(remusers)}>
-                  {remusers.user}
-                </Link>
+                <li key={remusers._id}>
+                  <Link to={`/Bruker-sammenligning`} onClick={() => handleClick(remusers)}>
+                    {remusers.user}
+                  </Link>
+                </li>
               ))}
           </ul>
-          {/* .splice(ww._id === mainUser._id) */}
+          {/* Bruker link for å kunne sammenligne innlogget bruker med en annen */}
         </section>
       </div>
     </>
