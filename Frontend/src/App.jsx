@@ -1,114 +1,95 @@
-import { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
-import MovieCard from "./components/MovieCard";
-import "./App.css";
-import FetchAllUsers from "../sanity/services/userService";
-import UserCompare from "./components/UserCompare";
-import { fetchAllGenres } from "../sanity/services/genreServices";
-import fetchMovies from "../sanity/services/movieServices";
-import Login from "./components/Login";
-
-import Home from "./components/Home";
-import Layout from "./components/Layout";
-import GenreList from "./components/GenreList";
-import Genre from "./components/Genre";
-import { FaIgloo } from "react-icons/fa";
+import { useState, useEffect } from "react"
+import { Route, Routes, Navigate } from "react-router-dom"
+import MovieCard from "./components/MovieCard"
+import "./App.css"
+import FetchAllUsers from "../sanity/services/userService"
+import UserCompare from "./components/UserCompare"
+import { fetchAllGenres } from "../sanity/services/genreServices"
+import fetchMovies from "../sanity/services/movieServices"
+import Login from "./components/Login"
+import Home from "./components/Home"
+import Layout from "./components/Layout"
+import GenreList from "./components/GenreList"
+import Genre from "./components/Genre"
+import { FaIgloo } from "react-icons/fa"
 
 export default function App() {
   // LOGGED IN
-  const [logedIn, setLogedIn] = useState(false);
+  const [logedIn, setLogedIn] = useState(false)
 
   useEffect(() => {
-    console.log("Logged in state", logedIn);
-  }, [logedIn]);
+    console.log("Logged in state", logedIn)
+  }, [logedIn])
   // GENRES
-  const [allGenres, setAllGenres] = useState([]);
-  const [genre, setGenre] = useState([]);
+  const [allGenres, setAllGenres] = useState([])
+  const [genre, setGenre] = useState([])
 
   // MOVIES
-  const [movies, setMovies] = useState([]);
-  const [apiMovies, setApiMovies] = useState([]);
+  const [movies, setMovies] = useState([])
+  const [apiMovies, setApiMovies] = useState([])
 
   //ØNSKELISTE
-  const [wishList, setWishList] = useState([]);
+  const [wishList, setWishList] = useState([])
 
   // USERS
-  const [allUsers, setAllUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState([])
 
   // USER 1
-  const [mainUser, setMainUser] = useState({});
-  console.log("MainUser", mainUser);
+  const [mainUser, setMainUser] = useState({})
+  console.log("MainUser", mainUser)
 
   // USER 2
-  const [compareUser, setCompareUser] = useState({});
+  const [compareUser, setCompareUser] = useState({})
 
   const url = `https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids?idsList=${movies
     .map((movie) => movie.imdbid)
-    .join(",")}`;
+    .join(",")}`
   const options = {
     method: "GET",
     headers: {
       "X-RapidAPI-Key": "f97dd82b1amshf8b2c4b90d6a205p1f04a7jsneefafbdfb4fa",
       "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
     },
-  };
+  }
 
   const fetchApiMovie = async () => {
     try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      setApiMovies(result.results);
+      const response = await fetch(url, options)
+      const result = await response.json()
+      setApiMovies(result.results)
     } catch (error) {
-      console.error("Error fetching movies:", error);
+      console.error("Error fetching movies:", error)
     }
-  };
+  }
 
   const getAllUsers = async () => {
-    const data = await FetchAllUsers();
-    setAllUsers(data);
-    setWishList(data);
-  };
+    const data = await FetchAllUsers()
+    setAllUsers(data)
+    setWishList(data)
+  }
 
   useEffect(() => {
-    getAllUsers();
-    getAllGenres();
-    getAllMovies();
-  }, []);
+    getAllUsers()
+    getAllGenres()
+    getAllMovies()
+  }, [])
 
   useEffect(() => {
-    fetchApiMovie();
-  }, [movies]);
+    fetchApiMovie()
+  }, [movies])
 
   const getAllGenres = async () => {
-    const data = await fetchAllGenres();
-    setAllGenres(data);
-  };
+    const data = await fetchAllGenres()
+    setAllGenres(data)
+  }
 
   const getAllMovies = async () => {
-    const data = await fetchMovies();
-    setMovies(data);
-  };
+    const data = await fetchMovies()
+    setMovies(data)
+  }
 
   return (
     <>
-      {/* Skriver ut brukerens favoritter med info fra API */}
-      {/* {logedIn
-        ? apiMovies
-            ?.filter((movie) => mainUser.favoriteMovies.some((favMovie) => favMovie === movie.id))
-            .map((movie) => (
-              <div key={movie.id}>
-                <h1>{`${movie.titleText.text} (${movie.releaseYear.year})`}</h1>
-                <img src={movie.primaryImage.url} alt={movie.titleText.text} />
-              </div>
-            ))
-        : null} */}
-      {/* {logedIn ? apiMovies?.filter((movie) => mainUser.favoriteMovies.some((favMovie) => favMovie === movie.id)).map((movie) => <MovieCard movie={movie} />) : null} */}
-
       {/*Sammenligner filmer mellom brukere og skriver ut*/}
 
       {logedIn ? (
@@ -188,5 +169,5 @@ export default function App() {
         />
       )}
     </>
-  );
+  )
 }

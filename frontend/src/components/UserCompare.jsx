@@ -50,7 +50,7 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
         <div id="comparePage">
           <section id="catchUp">
             <h3>Catch up!</h3>
-            <p>Dere har <span>{matchedMovies.length}</span> {matchedMovies.length === 1 ?(<p>film</p>) : (<p>filmer</p>)} felles på ønskelisten</p>
+            <p>Dere har {matchedMovies.length === 1 ?("film") : ("filmer")} felles på ønskelisten</p>
             {matchedWish.length > 0 ? (
               apiMovies
                 ?.filter((movie) => matchedWish?.some((wishMovie) => wishMovie === movie.id))
@@ -65,7 +65,8 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
           </section>
           <section id="goSafe">
             <h3>Go safe!</h3>
-            <p>Dere har <span>{matchedMovies.length}</span> {matchedMovies.length === 1 ?(<p>film</p>) : (<p>filmer</p>)} felles som favoritt</p>
+            <p>Dere har {matchedMovies.length === 1 ?("film") : ("filmer")} felles som favoritt</p>
+
             {matchedMovies.length > 0 ? (
               apiMovies
                 ?.filter((movie) => matchedMovies?.some((favMovie) => favMovie === movie.id))
@@ -95,9 +96,11 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
             </ul>
           </section>
         </div>
-        <section id="bothCompare">
+        <section id="bothCompareTitle">
           <h2>Ønskelister og favoritter</h2>
           <p>Dere har noen felles filminteresser!</p>
+          </section>
+          <section id="bothCompare">
           {matchedWishFavorites.length > 0 ? (
             apiMovies
               ?.filter((movie) => matchedWishFavorites?.some((favMovie) => favMovie === movie.id))
