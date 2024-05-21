@@ -48,9 +48,9 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
           Forslag for {mainUser.user} og {compareUser.user}
         </h2>
         <div id="comparePage">
-          <section>
+          <section id="catchUp">
             <h3>Catch up!</h3>
-            <p>Oversikt over filmer, som begge brukere har på watchlist</p>
+            <p>Dere har <span>{matchedMovies.length}</span> {matchedMovies.length === 1 ?(<p>film</p>) : (<p>filmer</p>)} felles på ønskelisten</p>
             {matchedWish.length > 0 ? (
               apiMovies
                 ?.filter((movie) => matchedWish?.some((wishMovie) => wishMovie === movie.id))
@@ -63,9 +63,9 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
               <p>Dere har ingen felles filmer på ønskelisten</p>
             )}
           </section>
-          <section>
+          <section id="goSafe">
             <h3>Go safe!</h3>
-            <p>Oversikt over felles favorittfilmer</p>
+            <p>Dere har <span>{matchedMovies.length}</span> {matchedMovies.length === 1 ?(<p>film</p>) : (<p>filmer</p>)} felles som favoritt</p>
             {matchedMovies.length > 0 ? (
               apiMovies
                 ?.filter((movie) => matchedMovies?.some((favMovie) => favMovie === movie.id))
@@ -80,6 +80,7 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
           </section>
           <section id="genreCompare">
             <h3>Utforsk!</h3>
+            <p>Felles favoritt sjangere</p>
             {/* Skrive ut liste over favorittsjanger til begge brukere (SOM MATCHER BEGGE BRUKERE SOM BEGGE TO HAR OG LIKER) */}
             <ul>
               {matchedGenres.length > 0 ? (
@@ -94,10 +95,10 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
             </ul>
           </section>
         </div>
-        <section>
+        <section id="bothCompare">
           <h2>Ønskelister og favoritter</h2>
-          <p>Dere har noen felles filminteresser!?</p>
-          {matchedWishFavorites ? (
+          <p>Dere har noen felles filminteresser!</p>
+          {matchedWishFavorites.length > 0 ? (
             apiMovies
               ?.filter((movie) => matchedWishFavorites?.some((favMovie) => favMovie === movie.id))
               .map((movie) => (

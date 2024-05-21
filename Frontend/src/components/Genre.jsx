@@ -17,14 +17,12 @@ export default function Genre({ apiMovies, mainUser, allGenres, movies, setMovie
 
   return (
     <>
-      <section>
-        <h2>sjangeren</h2>
+      <h2>Sjangeren</h2>
+      <section id="genrePage">
         {apiMovies
           ?.filter((movie) => movieByGenre?.some((genreMovie) => genreMovie.imdbid === movie.id))
           .map((movie) => (
-            <article key={movie._id}>
               <MovieCard movie={movie} />
-            </article>
           ))}
       </section>
     </>

@@ -9,13 +9,6 @@ body{
     background-color: $darkGrey; 
     padding: 0 .5rem; 
 
-    img{
-      width: 200px;
-      height: 300px;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-    }
-
     main{
        color: $white;
       //  display: flex;
@@ -40,16 +33,32 @@ body{
        a{
         text-decoration: none;
         color: $white;
-        margin: .25rem;
+        // margin: .25rem;
        }
 
       // UserCompare!!
-       #comparePage{
+      #comparePage{
+
+        #goSafe{
+          border-top: solid 2px white;
+        }
 
         #genreCompare{
-          width: 25%;
+          // width: 25%;
+          border-top: solid 2px white;
+          width: 100%;
+          margin-bottom: 3rem;
+
+          ul{
+            padding-left: 1rem;
+            list-style: none;
+          }
         }
-       }
+      }
+
+      #bothCompare{
+        border-top: solid 2px $white;
+      }
     }
 
     // Login!!
@@ -101,7 +110,6 @@ body{
      
      #homeMovie{
       display: flex;
-      gap: 5rem;
      }
     }
 
@@ -110,6 +118,17 @@ body{
       display: flex;
       gap: 5rem;
       justify-content: space-between;
+
+      #goSafe{
+        border-top: none !important;
+      }
+
+      #genreCompare{
+        width: 25% !important;
+        border-top: none !important;
+        // width: 100%;
+        margin-bottom: 3rem;
+      }
     }
 
   }

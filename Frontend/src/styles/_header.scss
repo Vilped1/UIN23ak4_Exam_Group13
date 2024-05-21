@@ -23,7 +23,6 @@ header {
     }
 
     #sideheader{
-        
 
         #user{
             margin-bottom: 1rem;
@@ -36,28 +35,31 @@ header {
         }
     }
 }
-@media only screen and (min-width: 800px){
+@media only screen and (min-width: 500px){
     header{
         display: flex;
-        // border-bottom: solid 2px $white;
-        // padding: 0 1rem;
+        flex-wrap: wrap;
         margin-bottom: 2rem;
-        // align-items: bottom;
         justify-content: space-between;
         align-items: center;
 
         h1{
-            margin-bottom: 1rem;
+            margin: 1rem 1rem 1rem 0;
         }
 
         #sideheader{
             display: flex;
-            gap: 2rem;
+            // gap: 2rem;
             text-align: end;
+            flex-wrap: wrap;
+
+            a{
+                margin-right: 2rem;
+            }
     
             #user{
-                margin-bottom: 0;
-                
+                margin-bottom: .25rem;
+
                 button{
                     background: bottom;
                     color: $white;

@@ -1,6 +1,6 @@
 @import '_variables.scss';
 
-#genreSection{
+#genreList{
         display: flex;
         flex-wrap: wrap;
         font-size: .75rem;
@@ -36,8 +36,8 @@
     }
 }
 
-@media only screen and (min-width: 800px){
-    #genreSection{
+@media only screen and (min-width: 500px){
+    #genreList{
         display: block;
         border-right: solid 2px white;
         width: 210px;
@@ -63,6 +63,13 @@
                 margin-right: 0;
             }
         }
+    }
+
+    #genrePage{
+        display: flex;
+        // justify-content: space-between;
+        // gap: 4rem;
+        flex-wrap: wrap;
     }
 }
   

@@ -5,16 +5,24 @@
   
   #movieCard{
     display: flex;
+    margin-right: 4rem;
 
     a{
-      text-decoration: none;
-      color: $white;
-    }
-    h3, p{
-      margin: 0;
-    }
-    p{
-      margin-bottom: 2rem;
+      // text-decoration: none;
+      // color: $white;
+
+      img{
+        width: 200px;
+        height: 300px;
+      }
+
+      h3, p{
+        margin: 0;
+      }
+
+      p{
+        margin-bottom: 2rem;
+      }
     }
   }
 

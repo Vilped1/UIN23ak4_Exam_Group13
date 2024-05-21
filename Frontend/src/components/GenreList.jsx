@@ -27,11 +27,11 @@ export default function GenreList({ allGenres, setGenre }) {
   return (
     <>
       <h2>Sjangere</h2>
-      <ul id="genreSection">
+      <ul id="genreList">
         {allGenres?.map((genre, index) => (
           <li key={index} id={genre}>
             <Link onClick={() => handleGenre(genre)} to={"/Sjanger/" + genre.genreurl.current}>
-              <h2>{genre.genre}</h2>
+              <h2>{genre.genre.replace(("-"), (" "))}</h2>
             </Link>
             <span className={`star ${active.includes(genre) ? "active" : ""}`} onClick={() => handleClick(genre)}>
               {active.includes(genre) ? <FaStar /> : <FaRegStar />}
