@@ -31,14 +31,13 @@ export default function App() {
 
   //ØNSKELISTE
   const [wishList, setWishList] = useState([])
-  console.log("wish movie list", wishList)
 
   // USERS
   const [allUsers, setAllUsers] = useState([])
-  console.log("All users", allUsers)
 
   // USER 1
   const [mainUser, setMainUser] = useState({})
+  console.log("MainUser", mainUser)
 
   // USER 2
   const [compareUser, setCompareUser] = useState({})
