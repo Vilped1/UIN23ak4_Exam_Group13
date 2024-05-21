@@ -8,9 +8,9 @@ import { Link } from "react-router-dom"
 export default function MovieCard({ movie }) {
   return (
     <>
-    <a href={`https://www.imdb.com/title/${movie.id}/`}>
-      <img src={movie.primaryImage.url} alt={movie.titleText.text} />
-        </a>
+      <a href={`https://www.imdb.com/title/${movie.id}/`}>
+        <img src={movie.primaryImage.url} alt={movie.titleText.text} />
+      </a>
       <section id="movieInfo">
         <h3>{movie.titleText.text}</h3>
         <p>{movie.releaseYear.year}</p>

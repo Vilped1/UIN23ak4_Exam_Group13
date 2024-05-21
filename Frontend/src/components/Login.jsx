@@ -11,17 +11,17 @@ export default function Login({ allUsers, mainUser, setMainUser, setLogedIn }) {
 
   return (
     <>
-    <div id="logginn">
-      <h1>Hvem skal se i dag?</h1>
-      <p>Velg bruker</p>
-      {allUsers?.map((user) => (
-        <button key={user._id}>
-          <Link to="/" onClick={() => handleClick(user)}>
-            {user.user}
-          </Link>
-        </button>
-      ))}
-    </div>
+      <div id="logginn">
+        <h1>Hvem skal se i dag?</h1>
+        <p>Velg bruker</p>
+        {allUsers?.map((user) => (
+          <button key={user._id}>
+            <Link to="/" onClick={() => handleClick(user)}>
+              {user.user}
+            </Link>
+          </button>
+        ))}
+      </div>
     </>
   )
 }
