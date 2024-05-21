@@ -15,7 +15,12 @@ export const users = {
             of: [
                 {
                     type: "reference",
-                    to: [{ type: "genres" }]
+                    to: [{ type: "genres" }],
+                    preview: {
+                        select: {
+                            title: "genre"
+                        }
+                    }
                 }
             ]
         },
