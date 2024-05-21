@@ -22,7 +22,12 @@ export default function App() {
     console.log("Logged in state", logedIn)
   }, [logedIn])
   // GENRES
+<<<<<<< Updated upstream
+  const [allGenres, setAllGenres] = useState([]);
+=======
   const [allGenres, setAllGenres] = useState([])
+  const [genre, setGenre] = useState([])
+>>>>>>> Stashed changes
 
   // MOVIES
   const [movies, setMovies] = useState([])
