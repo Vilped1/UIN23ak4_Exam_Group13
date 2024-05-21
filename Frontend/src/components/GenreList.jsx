@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 export default function GenreList({ allGenres, setGenre }) {
   const [active, setActive] = useState([])
 
-  // Chat-GPT
   const handleGenre = (genre) => {
     setGenre(genre)
   }
