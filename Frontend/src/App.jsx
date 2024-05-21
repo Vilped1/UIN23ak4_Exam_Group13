@@ -9,7 +9,7 @@ import fetchMovies from "../sanity/services/movieServices"
 import Login from "./components/Login"
 
 import Home from "./components/Home"
-import Layout from "./components/Layout"
+import Layout from "./components/layout"
 import GenreList from "./components/GenreList"
 import Genre from "./components/Genre"
 import { FaIgloo } from "react-icons/fa"
@@ -18,10 +18,11 @@ export default function App() {
   // LOGGED IN
   const [logedIn, setLogedIn] = useState(false)
 
-  useEffect(() => {}, [logedIn])
+  useEffect(() => {
+    console.log("Logged in state", logedIn)
+  }, [logedIn])
   // GENRES
   const [allGenres, setAllGenres] = useState([])
-  const [genre, setGenre] = useState([])
 
   // MOVIES
   const [movies, setMovies] = useState([])
@@ -29,9 +30,11 @@ export default function App() {
 
   //ØNSKELISTE
   const [wishList, setWishList] = useState([])
+  console.log("wish movie list", wishList)
 
   // USERS
   const [allUsers, setAllUsers] = useState([])
+  console.log("All users", allUsers)
 
   // USER 1
   const [mainUser, setMainUser] = useState({})
@@ -108,8 +111,8 @@ export default function App() {
             <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} compareUser={compareUser} setCompareUser={setCompareUser} apiMovies={apiMovies} />} />
             <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
             <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
-            <Route path="/Sjanger" element={<GenreList allGenres={allGenres} setGenre={setGenre} />} />
-            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} mainUser={mainUser} allGenres={allGenres} movies={movies} setMovies={setMovies} genre={genre} />} />
+            <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
+            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} mainUser={mainUser} allGenres={allGenres} movies={movies} setMovies={setMovies} />} />
           </Routes>
         </Layout>
       ) : (
