@@ -22,12 +22,8 @@ export default function App() {
     console.log("Logged in state", logedIn)
   }, [logedIn])
   // GENRES
-<<<<<<< Updated upstream
-  const [allGenres, setAllGenres] = useState([]);
-=======
   const [allGenres, setAllGenres] = useState([])
   const [genre, setGenre] = useState([])
->>>>>>> Stashed changes
 
   // MOVIES
   const [movies, setMovies] = useState([])
@@ -116,8 +112,8 @@ export default function App() {
             <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} compareUser={compareUser} setCompareUser={setCompareUser} apiMovies={apiMovies} />} />
             <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
             <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
-            <Route path="/Sjanger" element={<GenreList allGenres={allGenres} />} />
-            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} mainUser={mainUser} allGenres={allGenres} movies={movies} setMovies={setMovies} />} />
+            <Route path="/Sjanger" element={<GenreList allGenres={allGenres} setGenre={setGenre} />} />
+            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} mainUser={mainUser} allGenres={allGenres} movies={movies} setMovies={setMovies} genre={genre} />} />
           </Routes>
         </Layout>
       ) : (
