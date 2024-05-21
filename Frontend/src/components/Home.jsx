@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import UserCompare from "./UserCompare"
 import MovieCard from "./MovieCard"
 
-export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiMovies }) {
+export default function Home({ mainUser, setCompareUser, allUsers, apiMovies }) {
   const handleClick = (user) => {
     setCompareUser(user)
     console.log("COMPAREUSER", user)
@@ -34,9 +34,11 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
             {allUsers
               ?.filter((users) => users._id !== mainUser._id)
               .map((remusers) => (
-                <Link to={`/Bruker-sammenligning`} key={remusers._id} onClick={() => handleClick(remusers)}>
+                <li key={remusers._id}>
+                  <Link to={`/Bruker-sammenligning`} onClick={() => handleClick(remusers)}>
                   {remusers.user}
-                </Link>
+                  </Link>
+                </li>
               ))}
           </ul>
           {/* .splice(ww._id === mainUser._id) */}

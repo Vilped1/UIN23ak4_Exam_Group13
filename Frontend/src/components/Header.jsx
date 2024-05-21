@@ -11,7 +11,6 @@ export default function Header({ setMainUser, mainUser, setCompareUser, setLoged
 
   return (
     <>
-
       <header>
         {/*Sender deg til startsiden*/}  
         <Link to="/">

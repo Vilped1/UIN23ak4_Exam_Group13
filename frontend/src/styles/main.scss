@@ -12,6 +12,10 @@ body{
   main{
       color: $white;
 
+      li{
+        list-style: none;
+      }
+
     // Home!!
     section{
 
@@ -52,7 +56,6 @@ body{
 
         ul{
           padding-left: 1rem;
-          list-style: none;
         }
       }
     }

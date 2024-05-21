@@ -9,7 +9,7 @@ import fetchMovies from "../sanity/services/movieServices"
 import UserCompare from "./components/UserCompare"
 import Login from "./components/Login"
 import Home from "./components/Home"
-import Layout from "./components/layout"
+import Layout from "./components/Layout"
 import GenreList from "./components/GenreList"
 import Genre from "./components/Genre"
 
@@ -32,10 +32,6 @@ export default function App() {
   //Array states for filmobjekt fra sanity og filmobjekt fra API fetch
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
-
-  //ØNSKELISTE
-  //Array state for ønskeliste i sanity
-  const [wishList, setWishList] = useState([])
 
   // USERS
   //Array state for alle brukere i sanity
@@ -76,7 +72,6 @@ export default function App() {
   const getAllUsers = async () => {
     const data = await FetchAllUsers()
     setAllUsers(data)
-    setWishList(data)
   }
 
   //Kjører statene med useEffect
@@ -111,11 +106,11 @@ export default function App() {
           {/* Bruker Layout for struktur av UI-elementer på siden. Lager en ramme til komponentene */}
           <Routes>
             {/* Bruker Route for å bestemme url tekst og og når siden endres til å vise andre komponenter. Sender og med alle props de forskjellige komponentene trenger */}
-            <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} compareUser={compareUser} setCompareUser={setCompareUser} apiMovies={apiMovies} />} />
+            <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} setCompareUser={setCompareUser} apiMovies={apiMovies} />} />
             <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
             <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
             <Route path="/Sjanger" element={<GenreList allGenres={allGenres} setGenre={setGenre} />} />
-            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} mainUser={mainUser} allGenres={allGenres} movies={movies} setMovies={setMovies} genre={genre} />} />
+            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} movies={movies} genre={genre} />} />
           </Routes>
         </Layout>
       ) : (
