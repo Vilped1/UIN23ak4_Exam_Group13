@@ -1,5 +1,7 @@
+//Importerer react hooks, reactIcons
 import { useEffect, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
+//Link som bruker i routing for navigasjon
 import { Link } from "react-router-dom";
 import {
   fetchAllGenres,
@@ -7,66 +9,51 @@ import {
 } from "../../sanity/services/genreServices";
 import FetchAllUsers from "../../sanity/services/userService";
 
-export default function GenreList({ allGenres, setGenre, mainUser }) {
-  const [active, setActive] = useState([]);
-  const [genres, setGenres] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState(null);
-  const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+//Tar imot props fra App.jsx
+export default function GenreList({ allGenres, setGenre }) {
+  //State til handleClick
+  const [active, setActive] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const fetchedGenres = await fetchAllGenres();
-      setGenres(fetchedGenres);
-
-      const fetchedUsers = await FetchAllUsers();
-      setUsers(fetchedUsers);
-
-      setSelectedUser(mainUser);
-    };
-
-    fetchData();
-  }, []);
-
-  console.log("fetchGenres", genres);
-
-  const handleClick = async (genre) => {
-    setSelectedGenre(genre);
-    if (selectedUser) {
-      try {
-        const result = await updateFavGenre(selectedUser, genre._id);
-        console.log(result);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  };
-
-  console.log("Selected User", selectedUser);
-
+  // Chat-GPT
+  //Ladg en funksjon som kan bruker på onClick for å gi data fra genre
   const handleGenre = (genre) => {
-    setGenre(genre);
-  };
+    setGenre(genre)
+  }
+
+  // Chat-GPT
+  //Ladg en funksjon som kan bruker på onClick for å gi data fra genre
+  const handleClick = (clickedGenre) => {
+    // bruker state til å include og filtre sjangeren som blir trykket
+    setActive((prevActive) => {
+      if (prevActive.includes(clickedGenre)) {
+        if (prevActive.includes(clickedGenre)) {
+          return prevActive.filter((genre) => genre !== clickedGenre)
+        } else {
+          return [...prevActive, clickedGenre]
+        }
+      }
+    })
+  }
+
+  //HTML-struktur med tagger, classer og id for scss
   return (
     <>
       <h2>Sjangere</h2>
-      <ul id="genreList">
+      <ul id="genreSection">
+        {/* Maper allGenres array for å skrive ut alle sjangere fra genreServicec.js(sanity fetch)*/}
         {allGenres?.map((genre, index) => (
           <li key={index} id={genre}>
+            {/* Bruker Link navigere ved bruk av handleclick slik at man blir sendt videre til den sjanger man trykker. endrer URL og rendret side */}
             <Link onClick={() => handleGenre(genre)} to={"/Sjanger/" + genre.genreurl.current}>
               <h2>{genre.genre.replace(("-"), (" "))}</h2>
             </Link>
-            <span
-              className={`star ${active.includes(genre) ? "active" : ""}`}
-              onClick={() => handleClick(genre)}
-            >
+            {/* Viser stjerneikonet på sjangerlista. den er for å sette favoritt */}
+            <span className={`star ${active.includes(genre) ? "active" : ""}`} onClick={() => handleClick(genre)}>
               {active.includes(genre) ? <FaStar /> : <FaRegStar />}
             </span>
           </li>
         ))}
       </ul>
-      {/* <Login allUsers={allUsers} setMainUser={setMainUser} /> */}
-      {/* <UserCompare/> */}
     </>
   );
 }
