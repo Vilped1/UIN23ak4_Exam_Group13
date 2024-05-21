@@ -28,7 +28,7 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
           </section>
         </section>
         <section>
-          <h3>Jeg skal se sammen med...</h3>
+          <h2>Se sammen med...</h2>
           <ul id="compare">
             {allUsers
               ?.filter((users) => users._id !== mainUser._id)

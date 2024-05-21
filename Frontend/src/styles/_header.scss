@@ -1,20 +1,21 @@
 @import '_variables.scss';
 
 header {
-    display: flex;
+    // display: flex;
     border-bottom: solid 2px $white;
-    padding: 0 1rem;
+    // padding: 0 1rem;
     margin-bottom: 2rem;
     // align-items: bottom;
-    justify-content: space-between;
-    align-items: center;
+    // justify-content: space-between;
+    // align-items: center;
 
     a{
         text-decoration: none;
-    }
-    
-    h1, h2, h3{
         color: $white;
+    }
+
+    h1{
+        margin-bottom: 2rem;
     }
 
     h3{
@@ -22,11 +23,11 @@ header {
     }
 
     #sideheader{
-        display: flex;
-        gap: 2rem;
-        text-align: end;
+        
 
         #user{
+            margin-bottom: 1rem;
+
             button{
                 background: bottom;
                 color: $white;
@@ -36,5 +37,33 @@ header {
     }
 }
 @media only screen and (min-width: 800px){
+    header{
+        display: flex;
+        // border-bottom: solid 2px $white;
+        // padding: 0 1rem;
+        margin-bottom: 2rem;
+        // align-items: bottom;
+        justify-content: space-between;
+        align-items: center;
+
+        h1{
+            margin-bottom: 1rem;
+        }
+
+        #sideheader{
+            display: flex;
+            gap: 2rem;
+            text-align: end;
     
+            #user{
+                margin-bottom: 0;
+                
+                button{
+                    background: bottom;
+                    color: $white;
+                    border: hidden;
+                }
+            }
+        }
+    }
 }
