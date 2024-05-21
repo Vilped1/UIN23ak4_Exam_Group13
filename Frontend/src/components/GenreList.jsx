@@ -7,6 +7,10 @@ import FetchAllUsers from "../../sanity/services/userService"
 export default function GenreList({ allGenres, setGenre, mainUser }) {
   const [active, setActive] = useState([])
 
+  const handleGenre = (genre) => {
+    setGenre(genre)
+  }
+
   const handleClick = async (genre) => {
     try {
       const result = await updateFavGenre(mainUser, genre)

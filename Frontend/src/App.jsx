@@ -111,11 +111,6 @@ export default function App() {
             <Route path="/Sjanger" element={<GenreList allGenres={allGenres} setGenre={setGenre} mainUser={mainUser} />} />
             <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} mainUser={mainUser} allGenres={allGenres} movies={movies} setMovies={setMovies} genre={genre} />} />
             {/* Bruker Route for å bestemme url tekst og og når siden endres til å vise andre komponenter. Sender og med alle props de forskjellige komponentene trenger */}
-            <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} setCompareUser={setCompareUser} apiMovies={apiMovies} />} />
-            <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
-            <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
-            <Route path="/Sjanger" element={<GenreList allGenres={allGenres} setGenre={setGenre} />} />
-            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} movies={movies} genre={genre} />} />
           </Routes>
         </Layout>
       ) : (
