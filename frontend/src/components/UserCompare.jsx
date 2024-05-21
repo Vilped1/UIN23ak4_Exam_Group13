@@ -89,19 +89,20 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
           <h3>Utforsk!</h3>
 
           {/* Skrive ut liste over favorittsjanger til begge brukere (SOM MATCHER BEGGE BRUKERE SOM BEGGE TO HAR OG LIKER) */}
-          <ul>
-            {matchedGenres.length > 0 ? (
-              (<p>Felles favoritt sjangere</p>)(
-                matchedGenres?.map((genre, index) => (
+          {matchedGenres.length > 0 ? (
+            <>
+              <p>Felles favorittsjangere</p>
+              <ul>
+                {matchedGenres.map((genre, index) => (
                   <li key={index}>
                     <Link to={"/Sjanger/" + genre.toLowerCase()}>{genre.replaceAll("-", " ")}</Link>
                   </li>
-                ))
-              )
-            ) : (
-              <p>Dere har ingen felles favorittsjangere</p>
-            )}
-          </ul>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p>Dere har ingen felles favorittsjangere</p>
+          )}
         </section>
       </div>
       <section id="bothCompareTitle">
