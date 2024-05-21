@@ -1,4 +1,4 @@
-import { client } from "../client";
+import { client, writeClient } from "../client";
 
 /* https://www.sanity.io/docs/how-queries-work#dd66cae5ed8f */
 export async function fetchAllGenres() {
@@ -21,7 +21,7 @@ export async function updateFavGenre(userInfo, genreID) {
 
   console.log("Genre Formated:", genreReference);
 
-  const isAlreadyFavorite = userInfo.favoriteGenre.some(genre => genre._ref === genreID);
+  const isAlreadyFavorite = userInfo.favoriteGenres.some(genre => genre._ref === genreID);
 
   if (!isAlreadyFavorite) {
     try {

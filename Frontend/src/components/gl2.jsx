@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
-import { FaRegStar, FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   fetchAllGenres,
   updateFavGenre,
 } from "../../sanity/services/genreServices";
 import FetchAllUsers from "../../sanity/services/userService";
 
-export default function GenreList({ allGenres, setGenre }) {
-  const [active, setActive] = useState([]);
+export default function GenreList() {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [users, setUsers] = useState([]);
@@ -41,29 +38,23 @@ export default function GenreList({ allGenres, setGenre }) {
   };
 
   console.log("Selected User", selectedUser);
+
   return (
     <>
-      <h2>Sjangere</h2>
-      <ul id="genreSection">
-        {allGenres?.map((genre, index) => (
-          <li key={index} id={genre}>
-            <Link
-              onClick={() => handleGenre(genre)}
-              to={"/Sjanger/" + genre.genreurl.current}
-            >
-              <h2>{genre.genre}</h2>
-            </Link>
-            <span
-              className={`star ${active.includes(genre) ? "active" : ""}`}
-              onClick={() => handleClick(genre)}
-            >
-              {active.includes(genre) ? <FaStar /> : <FaRegStar />}
-            </span>
-          </li>
+      <section className="genreSection">
+        {genres.map((genre, index) => (
+          <article
+            className={`genreCard ${
+              selectedGenre?._id === genre._id ? "active" : ""
+            }`}
+            key={index}
+            style={{ backgroundImage: `url(${genre.genreimage})` }}
+            onClick={() => handleClick(genre)}
+          >
+            <h3>{genre.genre}</h3>
+          </article>
         ))}
-      </ul>
-      {/* <Login allUsers={allUsers} setMainUser={setMainUser} /> */}
-      {/* <UserCompare/> */}
+      </section>
     </>
   );
 }
