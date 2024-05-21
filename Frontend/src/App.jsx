@@ -9,7 +9,7 @@ import fetchMovies from "../sanity/services/movieServices"
 import Login from "./components/Login"
 
 import Home from "./components/Home"
-import Layout from "./components/Layout"
+import Layout from "./components/layout"
 import GenreList from "./components/GenreList"
 import Genre from "./components/Genre"
 import { FaIgloo } from "react-icons/fa"
