@@ -15,8 +15,10 @@ export default function GenreList() {
     const fetchData = async () => {
       const fetchedGenres = await fetchAllGenres();
       setGenres(fetchedGenres);
+
       const fetchedUsers = await fetchUsers();
       setUsers(fetchedUsers);
+
       setSelectedUser(fetchedUsers[4]);
     };
 
@@ -26,9 +28,16 @@ export default function GenreList() {
   const handleClick = async (genre) => {
     setSelectedGenre(genre);
     if (selectedUser) {
-      await updateFavGenre(selectedUser, genre._id);
+      try {
+        const result = await updateFavGenre(selectedUser, genre._id);
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
+
+  console.log("Selected User", selectedUser);
 
   return (
     <>

@@ -27,7 +27,7 @@ export async function fetchUsers() {
 
 export async function updateFavGenre(userInfo, genreID) {
   console.log("updateFavGenre USER INFO:", userInfo);
-  console.log("updateFavGenre GENREID:", genreID);
+  console.log("updateFavGenre GENRE ID:", genreID);
 
   const genreReference = {
     _ref: genreID,
@@ -35,9 +35,11 @@ export async function updateFavGenre(userInfo, genreID) {
   };
 
   console.log("Genre Formated:", genreReference);
+  
+  const isAlreadyFavorite = userInfo.favoriteGenre.filter(genre => genre._ref === genreID);
 
-  const isAlreadyFavorite = userInfo.favoriteGenre.some(genre => genre._ref === genreID);
-
+  console.log("FAVO", isAlreadyFavorite)
+  
   if (!isAlreadyFavorite) {
     try {
       const result = await writeClient.patch(userInfo._id)
@@ -48,7 +50,7 @@ export async function updateFavGenre(userInfo, genreID) {
       console.log("Patch successful! Result:", result);
       console.log("User ID", userInfo._id);
 
-      return "Added successfully " + userInfo._id;
+      return "Added successfully " + genreReference;
     } catch (err) {
       console.error("Patch failed! Error:", err);
       return "Failed " + err.message;
@@ -60,16 +62,16 @@ export async function updateFavGenre(userInfo, genreID) {
         .commit();
 
       console.log("Genre removed! Result:", result);
-      return "Removed successfully " + userInfo._id;
+      return "Removed successfully " + genreReference;
     } catch (err) {
-      console.error("Patch failed! Error:", err);
+      console.error("Unset method failed! Error:", err);
       return "Failed to remove: " + err.message;
     }
   }
 }
 
   
-export async function removeAllFavGenres(id){
+/* export async function removeAllFavGenres(id){
   console.log("removeAllFavGenres ID:", id);
 
   try {
@@ -85,4 +87,4 @@ export async function removeAllFavGenres(id){
     console.error("Patch failed! Error:", err);
     return "Failed " + err.message;
   }
-}
+} */
