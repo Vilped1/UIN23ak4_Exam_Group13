@@ -13,6 +13,7 @@ export default function Genre({ apiMovies, movies, genre }) {
     const filterByGenre = await movies?.filter((movie) => movie?.genre === genre?.genre)
     setMovieByGenre(filterByGenre)
   }
+  console.log(movies)
 
   //UseEffect for å skrive ut innholdet i funksjonen filterMoviesByGenre(genre)
   useEffect(() => {
@@ -24,8 +25,8 @@ export default function Genre({ apiMovies, movies, genre }) {
   //HTML-struktur som rendres på siden med tagger for enkel sass koding
   return (
     <>
-      <section>
-        <h2>sjangeren</h2>
+      <h2>Sjanger: {genre.genre} ({movieByGenre.length} {movieByGenre.length === 1 ? "film" : "filmer"})</h2>
+      <section id="genrePage">
         {/* Filtrerer apiMovies array for å rendre MovieCards til sjangersiden
         Bruker .some for å sammenling key i objekter fra array movieByGenre 
         Movie er en parameter vi bruker for å velge sepsifike elementer  */}

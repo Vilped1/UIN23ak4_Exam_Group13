@@ -50,12 +50,12 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
         <div id="comparePage">
           <section id="catchUp">
             <h3>Catch up!</h3>
-            <p>Dere har {matchedMovies.length === 1 ?("film") : ("filmer")} felles på ønskelisten</p>
+            <p>Dere har {matchedMovies.length} {matchedMovies.length === 1 ? "film" : "filmer"} felles på ønskelisten</p>
             {matchedWish.length > 0 ? (
               apiMovies
                 ?.filter((movie) => matchedWish?.some((wishMovie) => wishMovie === movie.id))
-                .map((movie) => (
-                  <article key={movie._id} id="movieCard">
+                .map((movie, index) => (
+                  <article key={index} id="movieCard">
                     <MovieCard movie={movie} />
                   </article>
                 ))
@@ -65,13 +65,12 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
           </section>
           <section id="goSafe">
             <h3>Go safe!</h3>
-            <p>Dere har {matchedMovies.length === 1 ?("film") : ("filmer")} felles som favoritt</p>
-
+            <p>Dere har {matchedMovies.length} {matchedMovies.length === 1 ? "film" : "filmer"} felles som favoritt</p>
             {matchedMovies.length > 0 ? (
               apiMovies
                 ?.filter((movie) => matchedMovies?.some((favMovie) => favMovie === movie.id))
-                .map((movie) => (
-                  <article key={movie._id} id="movieCard">
+                .map((movie, index) => (
+                  <article key={index} id="movieCard">
                     <MovieCard movie={movie} />
                   </article>
                 ))
@@ -85,8 +84,8 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
             {/* Skrive ut liste over favorittsjanger til begge brukere (SOM MATCHER BEGGE BRUKERE SOM BEGGE TO HAR OG LIKER) */}
             <ul>
               {matchedGenres.length > 0 ? (
-                matchedGenres?.map((genre) => (
-                  <li key={genre._id}>
+                matchedGenres?.map((genre, index) => (
+                  <li key={index}>
                     <Link to={"/Sjanger/"+ genre.toLowerCase()}>{genre.replaceAll("-", " ")}</Link>
                   </li>
                 ))
@@ -104,8 +103,8 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
           {matchedWishFavorites.length > 0 ? (
             apiMovies
               ?.filter((movie) => matchedWishFavorites?.some((favMovie) => favMovie === movie.id))
-              .map((movie) => (
-                <article key={movie._id} id="movieCard">
+              .map((movie, index) => (
+                <article key={index} id="movieCard">
                   <MovieCard movie={movie} />
                 </article>
               ))
