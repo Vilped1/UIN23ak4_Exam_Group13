@@ -19,7 +19,7 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
           <section id="homeMovie">
             {/* Lister opp favorittfilmene til mainUser */}
             {apiMovies
-              ?.filter((movie) => mainUser?.favoriteMovies.some((favMovie) => favMovie === movie?.id))
+              ?.filter((movie) => mainUser?.wishlist.some((favMovie) => favMovie === movie?.id))
               .map((movie) => (
                 <article key={movie._id}>
                   <MovieCard movie={movie} />

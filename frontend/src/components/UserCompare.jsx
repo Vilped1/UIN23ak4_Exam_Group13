@@ -96,17 +96,15 @@ export default function UserCompare({ mainUser, compareUser, apiMovies }) {
         </div>
         <section>
           <h2>Ønskelister og favoritter</h2>
-
-          {matchedWishFavorites > 0 ? (
-            (<p>Dere har noen felles filminteresser!?</p>)(
-              apiMovies
-                ?.filter((movie) => matchedWishFavorites?.some((favMovie) => favMovie === movie.id))
-                .map((movie) => (
-                  <article key={movie._id}>
-                    <MovieCard movie={movie} />
-                  </article>
-                ))
-            )
+          <p>Dere har noen felles filminteresser!?</p>
+          {matchedWishFavorites ? (
+            apiMovies
+              ?.filter((movie) => matchedWishFavorites?.some((favMovie) => favMovie === movie.id))
+              .map((movie) => (
+                <article key={movie._id}>
+                  <MovieCard movie={movie} />
+                </article>
+              ))
           ) : (
             <p>Her er det tomt!</p>
           )}
