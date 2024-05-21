@@ -11,6 +11,7 @@ export default function Login({ allUsers, mainUser, setMainUser, setLogedIn }) {
 
   return (
     <>
+    {/*Henter alle brukere*/} 
       <div id="logginn">
         <h1>Hvem skal se i dag?</h1>
         <p>Velg bruker</p>

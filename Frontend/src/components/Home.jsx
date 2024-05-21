@@ -28,6 +28,7 @@ export default function Home({ mainUser, setCompareUser, allUsers, logedIn, apiM
           </section>
         </section>
         <section>
+          {/*Lister opp rest brukere*/} 
           <h2>Se sammen med...</h2>
           <ul id="compare">
             {allUsers
