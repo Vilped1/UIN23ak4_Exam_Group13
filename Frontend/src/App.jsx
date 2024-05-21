@@ -9,7 +9,7 @@ import fetchMovies from "../sanity/services/movieServices"
 import UserCompare from "./components/UserCompare"
 import Login from "./components/Login"
 import Home from "./components/Home"
-import Layout from "./components/layout"
+import Layout from "./components/Layout"
 import GenreList from "./components/GenreList"
 import Genre from "./components/Genre"
 
@@ -32,10 +32,6 @@ export default function App() {
   //Array states for filmobjekt fra sanity og filmobjekt fra API fetch
   const [movies, setMovies] = useState([])
   const [apiMovies, setApiMovies] = useState([])
-
-  //ØNSKELISTE
-  //Array state for ønskeliste i sanity
-  const [wishList, setWishList] = useState([])
 
   // USERS
   //Array state for alle brukere i sanity
