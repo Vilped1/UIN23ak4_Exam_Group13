@@ -7,7 +7,7 @@ import {
 } from "../../sanity/services/genreServices";
 import FetchAllUsers from "../../sanity/services/userService";
 
-export default function GenreList({ allGenres, setGenre }) {
+export default function GenreList({ allGenres, setGenre, mainUser }) {
   const [active, setActive] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
@@ -22,11 +22,13 @@ export default function GenreList({ allGenres, setGenre }) {
       const fetchedUsers = await FetchAllUsers();
       setUsers(fetchedUsers);
 
-      setSelectedUser(fetchedUsers[4]);
+      setSelectedUser(mainUser);
     };
 
     fetchData();
   }, []);
+
+  console.log("fetchGenres", genres);
 
   const handleClick = async (genre) => {
     setSelectedGenre(genre);
@@ -41,6 +43,10 @@ export default function GenreList({ allGenres, setGenre }) {
   };
 
   console.log("Selected User", selectedUser);
+
+  const handleGenre = (genre) => {
+    setGenre(genre);
+  };
   return (
     <>
       <h2>Sjangere</h2>
