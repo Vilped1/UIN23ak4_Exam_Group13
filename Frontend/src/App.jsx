@@ -90,7 +90,7 @@ export default function App() {
     setAllGenres(data)
   }
 
-  //Async arrow function for å hente array fra sanity bruker fetch og sende data til movies 
+  //Async arrow function for å hente array fra sanity bruker fetch og sende data til movies
   const getAllMovies = async () => {
     const data = await fetchMovies()
     setMovies(data)
@@ -103,6 +103,11 @@ export default function App() {
         <Layout setLogedIn={setLogedIn} logedIn={logedIn} setMainUser={setMainUser} setCompareUser={setCompareUser} mainUser={mainUser}>
           {/* Bruker Layout for struktur av UI-elementer på siden. Lager en ramme til komponentene */}
           <Routes>
+            <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} compareUser={compareUser} setCompareUser={setCompareUser} apiMovies={apiMovies} />} />
+            <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
+            <Route path="/Bruker-sammenligning" element={<UserCompare apiMovies={apiMovies} mainUser={mainUser} compareUser={compareUser} />} />
+            <Route path="/Sjanger" element={<GenreList allGenres={allGenres} setGenre={setGenre} mainUser={mainUser} />} />
+            <Route path="/Sjanger/:slug" element={<Genre apiMovies={apiMovies} mainUser={mainUser} allGenres={allGenres} movies={movies} setMovies={setMovies} genre={genre} />} />
             {/* Bruker Route for å bestemme url tekst og og når siden endres til å vise andre komponenter. Sender og med alle props de forskjellige komponentene trenger */}
             <Route path="/" element={<Home allUsers={allUsers} mainUser={mainUser} setCompareUser={setCompareUser} apiMovies={apiMovies} />} />
             <Route path="/Logg-inn" element={<Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />} />
@@ -112,12 +117,7 @@ export default function App() {
           </Routes>
         </Layout>
       ) : (
-        <Login
-          allUsers={allUsers}
-          mainUser={mainUser}
-          setMainUser={setMainUser}
-          setLogedIn={setLogedIn}
-        />
+        <Login allUsers={allUsers} mainUser={mainUser} setMainUser={setMainUser} setLogedIn={setLogedIn} />
       )}
       {/* Etter : er det som vises når ingen bruker er valgt. En liste med brukere som kan velges */}
     </>
